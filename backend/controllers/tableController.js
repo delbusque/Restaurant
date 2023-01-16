@@ -17,7 +17,6 @@ const getSingleTable = async (req, res) => {
 
 const getOpenedTables = async (req, res) => {
     const openedTables = await Table.find({ opened: true });
-    console.log(openedTables.length);
 
     if (openedTables.length < 1) {
         return res.json({ mssg: 'No opened tables' });
