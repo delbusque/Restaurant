@@ -1,14 +1,14 @@
 const express = require('express');
 
 const {
-    getTables,
+    getAllTables,
     getSingleTable,
     getOpenedTables
 } = require('../controllers/tableController.js')
 
 const router = express.Router();
 
-router.get('/', getTables);
+router.get('/', getAllTables);
 router.get('/opened', getOpenedTables);
 router.get('/:name', getSingleTable);
 
