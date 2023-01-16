@@ -5,14 +5,17 @@ const mongoose = require('mongoose');
 mongoose.set('strictQuery', true);
 
 const tableRoutes = require('./routes/tableRoutes.js');
-const drinkRoutes = require('./routes/drinkRoutes.js');
+const goodRoutes = require('./routes/goodRoutes.js');
 
 const app = express();
 
 app.use(express.json());
 
 app.use('/tables', tableRoutes);
-app.use('/drinks', drinkRoutes);
+
+app.use('/drinks', goodRoutes);
+app.use('/food', goodRoutes);
+
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
