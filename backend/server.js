@@ -11,10 +11,16 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/tables', tableRoutes);
+app.get('/', (req, res) => {
+    res.status(404).json({ mssg: 'No such API endpoint' })
+})
 
+app.use('/tables', tableRoutes);
 app.use('/drinks', goodRoutes);
 app.use('/food', goodRoutes);
+app.use('*', (req, res) => {
+    res.status(404).json({ mssg: 'No such API endpoint' })
+})
 
 
 mongoose.connect(process.env.MONGO_URI)
