@@ -13,7 +13,6 @@ const getGoodsByFamily = async (req, res) => {
         family = 'food';
     }
 
-
     if (goods.length < 1) {
         return res.status(404).json({ mssg: `No ${family} there !` })
     }
