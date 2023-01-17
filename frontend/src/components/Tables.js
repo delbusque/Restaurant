@@ -7,11 +7,14 @@ const Tables = () => {
 
     useEffect(() => {
         async function fetchTables() {
-            let responce = await fetch('/tables');
-            let json = await responce.json();
-
-            if (responce.ok) {
-                setTables(json);
+            try {
+                let responce = await fetch('/tables');
+                let json = await responce.json();
+                if (responce.ok) {
+                    setTables(json);
+                }
+            } catch (error) {
+                console.log(error.message);
             }
         }
         fetchTables();
@@ -25,6 +28,7 @@ const Tables = () => {
                     <TableButton table={t} />
                 </div>
             ))}
+            {!tables && <p className="error">No connection with database !</p>}
         </section>
     )
 }
