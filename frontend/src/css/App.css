@@ -1,0 +1,81 @@
+@import url("reset.css");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Dosis:wght@200;400;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap");
+
+.header {
+  display: flex;
+  position: sticky;
+  top: 0;
+  overflow: auto;
+  background-color: rgb(240, 239, 237);
+  padding: 30px 40px;
+  justify-content: space-between;
+}
+
+.deli {
+  font-family: "Dancing Script", cursive;
+  font-weight: 400;
+}
+
+.nav {
+  display: flex;
+}
+
+.nav__item,
+.nav__item-auth {
+  margin: 0 20px;
+  font-size: 24px;
+  border: 1px solid grey;
+  padding: 5px 45px;
+  font-family: "Dosis", sans-serif;
+  font-weight: 500;
+}
+
+.nav__item-auth {
+  padding: 5px 15px;
+}
+
+.nav__item:hover:nth-child(1) {
+  cursor: pointer;
+  background-color: aliceblue;
+  transform: scale(1.001);
+}
+
+.nav__item-on {
+  margin: 0 20px;
+  font-size: 24px;
+  border: 1px solid grey;
+  padding: 5px 45px;
+  font-family: "Dosis", sans-serif;
+  font-weight: 500;
+  background-color: aliceblue;
+}
+
+.links {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.tables-cont {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding: 50px 380px 50px 170px;
+}
+
+.table-btn {
+  border: 1px solid grey;
+  text-align: center;
+}
+
+.table-btn-text {
+  font-family: "Dosis", sans-serif;
+  font-weight: 500;
+  font-size: 46px;
+  transform: scale(1.001);
+}
+
+.table-btn:hover {
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+  transform: scale(1.1);
+  cursor: pointer;
+}
