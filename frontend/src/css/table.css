@@ -1,0 +1,58 @@
+.table-card {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+
+  grid-template-areas:
+    "orders orders food content items items"
+    "orders orders . content items items"
+    "orders orders drinks content items items";
+}
+
+.orders-sect {
+  position: relative;
+  background-color: antiquewhite;
+  grid-area: orders;
+  margin: 10px 20px;
+}
+.tb-food-btn {
+  background-color: aquamarine;
+  grid-area: food;
+  margin: 50px 10px;
+}
+.tb-drinks-btn {
+  background-color: bisque;
+  grid-area: drinks;
+  margin: 10px 10px;
+}
+.tb-type-btn {
+  background-color: darkgoldenrod;
+  grid-area: content;
+  margin: 10px 20px;
+}
+
+.tb-items {
+  background-color: indianred;
+  grid-area: items;
+  margin: 10px 20px;
+}
+
+.tb-num {
+  display: inline-block;
+  border: 1px solid grey;
+  margin: 5px 5px;
+  padding: 1px 5px;
+  position: absolute;
+  right: 1px;
+}
+
+.tb-status {
+  display: inline-block;
+  border: 1px solid grey;
+  margin: 5px 5px;
+  padding: 1px 5px;
+}
+
+.tb-orders {
+  margin: 2px 5px;
+  padding: 1px 5px;
+}
