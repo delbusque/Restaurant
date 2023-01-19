@@ -12,8 +12,18 @@
   position: relative;
   background-color: antiquewhite;
   grid-area: orders;
-  margin: 10px 20px;
+  margin: 30px 30px;
+  border-radius: 9px;
 }
+.orders-sect-paid {
+  position: relative;
+  background-color: antiquewhite;
+  grid-area: orders;
+  margin: 30px 30px;
+  border-radius: 9px;
+  color: rgba(0, 0, 0, 0.564);
+}
+
 .tb-food-btn {
   background-color: aquamarine;
   grid-area: food;
@@ -27,32 +37,162 @@
 .tb-type-btn {
   background-color: darkgoldenrod;
   grid-area: content;
-  margin: 10px 20px;
+  margin: 30px 20px;
 }
 
 .tb-items {
   background-color: indianred;
   grid-area: items;
-  margin: 10px 20px;
+  margin: 30px 20px;
+}
+
+.tb-head {
+  margin-top: 10px;
+}
+.tb-title {
+  display: inline-block;
+  font-family: "Poppins", sans-serif;
+  margin: 5px 25px;
+  margin-right: 0px;
+  margin-bottom: 25px;
+  padding: 1px 5px;
 }
 
 .tb-num {
   display: inline-block;
+  font-family: "Dancing Script", cursive;
   border: 1px solid grey;
   margin: 5px 5px;
+  margin-right: 25px;
+  padding: 1px 5px;
+  position: absolute;
+  right: 1px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.tb-orders {
+  margin: 2px 5px;
+  margin-left: 25px;
+  padding: 1px 5px;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-areas: "name name . count price total total";
+  font-family: "Lato", sans-serif;
+}
+
+.ord-name {
+  grid-area: name;
+  font-family: "Dosis", sans-serif;
+  font-size: large;
+  font-weight: 500;
+}
+
+.ord-count {
+  grid-area: count;
+  text-align: right;
+}
+.ord-x {
+  font-size: 11px;
+}
+.ord-price {
+  grid-area: price;
+}
+.ord-total {
+  grid-area: total;
+  margin-right: 15px;
+  text-align: right;
+}
+
+.tb-total {
+  display: inline-block;
+  font-family: "Lato", sans-serif;
+  font-size: larger;
+  margin: 5px 10px;
+  margin-right: 15px;
   padding: 1px 5px;
   position: absolute;
   right: 1px;
 }
 
-.tb-status {
+.tb-foot {
   display: inline-block;
-  border: 1px solid grey;
+  font-family: "Poppins", sans-serif;
+  font-size: larger;
   margin: 5px 5px;
+  margin-left: 25px;
+  margin-bottom: 5px;
   padding: 1px 5px;
 }
 
-.tb-orders {
-  margin: 2px 5px;
+.lv {
+  font-size: small;
+}
+
+.btn-cont {
+  display: flex;
+  justify-content: right;
+}
+
+.btn-paid {
+  margin: 10px 10px;
+  background-color: crimson;
+  color: antiquewhite;
+  display: block;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+.btn-paid:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+.btn-close {
+  margin: 10px 10px;
+  background-color: #845ec2;
+  color: antiquewhite;
+  display: block;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+.btn-close:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+.btn-dis,
+.btn-tab {
+  text-align: right;
+  margin: 10px 10px;
+  background-color: #b0a8b9;
+  color: antiquewhite;
+  display: block;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 5px 20px;
+}
+
+.btn-tab:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+.btn-dis {
+  pointer-events: none;
+}
+
+.btn-green {
+  text-align: right;
+  margin: 10px 10px;
+  background-color: #00896f;
+  color: antiquewhite;
+  display: inline-block;
+  border: none;
+  pointer-events: none;
+  border-radius: 2px;
   padding: 1px 5px;
 }

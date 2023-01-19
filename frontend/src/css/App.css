@@ -3,6 +3,7 @@
 @import url("table");
 .error {
   color: crimson;
+  padding: 30px 30px;
 }
 
 .header {
