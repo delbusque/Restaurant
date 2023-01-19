@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom'
 
-const TableCard = ({ tables, setTables, paid, setPaid }) => {
+const TableCard = ({ tables, setTables }) => {
 
     const navigate = useNavigate();
     const { number } = useParams();
@@ -17,13 +17,15 @@ const TableCard = ({ tables, setTables, paid, setPaid }) => {
     }
 
     const payHandler = () => {
-        setPaid(true);
+        table.paid = true;
         let newState = tables.map(t => t.number !== number ? t : table);
         setTables(newState);
     }
 
-    const closeHandler = () => {
+    const clearHandler = () => {
         table.orders = [];
+        table.paid = false;
+        table.opened = false;
         let newState = tables.map(t => t.number !== number ? t : table);
         setTables(newState);
         navigate('/tables')
@@ -39,10 +41,10 @@ const TableCard = ({ tables, setTables, paid, setPaid }) => {
         <div className='table-card'>
             {table ?
                 <>
-                    <section className={!paid ? 'orders-sect' : 'orders-sect-paid'}>
+                    <section className={!table.paid ? 'orders-sect' : 'orders-sect-paid'}>
                         <div className="tb-head">
                             <div className='tb-title'>МАСА</div>
-                            {paid && <button className='btn-green'>ПЛАТЕНА</button>}
+                            {table.paid && <button className='btn-green'>ПЛАТЕНА</button>}
                             <div className='tb-num'>{table.number}</div>
                         </div>
 
@@ -59,17 +61,20 @@ const TableCard = ({ tables, setTables, paid, setPaid }) => {
                         <div className='tb-total'>{totalSum.toFixed(2)} лв.</div>
                         <div className="btn-cont">
                             <button className='btn-tab' onClick={tabHandler}>МАСИ</button>
-                            {!paid
+                            {!table.paid
                                 ? <button className={table.orders.length > 0 ? 'btn-paid' : 'btn-dis'} onClick={payHandler}>ПЛАЩАНЕ</button>
-                                : <button className='btn-close' onClick={closeHandler}>ЗАТВОРИ</button>
+                                : <button className='btn-clear' onClick={clearHandler}>ИЗЧИСТИ</button>
                             }
                         </div>
                     </section>
 
 
-                    {/* <section className='tb-food-btn'>Food</section>
-                    <section className='tb-drinks-btn'>Drinks</section>
-                    <section className='tb-type-btn'>Type</section>
+                    <section className='tb-family-cont'>
+                        <button className='family-btn'>FOOD</button>
+                        <button className='family-btn'>DRINKS</button>
+                    </section>
+                    {/* <section className='tb-drinks-btn'>Drinks</section> */}
+                    {/* <section className='tb-type-btn'>Type</section>
                     <section className='tb-items'>Items</section> */}
                 </>
                 :
