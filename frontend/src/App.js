@@ -25,7 +25,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/tables' element={<Tables tables={tables} />} />
-        <Route path='/tables/:number' element={<TableCard tables={tables} />} />
+        <Route path='/tables/:number' element={<TableCard tables={tables} setTables={setTables} />} />
       </Routes>
 
     </div>
