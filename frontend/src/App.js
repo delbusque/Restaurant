@@ -14,6 +14,7 @@ import Navigation from './components/Navigation.js';
 function App() {
 
   const [tables, setTables] = useState(null);
+  // const [items, setItems] = useState(null);
 
   useEffect(() => {
     tablesService.fetchTables(setTables);

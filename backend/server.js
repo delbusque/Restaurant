@@ -16,8 +16,11 @@ app.get('/', (req, res) => {
 })
 
 app.use('/tables', tableRoutes);
+
+// app.use('/items', itemRoutes);
 app.use('/drinks', itemRoutes);
 app.use('/food', itemRoutes);
+
 app.use('*', (req, res) => {
     res.status(404).json({ mssg: 'No such API endpoint' })
 })
