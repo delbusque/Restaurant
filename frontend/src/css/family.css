@@ -1,0 +1,35 @@
+.family-section {
+  grid-area: family;
+  text-align: center;
+}
+
+.family-btn {
+  width: 150px;
+  margin: 37px 5px 0px 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  cursor: pointer;
+}
+
+.type-section {
+  grid-area: type;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.type-btn {
+  width: 100px;
+  margin: 15px 5px 0px 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.items-section {
+  background-color: #ddd7c6;
+  grid-area: items;
+  margin: 30px 30px;
+  border-radius: 9px;
+  display: inline-block;
+  height: fit-content;
+}
