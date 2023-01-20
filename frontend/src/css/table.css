@@ -1,11 +1,8 @@
 .table-card {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(8, 1fr);
 
-  grid-template-areas:
-    "orders orders food content items items"
-    "orders orders . content items items"
-    "orders orders drinks content items items";
+  grid-template-areas: "orders orders orders family type items items items";
 }
 
 .orders-sect {
@@ -14,6 +11,8 @@
   grid-area: orders;
   margin: 30px 30px;
   border-radius: 9px;
+  display: inline-block;
+  height: fit-content;
 }
 .orders-sect-paid {
   position: relative;
@@ -22,28 +21,6 @@
   margin: 30px 30px;
   border-radius: 9px;
   color: rgba(0, 0, 0, 0.564);
-}
-
-.tb-food-btn {
-  background-color: aquamarine;
-  grid-area: food;
-  margin: 50px 10px;
-}
-.tb-drinks-btn {
-  background-color: bisque;
-  grid-area: drinks;
-  margin: 10px 10px;
-}
-.tb-type-btn {
-  background-color: darkgoldenrod;
-  grid-area: content;
-  margin: 30px 20px;
-}
-
-.tb-items {
-  background-color: indianred;
-  grid-area: items;
-  margin: 30px 20px;
 }
 
 .tb-head {
@@ -137,7 +114,7 @@
 
 .btn-paid {
   margin: 10px 10px;
-  background-color: crimson;
+  background-color: rgb(220, 20, 60);
   color: antiquewhite;
   display: block;
   border: none;
@@ -150,7 +127,7 @@
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
 }
 
-.btn-close {
+.btn-clear {
   margin: 10px 10px;
   background-color: #845ec2;
   color: antiquewhite;
@@ -159,6 +136,8 @@
   cursor: pointer;
   border-radius: 4px;
   padding: 5px 10px;
+  position: relative;
+  right: 220px;
 }
 .btn-close:hover {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
@@ -195,4 +174,5 @@
   pointer-events: none;
   border-radius: 2px;
   padding: 1px 5px;
+  font-size: x-small;
 }
