@@ -57,25 +57,44 @@ const TableCard = ({ tables, setTables }) => {
                             </div>)
                         }
                         <br />
-                        <div className='tb-foot'>СУМА ЗА ПЛАЩАНЕ</div>
-                        <div className='tb-total'>{totalSum.toFixed(2)} лв.</div>
-                        <div className="btn-cont">
-                            <button className='btn-tab' onClick={tabHandler}>МАСИ</button>
-                            {!table.paid
-                                ? <button className={table.orders.length > 0 ? 'btn-paid' : 'btn-dis'} onClick={payHandler}>ПЛАЩАНЕ</button>
-                                : <button className='btn-clear' onClick={clearHandler}>ИЗЧИСТИ</button>
-                            }
+                        <div className='ord-footer'>
+                            <div className='tb-foot'>СУМА ЗА ПЛАЩАНЕ</div>
+                            <div className='tb-total'>{totalSum.toFixed(2)} лв.</div>
+                            <div className="btn-cont">
+                                <button className='btn-tab' onClick={tabHandler}>МАСИ</button>
+                                {!table.paid
+                                    ? <button className={table.orders.length > 0 ? 'btn-paid' : 'btn-dis'} onClick={payHandler}>ПЛАЩАНЕ</button>
+                                    : <button className='btn-clear' onClick={clearHandler}>ИЗЧИСТИ</button>
+                                }
+                            </div>
                         </div>
                     </section>
 
 
-                    <section className='tb-family-cont'>
+                    <section className='family-sections'>
                         <button className='family-btn'>FOOD</button>
                         <button className='family-btn'>DRINKS</button>
                     </section>
-                    {/* <section className='tb-drinks-btn'>Drinks</section> */}
-                    {/* <section className='tb-type-btn'>Type</section>
-                    <section className='tb-items'>Items</section> */}
+
+                    <section className='type-section'>
+                        <button className='type-btn'>SALADS</button>
+                        <button className='type-btn'>GRILL</button>
+                        <button className='type-btn'>SOUPS</button>
+                        <button className='type-btn'>HOT DRINKS</button>
+                        <button className='type-btn'>BEER</button>
+                        <button className='type-btn'>RAKIA</button>
+                        <button className='type-btn'>VODKA</button>
+                        <button className='type-btn'>WHISKEY</button>
+
+                    </section>
+                    <section className='items-section'>
+                        {
+                            table.orders && table.orders.map(o => <div className='tb-orders'>
+                                <div className='ord-name'>{o.name}</div>
+                                <div className='ord-count'>{o.count}</div>
+                            </div>)
+                        }
+                    </section>
                 </>
                 :
                 <div className='error'>No such table !</div>
