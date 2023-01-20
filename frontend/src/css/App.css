@@ -1,6 +1,8 @@
 @import url("reset.css");
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Dosis:wght@200;400;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap");
-@import url("table");
+@import url("table.css");
+@import url("family.css");
+
 .error {
   color: crimson;
   padding: 30px 30px;
@@ -40,9 +42,9 @@
 }
 
 .nav__item:hover:nth-child(1) {
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
   cursor: pointer;
-  background-color: white;
-  transform: scale(1.001);
+  background-color: rgba(255, 255, 255, 0.24);
 }
 
 .nav__item-on {
@@ -52,7 +54,9 @@
   padding: 5px 45px;
   font-family: "Dosis", sans-serif;
   font-weight: 500;
-  background-color: white;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.24);
 }
 
 .links {
@@ -71,6 +75,17 @@
   border: 1px solid grey;
   text-align: center;
 }
+.table-btn-opened {
+  border: 1px solid grey;
+  background-color: #00c0a34a;
+  text-align: center;
+}
+
+.table-btn-unpaid {
+  border: 1px solid grey;
+  background-color: #e04760c1;
+  text-align: center;
+}
 
 .table-btn-text {
   font-family: "Dosis", sans-serif;
@@ -83,4 +98,9 @@
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.24);
+}
+
+.table-btn-opened:hover {
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
