@@ -1,24 +1,44 @@
 const Item = require('../models/Item.js');
 
-const getItemByFamily = async (req, res) => {
-    let items;
-    let family;
+const getAllDrinks = async (req, res) => {
+    let drinks = await Item.find({ family: 'drink' });
 
-    if (req.baseUrl == '/drinks') {
-        items = await Item.find({ family: 'drink' });
-        family = 'drinks';
-    }
-    if (req.baseUrl == '/food') {
-        items = await Item.find({ family: 'food' });
-        family = 'food';
+    if (drinks.length < 1) {
+        return res.status(404).json({ mssg: `No drinks there !` })
     }
 
-    if (items.length < 1) {
-        return res.status(404).json({ mssg: `No ${family} there !` })
-    }
-
-    res.status(200).json(items);
+    res.status(200).json(drinks);
 }
+
+const getAllFood = async (req, res) => {
+    let food = await Item.find({ family: 'food' });
+
+    if (food.length < 1) {
+        return res.status(404).json({ mssg: `No food there !` })
+    }
+
+    res.status(200).json(food);
+}
+
+// const getItemByFamily = async (req, res) => {
+//     let items;
+//     let family;
+
+//     if (req.baseUrl == '/drinks') {
+//         items = await Item.find({ family: 'drink' });
+//         family = 'drinks';
+//     }
+//     if (req.baseUrl == '/food') {
+//         items = await Item.find({ family: 'food' });
+//         family = 'food';
+//     }
+
+//     if (items.length < 1) {
+//         return res.status(404).json({ mssg: `No ${family} there !` })
+//     }
+
+//     res.status(200).json(items);
+// }
 
 const getItemsByType = async (req, res) => {
     let family = req.baseUrl.split('/')[1];
@@ -34,6 +54,8 @@ const getItemsByType = async (req, res) => {
 }
 
 module.exports = {
-    getItemByFamily,
+    // getItemByFamily,
+    getAllDrinks,
+    getAllFood,
     getItemsByType
 }
