@@ -1,0 +1,43 @@
+.items-sect {
+  grid-area: items;
+  margin: 30px 30px;
+  height: 400px;
+  overflow: auto;
+}
+
+.item {
+  background-color: #ddd7c6;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas: "name name quantity price";
+  margin-bottom: 2px;
+  position: sticky;
+  border: 1px solid rgba(128, 128, 128, 0.479);
+  border-radius: 3px;
+}
+
+.item .item-name {
+  display: inline;
+  grid-area: name;
+  margin: 5px 10px;
+}
+
+.item-quantity {
+  display: inline;
+  grid-area: quantity;
+  margin: 5px 10px;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.item-quantityType {
+  display: inline;
+  margin: 5px 10px;
+}
+
+.item-price {
+  display: inline;
+  grid-area: price;
+  margin: 5px 10px;
+  text-align: right;
+}

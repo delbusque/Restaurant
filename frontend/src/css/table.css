@@ -1,8 +1,7 @@
 .table-card {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-
-  grid-template-areas: "orders orders orders family type items items items";
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-areas: "orders orders orders orders family type items items items .";
 }
 
 .orders-sect {
@@ -21,6 +20,7 @@
   margin: 30px 30px;
   border-radius: 9px;
   color: rgba(0, 0, 0, 0.564);
+  height: fit-content;
 }
 
 .tb-head {
@@ -114,7 +114,7 @@
 
 .btn-paid {
   margin: 10px 10px;
-  background-color: rgb(220, 20, 60);
+  background-color: crimson;
   color: antiquewhite;
   display: block;
   border: none;
