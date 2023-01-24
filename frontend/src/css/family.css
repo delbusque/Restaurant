@@ -20,6 +20,7 @@
   background-color: #ff8066;
   border: none;
   color: aliceblue;
+  border-radius: 7px;
 }
 
 .family-btn-food {
@@ -31,6 +32,7 @@
   background-color: cadetblue;
   border: none;
   color: aliceblue;
+  border-radius: 7px;
 }
 
 .type-sect {
@@ -56,6 +58,7 @@
   background-color: #ff8066;
   border: none;
   color: aliceblue;
+  border-radius: 5px;
 }
 
 .type-btn-food {
@@ -67,4 +70,5 @@
   background-color: cadetblue;
   border: none;
   color: aliceblue;
+  border-radius: 5px;
 }
