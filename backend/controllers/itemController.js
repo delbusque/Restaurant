@@ -1,7 +1,7 @@
 const Item = require('../models/Item.js');
 
 const getAllDrinks = async (req, res) => {
-    let drinks = await Item.find({ family: 'drink' });
+    let drinks = await Item.find({ family: 'drinks' });
 
     if (drinks.length < 1) {
         return res.status(404).json({ mssg: `No drinks there !` })

@@ -1,15 +1,20 @@
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { useParams } from 'react-router-dom'
 
 import ItemsContext from '../contexts/ItemsContext.js';
 
 import TableCard from './TableCard.js';
+import FamilyButton from './FamilyButton.js';
+import ItemLine from './ItemLine.js';
 
 const TableView = ({ tables, setTables }) => {
 
-    const { items } = useContext(ItemsContext);
+    const [drinkIsActive, setDrinkIsActive] = useState(true);
+    const [foodIsActive, setFoodIsActive] = useState(false);
 
+    const { items } = useContext(ItemsContext);
     const { number } = useParams();
+
     let table;
 
     if (tables) {
@@ -17,9 +22,29 @@ const TableView = ({ tables, setTables }) => {
     }
 
     let famSet = new Set();
+    let drinksSet = new Set();
+    let foodSet = new Set();
 
-    items && items.map(i => famSet.add(i.family));
-    let families = [...famSet]
+    items && items.map(i => {
+        famSet.add(i.family);
+
+        i.family === 'drinks' && drinksSet.add(i.type);
+        i.family === 'food' && foodSet.add(i.type);
+    });
+
+    let families = [...famSet];
+    let drinkTypes = [...drinksSet];
+    let foodTypes = [...foodSet];
+
+    const familyHandler = (e) => {
+        if (e.target.name === 'drinks') {
+            setDrinkIsActive(true);
+            setFoodIsActive(false);
+        } else if (e.target.name === 'food') {
+            setFoodIsActive(true);
+            setDrinkIsActive(false);
+        }
+    }
 
     return (
         <>
@@ -27,34 +52,37 @@ const TableView = ({ tables, setTables }) => {
                 {
                     table ?
                         <>
-                            < TableCard table={table} setTables={setTables} tables={tables} />
+                            <TableCard table={table} setTables={setTables} tables={tables} />
 
-                            <section className='family-sections'>
+                            <section className='family-sect' onClick={(e) => familyHandler(e)}>
                                 {families.length > 0 &&
-                                    families.map(f => <button className='family-btn' key={f}>{f.toUpperCase()}</button>)}
-                                {/* <button className='family-btn'>FOOD</button>
-                                    <button className='family-btn'>DRINKS</button> */}
+                                    families.sort((a, b) => a.localeCompare(b)).map(f => <FamilyButton family={f} key={f}
+                                        drinkIsActive={drinkIsActive} foodIsActive={foodIsActive} />)}
                             </section>
 
-                            {/* <section className='type-section'>
-                        <button className='type-btn'>SALADS</button>
-                        <button className='type-btn'>GRILL</button>
-                        <button className='type-btn'>SOUPS</button>
-                        <button className='type-btn'>HOT DRINKS</button>
-                        <button className='type-btn'>BEER</button>
-                        <button className='type-btn'>RAKIA</button>
-                        <button className='type-btn'>VODKA</button>
-                        <button className='type-btn'>WHISKEY</button>
+                            {drinkIsActive && <section className='type-sect'>
+                                {drinkTypes.length > 0 && drinkTypes.map(d => <button className='type-btn-drinks' key={d}>{d}</button>)}
+                            </section>}
 
-                    </section>
-                    <section className='items-section'>
-                        {
-                            table.orders && table.orders.map(o => <div className='tb-orders'>
-                                <div className='ord-name'>{o.name}</div>
-                                <div className='ord-count'>{o.count}</div>
-                            </div>)
-                        }
-                    </section> */}
+                            {foodIsActive && <section className='type-sect'>
+                                {foodTypes.length > 0 && foodTypes.map(d => <button className='type-btn-food' key={d}>{d}</button>)}
+
+                            </section>}
+
+                            {drinkIsActive &&
+                                <section className='items-sect'>
+                                    {
+                                        items && items.map(i => i.family == 'drinks' && <ItemLine key={i._id} item={i} />)
+                                    }
+                                </section>}
+
+                            {foodIsActive &&
+                                <section className='items-sect'>
+                                    {
+                                        items && items.map(i => i.family == 'food' && <ItemLine key={i._id} item={i} />)
+                                    }
+                                </section>}
+
                         </>
                         :
                         <div className='error'>No such table !</div>
