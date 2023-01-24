@@ -9,3 +9,15 @@ export const fetchTables = async (setTables) => {
         console.log(error.message);
     }
 }
+
+export const fetchItems = async (setItems) => {
+    try {
+        let responce = await fetch('/items');
+        let json = await responce.json();
+        if (responce.ok) {
+            setItems(json);
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
+}
