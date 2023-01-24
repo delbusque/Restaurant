@@ -4,9 +4,11 @@ const {
     // getItemByFamily,
     getAllDrinks,
     getAllFood,
+    getAllItems,
     getItemsByType
 } = require('../controllers/itemController.js');
 
+router.get('/', getAllItems);
 router.get('/drinks', getAllDrinks);
 router.get('/food', getAllFood);
 

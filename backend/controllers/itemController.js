@@ -20,6 +20,16 @@ const getAllFood = async (req, res) => {
     res.status(200).json(food);
 }
 
+const getAllItems = async (req, res) => {
+    let items = await Item.find({});
+
+    if (items.length < 1) {
+        return res.status(404).json({ mssg: `No items there !` })
+    }
+
+    res.status(200).json(items);
+}
+
 // const getItemByFamily = async (req, res) => {
 //     let items;
 //     let family;
@@ -57,5 +67,6 @@ module.exports = {
     // getItemByFamily,
     getAllDrinks,
     getAllFood,
+    getAllItems,
     getItemsByType
 }
