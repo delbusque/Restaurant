@@ -1,7 +1,7 @@
 .items-sect {
   grid-area: items;
   margin: 30px 30px;
-  height: 400px;
+  height: 412px;
   overflow: auto;
 }
 
