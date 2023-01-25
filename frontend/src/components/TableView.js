@@ -6,11 +6,15 @@ import ItemsContext from '../contexts/ItemsContext.js';
 import TableCard from './TableCard.js';
 import FamilyButton from './FamilyButton.js';
 import ItemLine from './ItemLine.js';
+import TypeButton from './TypeButton.js';
 
 const TableView = ({ tables, setTables }) => {
 
     const [drinkIsActive, setDrinkIsActive] = useState(true);
     const [foodIsActive, setFoodIsActive] = useState(false);
+    const [typeIsActive, setTypeIsActive] = useState(false);
+
+    const [byType, setByType] = useState('');
 
     const { items } = useContext(ItemsContext);
     const { number } = useParams();
@@ -36,16 +40,6 @@ const TableView = ({ tables, setTables }) => {
     let drinkTypes = [...drinksSet];
     let foodTypes = [...foodSet];
 
-    const familyHandler = (e) => {
-        if (e.target.name === 'drinks') {
-            setDrinkIsActive(true);
-            setFoodIsActive(false);
-        } else if (e.target.name === 'food') {
-            setFoodIsActive(true);
-            setDrinkIsActive(false);
-        }
-    }
-
     return (
         <>
             < div className='table-card' >
@@ -54,32 +48,41 @@ const TableView = ({ tables, setTables }) => {
                         <>
                             <TableCard table={table} setTables={setTables} tables={tables} />
 
-                            <section className='family-sect' onClick={(e) => familyHandler(e)}>
+                            <section className='family-sect'>
                                 {families.length > 0 &&
-                                    families.sort((a, b) => a.localeCompare(b)).map(f => <FamilyButton family={f} key={f}
-                                        drinkIsActive={drinkIsActive} foodIsActive={foodIsActive} />)}
+                                    families.sort((a, b) => a.localeCompare(b)).map(f => <FamilyButton family={f} key={f} setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive}
+                                        setTypeIsActive={setTypeIsActive} />)}
                             </section>
 
                             {drinkIsActive && <section className='type-sect'>
-                                {drinkTypes.length > 0 && drinkTypes.map(d => <button className='type-btn-drinks' key={d}>{d}</button>)}
+                                {drinkTypes.length > 0 && drinkTypes.map(t => <TypeButton key={t} type={t}
+                                    drinkIsActive={drinkIsActive} setTypeIsActive={setTypeIsActive}
+                                    setByType={setByType} />)}
                             </section>}
 
                             {foodIsActive && <section className='type-sect'>
-                                {foodTypes.length > 0 && foodTypes.map(d => <button className='type-btn-food' key={d}>{d}</button>)}
+                                {foodTypes.length > 0 && foodTypes.map(t => <TypeButton key={t} type={t}
+                                    setTypeIsActive={setTypeIsActive} setByType={setByType} />)}
 
                             </section>}
 
-                            {drinkIsActive &&
+                            {(!typeIsActive && drinkIsActive) &&
                                 <section className='items-sect'>
                                     {
                                         items && items.map(i => i.family == 'drinks' && <ItemLine key={i._id} item={i} />)
                                     }
                                 </section>}
 
-                            {foodIsActive &&
+                            {(!typeIsActive && foodIsActive) &&
                                 <section className='items-sect'>
                                     {
                                         items && items.map(i => i.family == 'food' && <ItemLine key={i._id} item={i} />)
+                                    }
+                                </section>}
+                            {typeIsActive &&
+                                <section className='items-sect'>
+                                    {
+                                        items && items.map(i => i.type == byType && <ItemLine key={i._id} item={i} />)
                                     }
                                 </section>}
 
