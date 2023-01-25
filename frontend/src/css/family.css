@@ -22,7 +22,7 @@
   color: aliceblue;
   border-radius: 7px;
   transition: all ease 0.2s;
-  box-shadow: 0px 1px 9px 0px rgba(0, 255, 255, 0.7);
+  /* box-shadow: 0px 1px 9px 0px rgba(0, 255, 255, 0.7); */
 }
 
 .family-btn-drinks:hover {
@@ -41,7 +41,7 @@
   color: aliceblue;
   border-radius: 7px;
   transition: all ease 0.2s;
-  box-shadow: 0px 1px 9px 0px rgba(0, 255, 255, 0.7);
+  /* box-shadow: 0px 1px 9px 0px rgba(0, 255, 255, 0.7); */
 }
 
 .family-btn-food:hover {
