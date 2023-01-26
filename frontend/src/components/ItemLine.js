@@ -1,6 +1,6 @@
-const ItemLine = ({ item }) => {
+const ItemLine = ({ item, addItemHandler }) => {
     return (
-        <div className='item'>
+        <div className='item' onClick={() => addItemHandler(item)}>
             <div className='item-name'>{item.name}</div>
 
             <div className='item-quantity'>{item.quantity.toFixed(3)}

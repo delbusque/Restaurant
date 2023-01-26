@@ -3,6 +3,7 @@
   margin: 30px 30px;
   height: 412px;
   overflow: auto;
+  cursor: pointer;
 }
 
 .item {
@@ -11,10 +12,9 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas: "name name quantity price";
   margin-bottom: 2px;
-  position: sticky;
+  /* position: sticky; */
   border: 1px solid rgba(128, 128, 128, 0.479);
   border-radius: 3px;
-  cursor: pointer;
 }
 .item:hover {
   box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.15),
@@ -22,6 +22,11 @@
     inset 0px 8px 16px rgba(0, 0, 0, 0.15);
   transition: 0.2s;
   transform: translateY(2px);
+}
+
+.item:active {
+  transition: all ease 0.2s;
+  box-shadow: inset 0px 15px 9px 0px rgba(0, 255, 255, 0.7);
 }
 
 .item .item-name {

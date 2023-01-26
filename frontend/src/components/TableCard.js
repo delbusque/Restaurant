@@ -10,7 +10,7 @@ const TableCard = ({ table, tables, setTables }) => {
     let totalSum = 0;
 
     if (table) {
-        table.orders.map(o => totalSum += o.count * o.price)
+        table.orders.map(o => totalSum += o.price)
     }
 
     const payHandler = () => {
@@ -32,6 +32,8 @@ const TableCard = ({ table, tables, setTables }) => {
         navigate('/tables')
     }
 
+    console.log(table);
+
     return (
         <section className={!table.paid ? 'orders-sect' : 'orders-sect-paid'}>
             <div className="tb-head">
@@ -40,15 +42,6 @@ const TableCard = ({ table, tables, setTables }) => {
                 <div className='tb-num'>{table.number}</div>
             </div>
 
-            {
-                table.orders && table.orders.map(o => <div className='tb-orders' key={uniqid()}>
-                    <div className='ord-name'>{o.name}</div>
-                    <div className='ord-count'>{o.count}</div>
-                    <div className='ord-price'><strong className='ord-x'>x</strong> {o.price.toFixed(2)}</div>
-                    <div className='ord-total'>{(o.count * o.price).toFixed(2)} <span className='lv'>лв.</span></div>
-                </div>)
-            }
-            <br />
             <div className='ord-footer'>
                 <div className='tb-foot'>СУМА ЗА ПЛАЩАНЕ</div>
                 <div className='tb-total'>{totalSum.toFixed(2)} лв.</div>
@@ -60,6 +53,17 @@ const TableCard = ({ table, tables, setTables }) => {
                     }
                 </div>
             </div>
+
+            {
+                table.orders && table.orders.reverse().map(o => <div className='tb-orders' key={uniqid()}>
+                    <div className='ord-name'>{o.name}</div>
+                    {/* <div className='ord-count'>{o.count}</div>
+                    <div className='ord-price'><strong className='ord-x'>x</strong> {o.price.toFixed(2)}</div> */}
+                    <div className='ord-total'>{o.price.toFixed(2)} <span className='lv'>лв.</span></div>
+                </div>)
+            }
+            <br />
+
         </section>
     )
 }

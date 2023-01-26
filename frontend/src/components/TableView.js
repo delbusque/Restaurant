@@ -40,12 +40,29 @@ const TableView = ({ tables, setTables }) => {
     let drinkTypes = [...drinksSet];
     let foodTypes = [...foodSet];
 
+    const addItemHandler = (item) => {
+        console.log(table);
+
+        if (table.orders.find(o => o.name !== item.name)) {
+            item.count = 1;
+        } else {
+            item.count++;
+        }
+        table.opened = true;
+
+        table.orders.push(item);
+
+        let newState = tables.map(t => t.number !== number ? t : table);
+        setTables(newState);
+    }
+
     return (
         <>
             < div className='table-card' >
                 {
                     table ?
                         <>
+
                             <TableCard table={table} setTables={setTables} tables={tables} />
 
                             <section className='family-sect'>
@@ -69,20 +86,23 @@ const TableView = ({ tables, setTables }) => {
                             {(!typeIsActive && drinkIsActive) &&
                                 <section className='items-sect'>
                                     {
-                                        items && items.map(i => i.family == 'drinks' && <ItemLine key={i._id} item={i} />)
+                                        items && items.map(i => i.family == 'drinks' && <ItemLine key={i._id} item={i}
+                                            addItemHandler={addItemHandler} />)
                                     }
                                 </section>}
 
                             {(!typeIsActive && foodIsActive) &&
                                 <section className='items-sect'>
                                     {
-                                        items && items.map(i => i.family == 'food' && <ItemLine key={i._id} item={i} />)
+                                        items && items.map(i => i.family == 'food' && <ItemLine key={i._id} item={i}
+                                            addItemHandler={addItemHandler} />)
                                     }
                                 </section>}
                             {typeIsActive &&
                                 <section className='items-sect'>
                                     {
-                                        items && items.map(i => i.type == byType && <ItemLine key={i._id} item={i} />)
+                                        items && items.map(i => i.type == byType && <ItemLine key={i._id} item={i}
+                                            addItemHandler={addItemHandler} />)
                                     }
                                 </section>}
 

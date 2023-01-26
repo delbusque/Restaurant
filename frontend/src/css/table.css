@@ -12,6 +12,9 @@
   border-radius: 9px;
   display: inline-block;
   height: fit-content;
+  max-height: 580px;
+  overflow: auto;
+  bottom: 0;
 }
 .orders-sect-paid {
   position: relative;
