@@ -94,6 +94,13 @@
   border: none;
   color: aliceblue;
   border-radius: 5px;
-  box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.5),
-    10px 10px 15px rgba(70, 70, 70, 0.12);
+}
+
+.type-btn-food:hover {
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.15),
+    inset 0px 4px 8px rgba(0, 0, 0, 0.15),
+    inset 0px 8px 16px rgba(0, 0, 0, 0.15);
+  transition: 0.2s;
+  transform: translateY(2px);
+  background-color: cadetblue;
 }
