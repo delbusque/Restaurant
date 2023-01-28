@@ -16,7 +16,6 @@ const Tables = ({ tables }) => {
                 </Link>
             ))
             }
-            {/* {!tables && <p className="error">No connection with database !</p>} */}
         </section >
     )
 }
