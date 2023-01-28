@@ -1,6 +1,7 @@
 const FamilyButton = ({ family, setFoodIsActive, setDrinkIsActive, setTypeIsActive }) => {
 
     const familyHandler = (e) => {
+
         if (e.target.name === 'drinks') {
             setDrinkIsActive(true);
             setFoodIsActive(false);
