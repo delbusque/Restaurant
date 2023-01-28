@@ -43,17 +43,16 @@ const TableView = ({ tables, setTables }) => {
     const addItemHandler = (item) => {
         console.log(table);
 
-        if (table.orders.find(o => o.name !== item.name)) {
-            item.count = 1;
-        } else {
-            item.count++;
-        }
+        // if (table.orders.find(o => o.name !== item.name)) {
+        //     item.count = 1;
+        // } else {
+        //     item.count++;
+        // }
         table.opened = true;
 
         table.orders.push(item);
 
-        let newState = tables.map(t => t.number !== number ? t : table);
-        setTables(newState);
+        setTables(oldState => [...oldState], table);
     }
 
     return (
