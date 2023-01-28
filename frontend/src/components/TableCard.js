@@ -25,14 +25,12 @@ const TableCard = ({ table, tables, setTables }) => {
         table.opened = false;
         let newState = tables.map(t => t.number !== number ? t : table);
         setTables(newState);
-        navigate('/tables')
+        // navigate('/tables')
     }
 
     const tabHandler = () => {
         navigate('/tables')
     }
-
-    console.log(table);
 
     return (
         <section className={!table.paid ? 'orders-sect' : 'orders-sect-paid'}>

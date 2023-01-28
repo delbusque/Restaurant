@@ -41,18 +41,12 @@ const TableView = ({ tables, setTables }) => {
     let foodTypes = [...foodSet];
 
     const addItemHandler = (item) => {
-        console.log(table);
-
-        // if (table.orders.find(o => o.name !== item.name)) {
-        //     item.count = 1;
-        // } else {
-        //     item.count++;
-        // }
         table.opened = true;
 
-        table.orders.push(item);
-
-        setTables(oldState => [...oldState], table);
+        if (!table.paid) {
+            table.orders.push(item);
+            setTables(oldState => [...oldState], table);
+        }
     }
 
     return (
