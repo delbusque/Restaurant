@@ -15,16 +15,27 @@ import Navigation from './components/Navigation.js';
 
 function App() {
 
-  const [tables, setTables] = useState(null);
-  const [items, setItems] = useState(null);
+  const [tables, setTables] = useState([]);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
-    apiService.fetchTables(setTables);
+    let local_Tables = window.localStorage.getItem('tables');
+    let local_Items = window.localStorage.getItem('items');
+
+    if (local_Tables && local_Items) {
+      setTables(JSON.parse(local_Tables));
+      setItems(JSON.parse(local_Items));
+    } else {
+      apiService.fetchTables(setTables);
+      apiService.fetchItems(setItems);
+    }
+
   }, [])
 
   useEffect(() => {
-    apiService.fetchItems(setItems);
-  }, [])
+    window.localStorage.setItem('tables', JSON.stringify(tables));
+    window.localStorage.setItem('items', JSON.stringify(items));
+  }, [tables, items])
 
   return (
     <div className="App">
@@ -33,7 +44,7 @@ function App() {
       <ItemsContext.Provider value={{ items }}>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/tables' element={<Tables tables={tables} />} />
+          <Route path='/tables' element={<Tables tables={tables} setTables={setTables} />} />
           <Route path='/tables/:number' element={<TableView tables={tables} setTables={setTables} />} />
         </Routes>
       </ItemsContext.Provider>
