@@ -6,8 +6,8 @@ import { useState, useEffect } from "react";
 import ItemsContext from './contexts/ItemsContext.js';
 
 import Home from './components/Home';
-import Tables from './components/Tables.js';
-import TableView from './components/TableView.js';
+import Tables from './components/Tables/Tables.js';
+import TableView from './components/Tables/TableView.js';
 
 import * as apiService from './services/apiService.js'
 

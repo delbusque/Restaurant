@@ -10,7 +10,8 @@ const Navigation = () => {
             <h1 className="deli"><Link className='links' to='/'>Deli</Link></h1>
             <ul role="list" className="nav">
                 <Link className='links' to='/tables'>
-                    <li className={location.pathname === '/tables' ? "nav__item-on" : "nav__item"}>Tables</li>
+                    <li className="nav__item">Tables</li>
+                    {/* <li className={location.pathname === '/tables' ? "nav__item-on" : "nav__item"}>Tables</li> */}
                 </Link>
                 <Link className='links'>
                     <li className="nav__item">Items</li>

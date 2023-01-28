@@ -1,12 +1,12 @@
 import { useState, useContext } from 'react';
 import { useParams } from 'react-router-dom'
 
-import ItemsContext from '../contexts/ItemsContext.js';
+import ItemsContext from '../../contexts/ItemsContext.js';
 
 import TableCard from './TableCard.js';
-import FamilyButton from './FamilyButton.js';
-import ItemLine from './ItemLine.js';
-import TypeButton from './TypeButton.js';
+import FamilyButton from '../Buttons/FamilyButton.js';
+import ItemLine from '../Items/ItemLine.js';
+import TypeButton from '../Buttons/TypeButton.js';
 
 const TableView = ({ tables, setTables }) => {
 
@@ -44,7 +44,7 @@ const TableView = ({ tables, setTables }) => {
         table.opened = true;
 
         if (!table.paid) {
-            table.orders.push(item);
+            table.orders.unshift(item);
             setTables(oldState => [...oldState], table);
         }
     }
