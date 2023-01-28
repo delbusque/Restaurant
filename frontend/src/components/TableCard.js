@@ -1,11 +1,8 @@
-import { useNavigate, useParams } from 'react-router-dom'
-import uniqid from 'uniqid';
+import { useNavigate } from 'react-router-dom'
 
-
-const TableCard = ({ table, tables, setTables }) => {
+const TableCard = ({ table, setTables }) => {
 
     const navigate = useNavigate();
-    const { number } = useParams();
 
     let totalSum = 0;
 
@@ -15,17 +12,14 @@ const TableCard = ({ table, tables, setTables }) => {
 
     const payHandler = () => {
         table.paid = true;
-        let newState = tables.map(t => t.number !== number ? t : table);
-        setTables(newState);
+        setTables(oldState => [...oldState], table);
     }
 
     const clearHandler = () => {
         table.orders = [];
         table.paid = false;
         table.opened = false;
-        let newState = tables.map(t => t.number !== number ? t : table);
-        setTables(newState);
-        // navigate('/tables')
+        setTables(oldState => [...oldState], table);
     }
 
     const tabHandler = () => {
@@ -53,10 +47,8 @@ const TableCard = ({ table, tables, setTables }) => {
             </div>
 
             {
-                table.orders && table.orders.reverse().map(o => <div className='tb-orders' key={uniqid()}>
+                table.orders && table.orders.map((o, i) => <div className='tb-orders' key={i}>
                     <div className='ord-name'>{o.name}</div>
-                    {/* <div className='ord-count'>{o.count}</div>
-                    <div className='ord-price'><strong className='ord-x'>x</strong> {o.price.toFixed(2)}</div> */}
                     <div className='ord-total'>{o.price.toFixed(2)} <span className='lv'>лв.</span></div>
                 </div>)
             }
