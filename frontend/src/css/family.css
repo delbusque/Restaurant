@@ -1,6 +1,7 @@
 .family-sect {
   grid-area: family;
   text-align: center;
+  max-height: 77vh;
 }
 
 .family-btn {
@@ -53,6 +54,7 @@
   grid-area: type;
   margin-top: 12px;
   text-align: center;
+  max-height: 77vh;
 }
 
 .type-btn {
