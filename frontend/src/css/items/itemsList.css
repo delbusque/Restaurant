@@ -1,8 +1,25 @@
-.family-sect {
-  grid-area: family;
-  text-align: center;
-  max-height: 77vh;
-  margin-right: 5px;
+.iL-buttons-sect {
+  display: flex;
+}
+
+.iL-family-sect {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 15px;
+}
+
+.iL-type-sect {
+  text-align: left;
+  margin-top: 23px;
+  margin-left: 15px;
+}
+
+.iL-items-sect {
+  margin: 30px 30px;
+  max-height: 50vh;
+  overflow: auto;
+  cursor: pointer;
 }
 
 .family-btn {
@@ -49,18 +66,6 @@
 .family-btn-food:hover {
   /* transform: translateY(5px); */
   box-shadow: 0px -10px 20px 2px rgba(0, 255, 255, 0.7);
-}
-
-.type-sect {
-  grid-area: type;
-  margin-top: 12px;
-  text-align: center;
-  max-height: 80vh;
-  overflow: auto;
-}
-
-.type-sect::-webkit-scrollbar {
-  display: none;
 }
 
 .type-btn {

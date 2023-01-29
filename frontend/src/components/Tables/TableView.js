@@ -8,6 +8,8 @@ import FamilyButton from '../Buttons/FamilyButton.js';
 import ItemLine from './ItemLine.js';
 import TypeButton from '../Buttons/TypeButton.js';
 
+import familiesAndTypes from '../../services/familiesAndTypes.js';
+
 const TableView = ({ tables, setTables }) => {
 
     const [drinkIsActive, setDrinkIsActive] = useState(true);
@@ -25,20 +27,7 @@ const TableView = ({ tables, setTables }) => {
         table = tables.find(t => t.number === number);
     }
 
-    let famSet = new Set();
-    let drinksSet = new Set();
-    let foodSet = new Set();
-
-    items && items.forEach(i => {
-        famSet.add(i.family);
-
-        i.family === 'drinks' && drinksSet.add(i.type);
-        i.family === 'food' && foodSet.add(i.type);
-    });
-
-    let families = [...famSet];
-    let drinkTypes = [...drinksSet];
-    let foodTypes = [...foodSet];
+    const { families, drinkTypes, foodTypes } = familiesAndTypes(items);
 
     const addItemHandler = (item) => {
         table.opened = true;

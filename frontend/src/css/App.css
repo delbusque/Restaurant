@@ -4,6 +4,7 @@
 @import url("tables/table.css");
 @import url("tables/family.css");
 @import url("tables/items.css");
+@import url("items/itemsList.css");
 
 .error {
   color: crimson;
@@ -11,40 +12,42 @@
 }
 
 .header {
-  display: flex;
   position: sticky;
   top: 0;
-  overflow: auto;
   background-color: rgb(240, 239, 237);
-  padding: 30px 40px;
+  padding: 20px 40px;
+  display: flex;
   justify-content: space-between;
 }
 
 .deli {
   font-family: "Dancing Script", cursive;
   font-weight: 400;
+  margin-right: 20px;
 }
 
 .nav {
-  display: flex;
-  margin: 0;
-  padding: 0;
   list-style-type: none;
 }
 
 .nav__item,
 .nav__item-auth {
-  margin: 0 20px;
   font-size: 24px;
   border: 1px solid grey;
-  padding: 5px 45px;
+  padding: 5px 0;
   font-family: "Dosis", sans-serif;
   font-weight: 500;
   border-radius: 2px;
+  display: inline-block;
+  margin-right: 40px;
+  margin-bottom: 5px;
+  width: 140px;
+  text-align: center;
 }
 
 .nav__item-auth {
   padding: 5px 15px;
+  width: 100px;
 }
 
 .nav__item:hover:nth-child(1) {

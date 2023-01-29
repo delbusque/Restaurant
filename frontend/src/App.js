@@ -8,6 +8,7 @@ import ItemsContext from './contexts/ItemsContext.js';
 import Home from './components/Home';
 import Tables from './components/Tables/Tables.js';
 import TableView from './components/Tables/TableView.js';
+import ItemsList from './components/Items/ItemsList.js';
 
 import * as apiService from './services/apiService.js'
 
@@ -23,13 +24,13 @@ function App() {
     let local_Items = window.localStorage.getItem('items');
 
     if (local_Tables && local_Items) {
+
       setTables(JSON.parse(local_Tables));
       setItems(JSON.parse(local_Items));
     } else {
       apiService.fetchTables(setTables);
       apiService.fetchItems(setItems);
     }
-
   }, [])
 
   useEffect(() => {
@@ -40,15 +41,16 @@ function App() {
   return (
     <div className="App">
       <Navigation />
-
-      <ItemsContext.Provider value={{ items }}>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/tables' element={<Tables tables={tables} setTables={setTables} />} />
-          <Route path='/tables/:number' element={<TableView tables={tables} setTables={setTables} />} />
-        </Routes>
-      </ItemsContext.Provider>
-
+      <div className="main">
+        <ItemsContext.Provider value={{ items }}>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/items' element={<ItemsList />} />
+            <Route path='/tables' element={<Tables tables={tables} setTables={setTables} />} />
+            <Route path='/tables/:number' element={<TableView tables={tables} setTables={setTables} />} />
+          </Routes>
+        </ItemsContext.Provider>
+      </div>
     </div>
   );
 }
