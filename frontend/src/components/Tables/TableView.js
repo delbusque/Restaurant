@@ -5,7 +5,7 @@ import ItemsContext from '../../contexts/ItemsContext.js';
 
 import TableCard from './TableCard.js';
 import FamilyButton from '../Buttons/FamilyButton.js';
-import ItemLine from '../Items/ItemLine.js';
+import ItemLine from './ItemLine.js';
 import TypeButton from '../Buttons/TypeButton.js';
 
 const TableView = ({ tables, setTables }) => {
@@ -22,14 +22,14 @@ const TableView = ({ tables, setTables }) => {
     let table;
 
     if (tables) {
-        table = tables.find(t => t.number == number);
+        table = tables.find(t => t.number === number);
     }
 
     let famSet = new Set();
     let drinksSet = new Set();
     let foodSet = new Set();
 
-    items && items.map(i => {
+    items && items.forEach(i => {
         famSet.add(i.family);
 
         i.family === 'drinks' && drinksSet.add(i.type);
@@ -79,7 +79,7 @@ const TableView = ({ tables, setTables }) => {
                             {(!typeIsActive && drinkIsActive) &&
                                 <section className='items-sect'>
                                     {
-                                        items && items.map(i => i.family == 'drinks' && <ItemLine key={i._id} item={i}
+                                        items && items.map(i => i.family === 'drinks' && <ItemLine key={i._id} item={i}
                                             addItemHandler={addItemHandler} />)
                                     }
                                 </section>}
@@ -87,14 +87,14 @@ const TableView = ({ tables, setTables }) => {
                             {(!typeIsActive && foodIsActive) &&
                                 <section className='items-sect'>
                                     {
-                                        items && items.map(i => i.family == 'food' && <ItemLine key={i._id} item={i}
+                                        items && items.map(i => i.family === 'food' && <ItemLine key={i._id} item={i}
                                             addItemHandler={addItemHandler} />)
                                     }
                                 </section>}
                             {typeIsActive &&
                                 <section className='items-sect'>
                                     {
-                                        items && items.map(i => i.type == byType && <ItemLine key={i._id} item={i}
+                                        items && items.map(i => i.type === byType && <ItemLine key={i._id} item={i}
                                             addItemHandler={addItemHandler} />)
                                     }
                                 </section>}
