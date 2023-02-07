@@ -20,4 +20,7 @@
   max-height: 50vh;
   overflow: auto;
   cursor: pointer;
+  width: 40%;
+  display: inline-block;
+
 }
