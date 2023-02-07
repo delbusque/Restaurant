@@ -13,14 +13,14 @@
 
 .table-btn-opened {
   border: 1px solid grey;
-  background-color: #00c0a34a;
+  background-color: rgba(46, 139, 86, 0.358);
   text-align: center;
   border-radius: 3px;
 }
 
 .table-btn-unpaid {
   border: 1px solid grey;
-  background-color: #e04760c1;
+  background-color: rgba(220, 20, 60, 0.364);
   text-align: center;
   border-radius: 3px;
 }
@@ -41,11 +41,11 @@
 .table-btn-opened:hover {
   box-shadow: 0px 1px 5px rgba(63, 63, 63, 0.5);
   cursor: pointer;
-  background-color: #22dabf4a;
+  background-color: rgba(46, 139, 86, 0.617);
 }
 
 .table-btn-unpaid:hover {
   box-shadow: 0px 1px 5px rgba(63, 63, 63, 0.5);
   cursor: pointer;
-  background-color: #e04760c1;
+  background-color: rgba(220, 20, 60, 0.559);
 }
