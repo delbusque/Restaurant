@@ -33,8 +33,28 @@ const TableView = ({ tables, setTables }) => {
         table.opened = true;
 
         if (!table.paid) {
-            table.orders.unshift(item);
-            setTables(oldState => [...oldState], table);
+            let index;
+            let alreadyItem = table.orders.find((order, i) => {
+                if (order.name === item.name) {
+                    index = i; return order;
+                }
+            })
+
+            if (!alreadyItem) {
+                alreadyItem = {
+                    ...item,
+                    count: 1
+                }
+                table.orders.unshift(alreadyItem);
+                setTables(oldState => [...oldState], table);
+
+            } else {
+                console.log(table);
+            }
+
+
+
+
         }
     }
 
