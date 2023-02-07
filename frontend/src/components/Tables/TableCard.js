@@ -7,7 +7,7 @@ const TableCard = ({ table, setTables }) => {
     let totalSum = 0;
 
     if (table) {
-        table.orders.map(o => totalSum += o.price)
+        table.orders.map(o => totalSum += (o.price * o.count))
     }
 
     const payHandler = () => {
@@ -49,7 +49,8 @@ const TableCard = ({ table, setTables }) => {
             {
                 table.orders && table.orders.map((o, i) => <div className='tb-orders' key={i}>
                     <div className='ord-name'>{o.name}</div>
-                    <div className='ord-total'>{o.price.toFixed(2)} <span className='lv'>лв.</span></div>
+                    <div className='ord-count'><span className='ord-counter'>{o.count} </span> x {o.price.toFixed(2)}</div>
+                    <div className='ord-total'>{(o.count * o.price).toFixed(2)} <span className='lv'>лв.</span></div>
                 </div>)
             }
             <br />

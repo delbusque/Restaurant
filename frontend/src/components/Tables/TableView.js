@@ -33,10 +33,10 @@ const TableView = ({ tables, setTables }) => {
         table.opened = true;
 
         if (!table.paid) {
-            let index;
+
             let alreadyItem = table.orders.find((order, i) => {
                 if (order.name === item.name) {
-                    index = i; return order;
+                    return order;
                 }
             })
 
@@ -49,7 +49,22 @@ const TableView = ({ tables, setTables }) => {
                 setTables(oldState => [...oldState], table);
 
             } else {
-                console.log(table);
+                // let index;
+                // let currItem = table.orders.find((order, i) => {
+                //     index = i;
+                //     return order._id === alreadyItem._id
+                // });
+                // table.orders[index].count++;
+
+
+                table.orders.find((order, i) => {
+                    if (order._id === alreadyItem._id) {
+                        table.orders[i].count++;
+                        setTables(oldState => [...oldState], table);
+                    }
+                })
+
+                console.log(table.orders);
             }
 
 

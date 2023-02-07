@@ -16,6 +16,7 @@
   overflow: auto;
   bottom: 0;
 }
+
 .orders-sect-paid {
   position: relative;
   background-color: antiquewhite;
@@ -29,6 +30,7 @@
 .tb-head {
   margin-top: 10px;
 }
+
 .tb-title {
   display: inline-block;
   font-family: "Poppins", sans-serif;
@@ -58,8 +60,9 @@
   display: grid;
   gap: 5px;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-areas: "name name . count price total total";
+  grid-template-areas: "name name . count count total total";
   font-family: "Lato", sans-serif;
+  align-items: center;
 }
 
 .ord-name {
@@ -72,13 +75,21 @@
 .ord-count {
   grid-area: count;
   text-align: right;
+  font-size: small;
 }
+
+.ord-counter {
+  font-size: medium;
+}
+
 .ord-x {
   font-size: 11px;
 }
+
 .ord-price {
   grid-area: price;
 }
+
 .ord-total {
   grid-area: total;
   margin-right: 15px;
