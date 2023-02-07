@@ -63,13 +63,32 @@ const TableView = ({ tables, setTables }) => {
                         setTables(oldState => [...oldState], table);
                     }
                 })
+            }
+        }
+    }
 
-                console.log(table.orders);
+    const deleteItemHandler = (item) => {
+
+        if (!table.paid) {
+            let index;
+            let alreadyItem = table.orders.find((order, i) => {
+                if (order.name === item.name) {
+                    index = i;
+                    return order;
+                }
+            })
+
+            if (alreadyItem.count === 1) {
+                table.orders.splice(index, 1);
+                setTables(oldState => [...oldState], table);
             }
 
-
-
-
+            table.orders.find((order, i) => {
+                if (order._id === alreadyItem._id) {
+                    table.orders[i].count--;
+                    setTables(oldState => [...oldState], table);
+                }
+            })
         }
     }
 
@@ -80,7 +99,8 @@ const TableView = ({ tables, setTables }) => {
                     table ?
                         <>
 
-                            <TableCard table={table} setTables={setTables} tables={tables} />
+                            <TableCard table={table} setTables={setTables} tables={tables}
+                                addItemHandler={addItemHandler} deleteItemHandler={deleteItemHandler} />
 
                             <section className='family-sect'>
                                 {families.length > 0 &&

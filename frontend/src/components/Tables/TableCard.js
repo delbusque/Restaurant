@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-const TableCard = ({ table, setTables }) => {
+const TableCard = ({ table, setTables, addItemHandler, deleteItemHandler }) => {
 
     const navigate = useNavigate();
 
@@ -49,6 +49,8 @@ const TableCard = ({ table, setTables }) => {
             {
                 table.orders && table.orders.map((o, i) => <div className='tb-orders' key={i}>
                     <div className='ord-name'>{o.name}</div>
+                    <button className='button-53' role="button" onClick={() => deleteItemHandler(o)}>-</button>
+                    <button className='button-53-green' role="button" onClick={() => addItemHandler(o)}>+</button>
                     <div className='ord-count'><span className='ord-counter'>{o.count} </span> x {o.price.toFixed(2)}</div>
                     <div className='ord-total'>{(o.count * o.price).toFixed(2)} <span className='lv'>лв.</span></div>
                 </div>)
