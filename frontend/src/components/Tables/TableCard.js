@@ -38,7 +38,7 @@ const TableCard = ({ table, setTables, addItemHandler, deleteItemHandler }) => {
                 <div className='tb-foot'>СУМА ЗА ПЛАЩАНЕ</div>
                 <div className='tb-total'>{totalSum.toFixed(2)} лв.</div>
                 <div className="btn-cont">
-                    <button className='btn-tab' onClick={tabHandler}>МАСИ</button>
+                    <button className='btn-tables' onClick={tabHandler}>МАСИ</button>
                     {!table.paid
                         ? <button className={table.orders.length > 0 ? 'btn-paid' : 'btn-dis'} onClick={payHandler}>ПЛАЩАНЕ</button>
                         : <button className='btn-clear' onClick={clearHandler}>ИЗЧИСТИ</button>
