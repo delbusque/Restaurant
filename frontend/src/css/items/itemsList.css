@@ -1,5 +1,6 @@
 .iL-buttons-sect {
   display: flex;
+  width: 60%;
 }
 
 .iL-family-sect {
@@ -22,5 +23,4 @@
   cursor: pointer;
   width: 40%;
   display: inline-block;
-
 }
