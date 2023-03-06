@@ -5,6 +5,7 @@ import ItemsContext from '../../contexts/ItemsContext.js';
 import FamilyButton from '../Buttons/FamilyButton.js';
 import TypeButton from '../Buttons/TypeButton.js';
 import ItemLine from '../Tables/ItemLine.js';
+import AddItemForm from './AddItemForm.js';
 
 import familiesAndTypes from "../../services/familiesAndTypes.js";
 
@@ -47,49 +48,25 @@ const ItemsList = () => {
                 {(!typeIsActive && drinkIsActive) &&
                     <section className='iL-items'>
                         {
-                            items && items.map(i => i.family === 'drinks' && <ItemLine key={i._id} item={i} />)
+                            items && items.map(i => i.family === 'drinks' && <div className='disabledDiv' key={i._id}><ItemLine item={i} /></div>)
                         }
                     </section>}
 
                 {(!typeIsActive && foodIsActive) &&
                     <section className='iL-items'>
                         {
-                            items && items.map(i => i.family === 'food' && <ItemLine key={i._id} item={i} />)
+                            items && items.map(i => i.family === 'food' && <div className='disabledDiv' key={i._id} ><ItemLine item={i} /></div>)
                         }
                     </section>}
                 {typeIsActive &&
                     <section className='iL-items'>
                         {
-                            items && items.map(i => i.type === byType && <ItemLine key={i._id} item={i} />)
+                            items && items.map(i => i.type === byType && <div className='disabledDiv' key={i._id}><ItemLine item={i} /></div>)
                         }
                     </section>}
 
                 <section id='iL-form' className='iL-form'>
-
-                    <form id="msform">
-                        <fieldset>
-                            <h2 className="fs-title">Personal Details</h2>
-                            <h3 className="fs-subtitle">We will never sell it</h3>
-                            <input type="text" name="fname" placeholder="First Name" />
-                            <input type="text" name="lname" placeholder="Last Name" />
-                            <input type="text" name="phone" placeholder="Phone" />
-                            <textarea name="address" placeholder="Address" defaultValue={""} />
-                            <input
-                                type="button"
-                                name="previous"
-                                className="previous action-button"
-                                defaultValue="Previous"
-                            />
-                            <a
-                                href="https://twitter.com/GoktepeAtakan"
-                                className="submit action-button"
-                                target="_top"
-                            >
-                                Submit
-                            </a>
-                        </fieldset>
-                    </form>
-
+                    <AddItemForm />
                 </section>
             </div>
 
