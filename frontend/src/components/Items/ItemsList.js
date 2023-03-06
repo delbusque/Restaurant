@@ -22,7 +22,7 @@ const ItemsList = () => {
 
 
     return (
-        <div>
+        <>
             <div className='iL-buttons-sect'>
                 <section className='iL-family-sect'>
                     {families.length > 0 &&
@@ -43,26 +43,57 @@ const ItemsList = () => {
                 </section>}
             </div>
 
-            {(!typeIsActive && drinkIsActive) &&
-                <section className='iL-items-sect'>
-                    {
-                        items && items.map(i => i.family === 'drinks' && <ItemLine key={i._id} item={i} />)
-                    }
-                </section>}
+            <div className='iL-main'>
+                {(!typeIsActive && drinkIsActive) &&
+                    <section className='iL-items'>
+                        {
+                            items && items.map(i => i.family === 'drinks' && <ItemLine key={i._id} item={i} />)
+                        }
+                    </section>}
 
-            {(!typeIsActive && foodIsActive) &&
-                <section className='iL-items-sect'>
-                    {
-                        items && items.map(i => i.family === 'food' && <ItemLine key={i._id} item={i} />)
-                    }
-                </section>}
-            {typeIsActive &&
-                <section className='iL-items-sect'>
-                    {
-                        items && items.map(i => i.type === byType && <ItemLine key={i._id} item={i} />)
-                    }
-                </section>}
-        </div>
+                {(!typeIsActive && foodIsActive) &&
+                    <section className='iL-items'>
+                        {
+                            items && items.map(i => i.family === 'food' && <ItemLine key={i._id} item={i} />)
+                        }
+                    </section>}
+                {typeIsActive &&
+                    <section className='iL-items'>
+                        {
+                            items && items.map(i => i.type === byType && <ItemLine key={i._id} item={i} />)
+                        }
+                    </section>}
+
+                <section id='iL-form' className='iL-form'>
+
+                    <form id="msform">
+                        <fieldset>
+                            <h2 className="fs-title">Personal Details</h2>
+                            <h3 className="fs-subtitle">We will never sell it</h3>
+                            <input type="text" name="fname" placeholder="First Name" />
+                            <input type="text" name="lname" placeholder="Last Name" />
+                            <input type="text" name="phone" placeholder="Phone" />
+                            <textarea name="address" placeholder="Address" defaultValue={""} />
+                            <input
+                                type="button"
+                                name="previous"
+                                className="previous action-button"
+                                defaultValue="Previous"
+                            />
+                            <a
+                                href="https://twitter.com/GoktepeAtakan"
+                                className="submit action-button"
+                                target="_top"
+                            >
+                                Submit
+                            </a>
+                        </fieldset>
+                    </form>
+
+                </section>
+            </div>
+
+        </>
     )
 }
 
