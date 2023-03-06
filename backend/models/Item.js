@@ -25,7 +25,13 @@ const itemSchema = new Schema({
     },
     quantityType: {
         type: String,
-        required: true
+        default: function () {
+            if (this.family === 'drinks') {
+                return 'ml';
+            } else if (this.family === 'food') {
+                return 'gr';
+            }
+        }
     }
 });
 
