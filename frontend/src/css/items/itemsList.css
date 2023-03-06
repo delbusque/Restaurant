@@ -27,10 +27,11 @@
   overflow: auto;
   cursor: pointer;
   display: inline-block;
+  width: 80%;
 }
 
 .iL-form {
-  margin: 0 auto;
+  justify-self: start;
 }
 
 
@@ -51,7 +52,7 @@
   padding: 20px 30px;
   box-sizing: border-box;
   width: 80%;
-  margin: 0 10%;
+
 
   /*stacking fieldsets above each other*/
   position: relative;
@@ -64,7 +65,7 @@
 
 /*inputs*/
 #msform input,
-#msform textarea {
+#msform select {
   padding: 15px;
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -102,6 +103,7 @@
   text-transform: uppercase;
   color: #2C3E50;
   margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .fs-subtitle {
@@ -166,4 +168,8 @@
 #progressbar li.active:after {
   background: #27AE60;
   color: white;
+}
+
+.disabledDiv {
+  pointer-events: none;
 }
