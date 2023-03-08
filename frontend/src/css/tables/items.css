@@ -3,7 +3,6 @@
   margin: 30px 20px;
   max-height: 77vh;
   overflow: auto;
-  cursor: pointer;
 }
 
 .item {
@@ -15,6 +14,7 @@
   /* position: sticky; */
   border: 1px solid rgba(128, 128, 128, 0.479);
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .item:hover {
