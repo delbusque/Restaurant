@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from './AddItemForm.module.css'
 
 const AddItemForm = () => {
 
@@ -11,18 +12,18 @@ const AddItemForm = () => {
     const typeHandler = (e) => {
         setType(e.target.value);
     }
-    console.log(price);
+
     return (
-        <form id="msform">
+        <form id={styles['msform']}>
             <fieldset>
-                <h2 className="fs-title">Add new item</h2>
+                <h2 className={styles['fs-title']}>Add new item</h2>
                 {/* <h3 className="fs-subtitle">We will never sell it</h3> */}
                 <input type="text" name="name" placeholder="Name"
                     onChange={(e) => setName(e.target.value)}
                     value={name}
                 />
 
-                <select id='select-family'
+                <select id={styles['select-family']}
                     onChange={(e) => {
                         setFamily(e.target.value)
                         setType('');
@@ -33,14 +34,15 @@ const AddItemForm = () => {
                 </select>
 
                 {family === 'drinks' &&
-                    <select id='select-type' onChange={(e) => typeHandler(e)}>
+                    <select id={styles['select-type']} onChange={(e) => typeHandler(e)}>
                         <option selected disabled hidden>Choose from drinks :</option>
+                        <option value='beer'>Beer</option>
                         <option value='vodka'>Vodka</option>
                         <option value='wine'>Wine</option>
                     </select>}
 
                 {family === 'food' &&
-                    <select id='select-type' onChange={(e) => typeHandler(e)}>
+                    <select id={styles['select-type']} onChange={(e) => typeHandler(e)}>
                         <option selected disabled hidden>Choose from food :</option>
                         <option value='salad'>Salad</option>
                         <option value='grill'>Grill</option>
@@ -55,14 +57,11 @@ const AddItemForm = () => {
 
                 <input
                     type="button"
-                    name="previous"
-                    className="previous action-button"
+                    className={styles['action-button']}
                     defaultValue="Previous"
                 />
                 <a
-                    href="https://twitter.com/GoktepeAtakan"
-                    className="submit action-button"
-                    target="_top"
+                    className={styles['action-button']}
                 >
                     Submit
                 </a>

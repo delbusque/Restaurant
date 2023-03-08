@@ -5,7 +5,7 @@ import ItemsContext from '../../contexts/ItemsContext.js';
 import FamilyButton from '../Buttons/FamilyButton.js';
 import TypeButton from '../Buttons/TypeButton.js';
 import StockItem from './StockItem/StockItem.js';
-import AddItemForm from './AddItemForm.js';
+import AddItemForm from './AddItemForm/AddItemForm';
 
 import familiesAndTypes from "../../services/familiesAndTypes.js";
 
