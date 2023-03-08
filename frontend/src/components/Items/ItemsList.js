@@ -4,7 +4,7 @@ import ItemsContext from '../../contexts/ItemsContext.js';
 
 import FamilyButton from '../Buttons/FamilyButton.js';
 import TypeButton from '../Buttons/TypeButton.js';
-import ItemLine from '../Tables/ItemLine.js';
+import StockItem from './StockItem/StockItem.js';
 import AddItemForm from './AddItemForm.js';
 
 import familiesAndTypes from "../../services/familiesAndTypes.js";
@@ -48,20 +48,20 @@ const ItemsList = () => {
                 {(!typeIsActive && drinkIsActive) &&
                     <section className='iL-items'>
                         {
-                            items && items.map(i => i.family === 'drinks' && <div className='disabledDiv' key={i._id}><ItemLine item={i} /></div>)
+                            items && items.map(i => i.family === 'drinks' && <StockItem key={i._id} item={i} />)
                         }
                     </section>}
 
                 {(!typeIsActive && foodIsActive) &&
                     <section className='iL-items'>
                         {
-                            items && items.map(i => i.family === 'food' && <div className='disabledDiv' key={i._id} ><ItemLine item={i} /></div>)
+                            items && items.map(i => i.family === 'food' && <StockItem key={i._id} item={i} />)
                         }
                     </section>}
                 {typeIsActive &&
                     <section className='iL-items'>
                         {
-                            items && items.map(i => i.type === byType && <div className='disabledDiv' key={i._id}><ItemLine item={i} /></div>)
+                            items && items.map(i => i.type === byType && <StockItem key={i._id} item={i} />)
                         }
                     </section>}
 
