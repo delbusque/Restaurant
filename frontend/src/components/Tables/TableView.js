@@ -49,14 +49,6 @@ const TableView = ({ tables, setTables }) => {
                 setTables(oldState => [...oldState], table);
 
             } else {
-                // let index;
-                // let currItem = table.orders.find((order, i) => {
-                //     index = i;
-                //     return order._id === alreadyItem._id
-                // });
-                // table.orders[index].count++;
-
-
                 table.orders.find((order, i) => {
                     if (order._id === alreadyItem._id) {
                         table.orders[i].count++;
