@@ -63,10 +63,22 @@ const getItemsByType = async (req, res) => {
     res.status(200).json(items);
 }
 
+const addNewStockItem = async (req, res) => {
+    const { name, family, type, price, quantity } = req.body;
+
+    try {
+        const newItiem = await Item.create({ name, family, type, price, quantity });
+        res.status(200).json(newItiem);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+
+}
+
 module.exports = {
-    // getItemByFamily,
     getAllDrinks,
     getAllFood,
     getAllItems,
-    getItemsByType
+    getItemsByType,
+    addNewStockItem
 }

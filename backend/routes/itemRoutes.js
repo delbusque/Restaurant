@@ -5,12 +5,15 @@ const {
     getAllDrinks,
     getAllFood,
     getAllItems,
-    getItemsByType
+    getItemsByType,
+    addNewStockItem
 } = require('../controllers/itemController.js');
 
 router.get('/', getAllItems);
 router.get('/drinks', getAllDrinks);
 router.get('/food', getAllFood);
+
+router.post('/add', addNewStockItem)
 
 // router.get('/', getItemByFamily);
 // router.get('/', getItemByFamily);

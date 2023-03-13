@@ -6,15 +6,45 @@ const AddItemForm = () => {
     const [name, setName] = useState('');
     const [family, setFamily] = useState('');
     const [type, setType] = useState('');
-    const [price, setPrice] = useState();
-    const [quantity, setQuantity] = useState(undefined)
+    const [price, setPrice] = useState('');
+    const [quantity, setQuantity] = useState('');
+    const [error, setError] = useState(null);
 
     const typeHandler = (e) => {
         setType(e.target.value);
     }
 
+    const addNewStockItemHandler = async (e) => {
+        e.preventDefault();
+        const newItem = { name, family, price, type, quantity };
+
+        if (name && family && type && price && quantity) {
+            const response = await fetch('/items/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newItem)
+            })
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                setError(result.error)
+            }
+            if (response.ok) {
+                setError(null)
+                setName('')
+                setFamily('')
+                setType('')
+                setPrice('')
+                setQuantity('')
+            }
+        }
+    }
+
     return (
-        <form id={styles['msform']}>
+        <form id={styles['msform']} onSubmit={addNewStockItemHandler}>
             <fieldset>
                 <h2 className={styles['fs-title']}>Add new item</h2>
                 {/* <h3 className="fs-subtitle">We will never sell it</h3> */}
@@ -48,11 +78,14 @@ const AddItemForm = () => {
                         <option value='grill'>Grill</option>
                     </select>}
 
-                <input type="number" name="price" placeholder="Price"
-                    onChange={(e) => setPrice(e.target.value)}
+                <input type="text" name="price" placeholder="Price"
+                    onChange={(e) => setPrice(Number(e.target.value))}
+                    value={price}
                 />
-                <input type="number" name="quantity" placeholder="Quantity"
-                    onChange={(e) => setQuantity(e.target.value)}
+                <input type="text" name="quantity" placeholder="Quantity"
+                    onChange={(e) => setQuantity(Number(e.target.value))}
+                    value={quantity}
+
                 />
 
                 <input
@@ -60,11 +93,12 @@ const AddItemForm = () => {
                     className={styles['action-button']}
                     defaultValue="Previous"
                 />
-                <a
+                <input
+                    type="submit"
                     className={styles['action-button']}
-                >
-                    Submit
-                </a>
+                    defaultValue="Previous"
+                />
+
             </fieldset>
         </form>
     )
