@@ -1,7 +1,11 @@
 import { useState } from "react";
 import styles from './AddItemForm.module.css'
+import { useContext } from "react";
+import ItemsContext from "../../../contexts/ItemsContext";
 
 const AddItemForm = () => {
+
+    const { items, setItems } = useContext(ItemsContext);
 
     const [name, setName] = useState('');
     const [family, setFamily] = useState('');
@@ -33,6 +37,8 @@ const AddItemForm = () => {
                 setError(result.error)
             }
             if (response.ok) {
+                setItems(oldState => [...oldState, result]);
+                window.localStorage.setItem('items', JSON.stringify(items));
                 setError(null)
                 setName('')
                 setFamily('')
@@ -79,11 +85,11 @@ const AddItemForm = () => {
                     </select>}
 
                 <input type="text" name="price" placeholder="Price"
-                    onChange={(e) => setPrice(Number(e.target.value))}
+                    onChange={(e) => setPrice(e.target.value)}
                     value={price}
                 />
                 <input type="text" name="quantity" placeholder="Quantity"
-                    onChange={(e) => setQuantity(Number(e.target.value))}
+                    onChange={(e) => setQuantity(e.target.value)}
                     value={quantity}
 
                 />

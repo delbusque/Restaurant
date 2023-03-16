@@ -38,11 +38,13 @@ function App() {
     window.localStorage.setItem('items', JSON.stringify(items));
   }, [tables, items])
 
+  console.log(items);
+
   return (
     <div className="App">
       <Navigation />
       <div className="main">
-        <ItemsContext.Provider value={{ items }}>
+        <ItemsContext.Provider value={{ items, setItems }}>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/items' element={<ItemsList />} />
