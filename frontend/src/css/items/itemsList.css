@@ -1,6 +1,7 @@
 .iL-buttons-sect {
   display: flex;
-  width: 60%;
+  width: 75%;
+
 }
 
 .iL-family-sect {
@@ -13,7 +14,7 @@
 .iL-type-sect {
   text-align: left;
   margin-top: 23px;
-  margin-left: 15px;
+  margin-left: 35px;
 }
 
 .iL-main {
@@ -23,7 +24,8 @@
 
 .iL-items {
   margin: 30px 40px;
-  max-height: 50vh;
+  margin-bottom: 0px;
+  max-height: 56vh;
   overflow: auto;
   display: inline-block;
   width: 80%;
