@@ -22,7 +22,8 @@ const AddItemForm = () => {
         e.preventDefault();
         const newItem = { name, family, price, type, quantity };
 
-        if (name && family && type && price && quantity) {
+        if (name && family && type && price && quantity && !items.find(i => i.name === name)) {
+
             const response = await fetch('/items/add', {
                 method: 'POST',
                 headers: {
@@ -41,7 +42,7 @@ const AddItemForm = () => {
                 window.localStorage.setItem('items', JSON.stringify(items));
                 setError(null)
                 setName('')
-                setFamily('')
+
                 setType('')
                 setPrice('')
                 setQuantity('')
@@ -75,6 +76,12 @@ const AddItemForm = () => {
                         <option value='beer'>Beer</option>
                         <option value='vodka'>Vodka</option>
                         <option value='wine'>Wine</option>
+                        <option value='whiskey'>Whiskey</option>
+                        <option value='mastika'>Mastika</option>
+                        <option value='rum'>Rum</option>
+                        <option value='juice'>Juice</option>
+                        <option value='fresh'>Fresh</option>
+                        <option value='other'>Other</option>
                     </select>}
 
                 {family === 'food' &&
