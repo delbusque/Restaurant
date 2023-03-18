@@ -21,7 +21,8 @@ const ItemsList = () => {
     const [byType, setByType] = useState('');
 
     const { families, drinkTypes, foodTypes } = familiesAndTypes(items);
-
+    drinkTypes.sort((a, b) => a.localeCompare(b));
+    foodTypes.sort((a, b) => a.localeCompare(b));
 
     return (
         <>

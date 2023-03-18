@@ -28,6 +28,9 @@ const TableView = ({ tables, setTables }) => {
     }
 
     const { families, drinkTypes, foodTypes } = familiesAndTypes(items);
+    drinkTypes.sort((a, b) => a.localeCompare(b));
+    foodTypes.sort((a, b) => a.localeCompare(b));
+
 
     const addItemHandler = (item) => {
         table.opened = true;

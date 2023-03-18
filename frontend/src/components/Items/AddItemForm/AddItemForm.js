@@ -75,10 +75,12 @@ const AddItemForm = () => {
                         <option value='vodka'>Vodka</option>
                         <option value='wine'>Wine</option>
                         <option value='whiskey'>Whiskey</option>
+                        <option value='gin'>Gin</option>
                         <option value='mastika'>Mastika</option>
                         <option value='rum'>Rum</option>
                         <option value='juice'>Juice</option>
                         <option value='fresh'>Fresh</option>
+                        <option value='water'>Water</option>
                         <option value='other'>Other</option>
                     </select>}
 
