@@ -38,8 +38,6 @@ function App() {
     window.localStorage.setItem('items', JSON.stringify(items));
   }, [tables, items])
 
-  console.log(items);
-
   return (
     <div className="App">
       <Navigation />

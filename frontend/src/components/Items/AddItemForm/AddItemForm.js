@@ -42,8 +42,6 @@ const AddItemForm = () => {
                 window.localStorage.setItem('items', JSON.stringify(items));
                 setError(null)
                 setName('')
-
-                setType('')
                 setPrice('')
                 setQuantity('')
             }
@@ -72,7 +70,7 @@ const AddItemForm = () => {
 
                 {family === 'drinks' &&
                     <select id={styles['select-type']} onChange={(e) => typeHandler(e)}>
-                        <option selected disabled hidden>Choose from drinks :</option>
+                        <option selected disabled>Choose from drinks :</option>
                         <option value='beer'>Beer</option>
                         <option value='vodka'>Vodka</option>
                         <option value='wine'>Wine</option>
@@ -86,7 +84,7 @@ const AddItemForm = () => {
 
                 {family === 'food' &&
                     <select id={styles['select-type']} onChange={(e) => typeHandler(e)}>
-                        <option selected disabled hidden>Choose from food :</option>
+                        <option selected disabled>Choose from food :</option>
                         <option value='salad'>Salad</option>
                         <option value='grill'>Grill</option>
                     </select>}
@@ -99,12 +97,6 @@ const AddItemForm = () => {
                     onChange={(e) => setQuantity(e.target.value)}
                     value={quantity}
 
-                />
-
-                <input
-                    type="button"
-                    className={styles['action-button']}
-                    defaultValue="Previous"
                 />
                 <input
                     type="submit"

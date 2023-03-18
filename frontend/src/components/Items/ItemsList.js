@@ -12,6 +12,7 @@ import familiesAndTypes from "../../services/familiesAndTypes.js";
 const ItemsList = () => {
 
     const { items } = useContext(ItemsContext);
+    items.sort((a, b) => a.name.localeCompare(b.name));
 
     const [drinkIsActive, setDrinkIsActive] = useState(true);
     const [foodIsActive, setFoodIsActive] = useState(false);
