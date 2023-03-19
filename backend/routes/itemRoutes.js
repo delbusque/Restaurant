@@ -6,7 +6,8 @@ const {
     // getAllFood,
     getAllItems,
     // getItemsByType,
-    addNewStockItem
+    addNewStockItem,
+    deleteStockItem
 } = require('../controllers/itemController.js');
 
 router.get('/', getAllItems);
@@ -14,6 +15,7 @@ router.get('/', getAllItems);
 // router.get('/food', getAllFood);
 
 router.post('/add', addNewStockItem)
+router.delete('/:id', deleteStockItem)
 
 // router.get('/', getItemByFamily);
 // router.get('/', getItemByFamily);

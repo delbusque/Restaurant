@@ -72,7 +72,23 @@ const addNewStockItem = async (req, res) => {
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
+}
 
+const deleteStockItem = async (req, res) => {
+    const { id } = req.params;
+    console.log(id);
+
+    if (!mongoose.Types.ObjectId.IsValid(id)) {
+        return res.status(400).json({ error: 'No such item in stock !' })
+    }
+
+    const item = await Item.findOneAndDelete({ _id: id })
+
+    if (!item) {
+        return res.status(400).json({ error: 'No such item in stock !' })
+    }
+
+    res.status(200).json(item);
 }
 
 module.exports = {
@@ -80,5 +96,6 @@ module.exports = {
     getAllFood,
     getAllItems,
     getItemsByType,
-    addNewStockItem
+    addNewStockItem,
+    deleteStockItem
 }
