@@ -22,7 +22,6 @@
     justify-self: left;
     background-color: #ddd7c6;
     margin-left: 20px;
-
 }
 
 .stock-item__delete {
@@ -31,8 +30,8 @@
     cursor: pointer;
     justify-self: right;
     background-color: #ddd7c6;
-
 }
+
 
 .stock-item__quantity {
     display: inline;

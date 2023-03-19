@@ -74,9 +74,17 @@
 }
 
 .marker {
-  color: rgb(46, 139, 86);
+  color: rgba(66, 168, 110, 0.785);
+}
+
+.marker:hover {
+  color: rgb(19, 123, 26);
 }
 
 .trash {
   color: rgba(220, 20, 60, 0.381);
+}
+
+.trash:hover {
+  color: rgb(220, 20, 60);
 }
