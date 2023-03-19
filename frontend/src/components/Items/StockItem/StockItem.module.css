@@ -2,30 +2,36 @@
     background-color: #ddd7c6;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: "name name quantity price";
+    grid-template-areas: "name name quantity price . .";
     margin-bottom: 2.5px;
     /* position: sticky; */
     border: 1px solid rgba(128, 128, 128, 0.479);
     border-radius: 3px;
 }
 
-/* .item-stock:hover {
-    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.15),
-        inset 0px 4px 8px rgba(0, 0, 0, 0.15),
-        inset 0px 8px 16px rgba(0, 0, 0, 0.15);
-    transition: 0.2s;
-    transform: translateY(2px);
-}
-
-.item-stock:active {
-    transition: all ease 0.2s;
-    box-shadow: inset 0px 15px 9px 0px rgba(0, 255, 255, 0.7);
-} */
-
 .stock-item__name {
     display: inline;
     grid-area: name;
     margin: 5px 10px;
+}
+
+.stock-item__edit {
+    display: inline;
+    border: none;
+    cursor: pointer;
+    justify-self: left;
+    background-color: #ddd7c6;
+    margin-left: 20px;
+
+}
+
+.stock-item__delete {
+    display: inline;
+    border: none;
+    cursor: pointer;
+    justify-self: right;
+    background-color: #ddd7c6;
+
 }
 
 .stock-item__quantity {

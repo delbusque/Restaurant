@@ -72,3 +72,11 @@
   color: inherit;
   text-decoration: inherit;
 }
+
+.marker {
+  color: rgb(46, 139, 86);
+}
+
+.trash {
+  color: rgba(220, 20, 60, 0.381);
+}
