@@ -2,16 +2,16 @@ const router = require('express').Router();
 
 const {
     // getItemByFamily,
-    getAllDrinks,
-    getAllFood,
+    // getAllDrinks,
+    // getAllFood,
     getAllItems,
-    getItemsByType,
+    // getItemsByType,
     addNewStockItem
 } = require('../controllers/itemController.js');
 
 router.get('/', getAllItems);
-router.get('/drinks', getAllDrinks);
-router.get('/food', getAllFood);
+// router.get('/drinks', getAllDrinks);
+// router.get('/food', getAllFood);
 
 router.post('/add', addNewStockItem)
 
@@ -20,6 +20,6 @@ router.post('/add', addNewStockItem)
 
 
 
-router.get('/:type', getItemsByType)
+// router.get('/:type', getItemsByType)
 
 module.exports = router;
