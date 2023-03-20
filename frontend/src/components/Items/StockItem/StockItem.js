@@ -1,16 +1,29 @@
 import styles from './StockItem.module.css'
+import { useState, useContext } from 'react';
+import ItemsContext from '../../../contexts/ItemsContext';
 
 const StockItem = ({ item }) => {
 
+    const { items, setItems } = useContext(ItemsContext);
+    const [error, setError] = useState(null);
+
+
     const deleteHandler = async () => {
-        console.log(item._id);
-        const responce = await fetch('/items/' + item._id, {
+
+        const responce = await fetch(`/items/${item._id}`, {
             method: 'DELETE',
         });
 
         const result = await responce.json();
-        console.log(result);
 
+        if (!responce.ok) {
+            setError(result.error)
+        }
+
+        if (responce.ok) {
+            setItems(state => state.filter(i => i._id !== result._id))
+            window.localStorage.setItem('items', JSON.stringify(items));
+        }
     }
 
     return (
