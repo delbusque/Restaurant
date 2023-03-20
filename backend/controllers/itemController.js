@@ -77,10 +77,9 @@ const addNewStockItem = async (req, res) => {
 
 const deleteStockItem = async (req, res) => {
     const { id } = req.params;
-    console.log(id);
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(400).json({ error: 'No such item in stock !' })
+        return res.status(400).json({ error: 'No such item to delete !' })
     }
 
     const item = await Item.findOneAndDelete({ _id: id })
@@ -92,11 +91,29 @@ const deleteStockItem = async (req, res) => {
     res.status(200).json(item);
 }
 
+const editStockItem = async (req, res) => {
+    const { id } = req.params;
+    const editedItem = { ...req.body };
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        res.status(400).json({ error: 'No such item to edit !' })
+    }
+
+    const item = await Item.findOneAndUpdate({ _id: id }, editedItem);
+
+    if (!item) {
+        res.status(400).json({ error: 'No such item in stock!' })
+    }
+
+    res.status(200).json(item);
+}
+
 module.exports = {
     getAllDrinks,
     getAllFood,
     getAllItems,
     getItemsByType,
     addNewStockItem,
-    deleteStockItem
+    deleteStockItem,
+    editStockItem
 }
