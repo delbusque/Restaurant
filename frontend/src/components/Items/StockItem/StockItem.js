@@ -1,12 +1,13 @@
 import styles from './StockItem.module.css'
 import { useState, useContext } from 'react';
 import ItemsContext from '../../../contexts/ItemsContext';
+import StockItemModal from './StockItemModal';
 
 const StockItem = ({ item }) => {
 
     const { items, setItems } = useContext(ItemsContext);
     const [error, setError] = useState(null);
-
+    const [openModal, setOpenModal] = useState(false);
 
     const deleteHandler = async () => {
 
@@ -27,22 +28,28 @@ const StockItem = ({ item }) => {
     }
 
     return (
-        <div className={styles['stock-item']}>
-            <div className={styles['stock-item__name']}>{item.name}</div>
-            <div className={styles['stock-item__quantity']}>{item.quantity.toFixed(3)}
-                <span className={styles['stock-item__quantityType']}>{item.quantityType}</span>
+        <>
+            {openModal && <StockItemModal item={item} setOpenModal={setOpenModal} />}
+
+            <div className={styles['stock-item']}>
+
+
+                <div className={styles['stock-item__name']}>{item.name}</div>
+                <div className={styles['stock-item__quantity']}>{item.quantity.toFixed(3)}
+                    <span className={styles['stock-item__quantityType']}>{item.quantityType}</span>
+                </div>
+                <div className={styles['stock-item__price']}>{item.price.toFixed(2)}
+                    <span className='lv'> лв.</span></div>
+
+                <button className={styles['stock-item__edit']}>
+                    <i className="fa-solid fa-marker marker"></i>
+                </button>
+                <button className={styles['stock-item__delete']} onClick={() => setOpenModal(true)}>
+                    <i className="fa-solid fa-trash-arrow-up trash"></i>
+                </button>
             </div>
-            <div className={styles['stock-item__price']}>{item.price.toFixed(2)}
-                <span className='lv'> лв.</span></div>
 
-            <button className={styles['stock-item__edit']}>
-                <i className="fa-solid fa-marker marker"></i>
-            </button>
-            <button className={styles['stock-item__delete']} onClick={deleteHandler}>
-                <i className="fa-solid fa-trash-arrow-up trash"></i>
-            </button>
-
-        </div>
+        </>
     )
 }
 

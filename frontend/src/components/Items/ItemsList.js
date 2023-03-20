@@ -46,6 +46,7 @@ const ItemsList = () => {
                 </section>}
             </div>
 
+
             <div className='iL-main'>
                 {(!typeIsActive && drinkIsActive) &&
                     <section className='iL-items'>
@@ -66,7 +67,6 @@ const ItemsList = () => {
                             items && items.map(i => i.type === byType && <StockItem key={i._id} item={i} />)
                         }
                     </section>}
-
                 <section id='iL-form' className='iL-form'>
                     <AddItemForm setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
                 </section>
