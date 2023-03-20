@@ -1,6 +1,6 @@
 import styles from './StockItemModal.module.css';
 
-const StockItemModal = ({ item, setOpenModal }) => {
+const StockItemModal = ({ item, setOpenModal, deleteHandler }) => {
 
     return (
         <div className={styles['modal-background']} >
@@ -11,12 +11,12 @@ const StockItemModal = ({ item, setOpenModal }) => {
                         Do you really want to delete {item.name} ?
                     </h1>
                     <p className={styles['modal-text']}>
-                        You can proceed with {item.name} deletion or cancel it !
+                        You can proceed with deletion or cancel it !
                     </p>
                 </div>
                 <div className={styles['modal-buttons']}>
-                    <button onClick={() => setOpenModal(false)}>Cancel</button>
-                    <button>Yes</button>
+                    <button className={styles['modal-buttons__cancel']} onClick={() => setOpenModal(false)}>Cancel</button>
+                    <button className={styles['modal-buttons__proceed']} onClick={deleteHandler}>Yes</button>
                 </div>
             </div>
         </div>

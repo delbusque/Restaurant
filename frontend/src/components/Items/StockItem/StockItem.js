@@ -24,12 +24,13 @@ const StockItem = ({ item }) => {
         if (responce.ok) {
             setItems(state => state.filter(i => i._id !== result._id))
             window.localStorage.setItem('items', JSON.stringify(items));
+            setOpenModal(false);
         }
     }
 
     return (
         <>
-            {openModal && <StockItemModal item={item} setOpenModal={setOpenModal} />}
+            {openModal && <StockItemModal item={item} setOpenModal={setOpenModal} deleteHandler={deleteHandler} />}
 
             <div className={styles['stock-item']}>
 
