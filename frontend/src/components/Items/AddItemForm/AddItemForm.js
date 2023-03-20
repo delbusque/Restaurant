@@ -3,7 +3,7 @@ import styles from './AddItemForm.module.css'
 import { useContext } from "react";
 import ItemsContext from "../../../contexts/ItemsContext";
 
-const AddItemForm = () => {
+const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
 
     const { items, setItems } = useContext(ItemsContext);
 
@@ -44,6 +44,13 @@ const AddItemForm = () => {
                 setName('')
                 setPrice('')
                 setQuantity('')
+                if (newItem.family === 'drinks') {
+                    setDrinkIsActive(true);
+                    setFoodIsActive(false);
+                } else if (newItem.family === 'food') {
+                    setDrinkIsActive(false);
+                    setFoodIsActive(true);
+                }
             }
         }
     }

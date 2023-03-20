@@ -68,7 +68,7 @@ const ItemsList = () => {
                     </section>}
 
                 <section id='iL-form' className='iL-form'>
-                    <AddItemForm />
+                    <AddItemForm setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
                 </section>
             </div>
 
