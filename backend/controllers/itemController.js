@@ -1,4 +1,5 @@
 const Item = require('../models/Item.js');
+const mongoose = require('mongoose');
 
 const getAllDrinks = async (req, res) => {
     let drinks = await Item.find({ family: 'drinks' });
@@ -78,7 +79,7 @@ const deleteStockItem = async (req, res) => {
     const { id } = req.params;
     console.log(id);
 
-    if (!mongoose.Types.ObjectId.IsValid(id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(400).json({ error: 'No such item in stock !' })
     }
 
