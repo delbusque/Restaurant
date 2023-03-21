@@ -11,7 +11,7 @@ const StockItemModal = ({ item, setOpenModal, deleteHandler }) => {
                         Do you really want to delete {item.name} ?
                     </h1>
                     <p className={styles['modal-text']}>
-                        You can proceed with deletion by clicking YES or cancel it !
+                        You can proceed with deletion by clicking Yes or Cancel it !
                     </p>
                 </div>
                 <div className={styles['modal-buttons']}>
