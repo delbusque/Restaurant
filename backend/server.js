@@ -6,6 +6,7 @@ mongoose.set('strictQuery', true);
 
 const tableRoutes = require('./routes/tableRoutes.js');
 const itemRoutes = require('./routes/itemRoutes.js');
+const userRoutes = require('./routes/userRoutes.js')
 
 const app = express();
 
@@ -18,6 +19,8 @@ app.get('/', (req, res) => {
 app.use('/tables', tableRoutes);
 
 app.use('/items', itemRoutes);
+
+app.use('/user', userRoutes)
 
 // app.use('/drinks', itemRoutes);
 // app.use('/food', itemRoutes);
