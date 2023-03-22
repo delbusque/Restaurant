@@ -24,6 +24,10 @@
     font-size: large;
 }
 
+.modal-close:hover {
+    box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
 .modal-container {
     width: 700px;
     height: 350px;
