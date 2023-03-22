@@ -6,11 +6,11 @@ const loginUser = async (req, res) => {
 
 }
 
-const registerUser = async (req, res) => {
-    res.status(200).json({ mssg: 'user register' })
+const signupUser = async (req, res) => {
+    res.status(200).json({ mssg: 'user signupUser' })
 }
 
 module.exports = {
     loginUser,
-    registerUser
+    signupUser
 }
