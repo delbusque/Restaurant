@@ -1,10 +1,10 @@
 #msform {
-    width: 380px;
-    margin: 30px auto;
-    margin-bottom: 0;
+    width: 300px;
+    margin-right: 30px;
     text-align: center;
     position: relative;
     font-family: montserrat, arial, verdana;
+    display: inline-block;
 
 }
 
@@ -15,9 +15,6 @@
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.152);
     padding: 20px 30px;
     box-sizing: border-box;
-    width: 80%;
-
-
     /*stacking fieldsets above each other*/
     position: relative;
 }
@@ -131,4 +128,17 @@
 #progressbar li.active:after {
     background: #27AE60;
     color: white;
+}
+
+.error {
+    padding: 10px;
+    /* border: 1px solid crimson; */
+    color: crimson;
+    border-radius: 3px;
+    box-shadow: 0 0px 3px 1px rgba(21, 23, 20, 0.185);
+    font-size: small;
+    display: inline-block;
+    width: 300px;
+    background-color: white;
+    vertical-align: bottom;
 }
