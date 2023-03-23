@@ -91,6 +91,10 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
                             <option value='fresh'>Fresh</option>
                             <option value='water'>Water</option>
                             <option value='other'>Other</option>
+                            <option value='juice1'>Juice1</option>
+                            <option value='fresh2'>Fresh2</option>
+                            <option value='water3'>Water3</option>
+                            <option value='other4'>Other4</option>
                         </select>}
 
                     {family === 'food' &&
