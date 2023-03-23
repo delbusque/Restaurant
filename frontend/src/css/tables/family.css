@@ -15,7 +15,7 @@
 
 .family-btn-drinks {
   width: 150px;
-  margin: 37px 5px 0px 15px;
+  margin: 33px 5px 0px 15px;
   padding-top: 20px;
   padding-bottom: 20px;
   cursor: pointer;
@@ -57,7 +57,7 @@
 
 .type-sect {
   grid-area: type;
-  margin-top: 12px;
+  margin-top: 17px;
   text-align: center;
   max-height: 80vh;
   overflow: auto;
