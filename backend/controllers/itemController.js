@@ -67,6 +67,17 @@ const getItemsByType = async (req, res) => {
 const addNewStockItem = async (req, res) => {
     const { name, family, type, price, quantity } = req.body;
 
+    const emptyFields = [];
+    !name && emptyFields.push('name');
+    !family && emptyFields.push('family');
+    !type && emptyFields.push('type');
+    !price && emptyFields.push('price');
+    !quantity && emptyFields.push('quantity');
+
+    if (emptyFields.length > 0) {
+        return res.status(400).json({ error: 'All fields should be filled !', emptyFields })
+    }
+
     try {
         const newItiem = await Item.create({ name, family, type, price, quantity });
         res.status(200).json(newItiem);
