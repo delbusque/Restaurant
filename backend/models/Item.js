@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 const itemSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     family: {
         type: String,
