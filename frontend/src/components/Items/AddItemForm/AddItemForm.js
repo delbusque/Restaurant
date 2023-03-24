@@ -43,11 +43,14 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
             setError(`${name} is already in stock !`);
             setEmptyFields(['name']);
         }
+
         if (response.ok) {
             setItems(oldState => [...oldState, result]);
             window.localStorage.setItem('items', JSON.stringify(items));
             setError(null);
             setInputName('');
+            setFamily('');
+            setType('');
             setPrice('');
             setQuantity('');
             setEmptyFields([]);
