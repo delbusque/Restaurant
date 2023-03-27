@@ -13,6 +13,8 @@ import ItemsList from './components/Items/ItemsList.js';
 import * as apiService from './services/apiService.js'
 
 import Navigation from './components/Navigation.js';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() {
 
@@ -48,6 +50,9 @@ function App() {
             <Route path='/items' element={<ItemsList />} />
             <Route path='/tables' element={<Tables tables={tables} setTables={setTables} />} />
             <Route path='/tables/:number' element={<TableView tables={tables} setTables={setTables} />} />
+
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
           </Routes>
         </ItemsContext.Provider>
       </div>
