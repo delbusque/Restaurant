@@ -74,8 +74,16 @@ const addNewStockItem = async (req, res) => {
     !price && emptyFields.push('price');
     !quantity && emptyFields.push('quantity');
 
+    const negZero = [];
+    price <= 0 && negZero.push('price');
+    quantity <= 0 && negZero.push('quantity');
+
     if (emptyFields.length > 0) {
         return res.status(400).json({ error: 'All fields should be filled !', emptyFields })
+    }
+
+    if (price <= 0 || quantity <= 0) {
+        return res.status(400).json({ error: 'Price and quantity can not be negative or zero !', negZero })
     }
 
     try {

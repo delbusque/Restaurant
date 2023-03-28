@@ -14,6 +14,7 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
     const [quantity, setQuantity] = useState('');
     const [error, setError] = useState(null);
     const [emptyFields, setEmptyFields] = useState([]);
+    const [negZero, setNegZero] = useState([]);
 
     const typeHandler = (e) => {
         setType(e.target.value);
@@ -35,6 +36,8 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
 
         const result = await response.json();
 
+        console.log(result);
+
         if (!response.ok && result.emptyFields) {
             setError(result.error);
             setEmptyFields(result.emptyFields);
@@ -42,6 +45,10 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
         if (!response.ok && result.error.includes('duplicate key')) {
             setError(`${name} is already in stock !`);
             setEmptyFields(['name']);
+        }
+        if (!response.ok) {
+            setError(result.error);
+            setNegZero(result.negZero);
         }
 
         if (response.ok) {
@@ -118,16 +125,16 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
                         </select>}
 
                     <input type="number" name="price" placeholder="Price"
-                        className={emptyFields.includes('price') ? styles['input-error'] : ''}
+                        className={(emptyFields.includes('price') || negZero.includes('price')) ? styles['input-error'] : ''}
                         onChange={(e) => setPrice(e.target.value)}
                         value={price}
                     />
                     <input type="number" name="quantity" placeholder="Quantity"
-                        className={emptyFields.includes('quantity') ? styles['input-error'] : ''}
+                        className={(emptyFields.includes('quantity') || negZero.includes('quantity')) ? styles['input-error'] : ''}
                         onChange={(e) => setQuantity(e.target.value)}
                         value={quantity}
-
                     />
+
                     <input
                         type="submit"
                         className={styles['action-button']}
