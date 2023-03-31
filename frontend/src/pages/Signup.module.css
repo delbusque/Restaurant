@@ -43,3 +43,15 @@ form.signup button {
 form.signup button:hover {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #0089BA;
 }
+
+form.signup .error {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    color: crimson;
+    background-color: rgba(223, 118, 139, 0.133);
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: 2px solid rgba(220, 20, 60, 0.76);
+}
