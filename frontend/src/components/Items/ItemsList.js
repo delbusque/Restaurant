@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 
 import ItemsContext from '../../contexts/ItemsContext.js';
+import { useAuthContext } from '../../hooks/useAuthContext.js';
 
 import FamilyButton from '../Buttons/FamilyButton.js';
 import TypeButton from '../Buttons/TypeButton.js';
@@ -10,6 +11,8 @@ import AddItemForm from './AddItemForm/AddItemForm';
 import familiesAndTypes from "../../services/familiesAndTypes.js";
 
 const ItemsList = () => {
+
+    const { user } = useAuthContext();
 
     const { items } = useContext(ItemsContext);
     items.sort((a, b) => a.name.localeCompare(b.name));
@@ -67,9 +70,9 @@ const ItemsList = () => {
                             items && items.map(i => i.type === byType && <StockItem key={i._id} item={i} />)
                         }
                     </section>}
-                <section id='iL-form' className='iL-form'>
+                {user && <section id='iL-form' className='iL-form'>
                     <AddItemForm setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
-                </section>
+                </section>}
             </div>
 
         </>

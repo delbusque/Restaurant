@@ -1,6 +1,7 @@
 import styles from './StockItem.module.css'
 import { useState, useContext } from 'react';
 import ItemsContext from '../../../contexts/ItemsContext';
+import { useAuthContext } from '../../../hooks/useAuthContext';
 import StockItemModal from './StockItemModal';
 
 const StockItem = ({ item }) => {
@@ -8,6 +9,8 @@ const StockItem = ({ item }) => {
     const { items, setItems } = useContext(ItemsContext);
     const [error, setError] = useState(null);
     const [openModal, setOpenModal] = useState(false);
+
+    const { user } = useAuthContext();
 
     const deleteHandler = async () => {
 
@@ -42,12 +45,12 @@ const StockItem = ({ item }) => {
                 <div className={styles['stock-item__price']}>{item.price.toFixed(2)}
                     <span className='lv'> лв.</span></div>
 
-                <button className={styles['stock-item__edit']}>
+                {user && <><button className={styles['stock-item__edit']}>
                     <i className="fa-solid fa-marker marker"></i>
                 </button>
-                <button className={styles['stock-item__delete']} onClick={() => setOpenModal(true)}>
-                    <i className="fa-solid fa-trash-arrow-up trash"></i>
-                </button>
+                    <button className={styles['stock-item__delete']} onClick={() => setOpenModal(true)}>
+                        <i className="fa-solid fa-trash-arrow-up trash"></i>
+                    </button></>}
             </div>
 
         </>
