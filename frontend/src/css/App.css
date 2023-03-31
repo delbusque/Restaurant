@@ -43,7 +43,7 @@
   font-weight: 500;
   border-radius: 2px;
   display: inline-block;
-  margin-right: 40px;
+  /* margin-right: 40px; */
   margin-bottom: 5px;
   width: 140px;
   text-align: center;
@@ -78,6 +78,12 @@ button.nav__item-auth {
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.24);
+}
+
+.nav__auth__email {
+  margin-right: 60px;
+  font-size: 22px;
+  font-family: Dosis, sans-serif;
 }
 
 .links {
