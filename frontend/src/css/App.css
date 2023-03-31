@@ -30,6 +30,10 @@
   list-style-type: none;
 }
 
+.nav__auth {
+  display: inline-block;
+}
+
 .nav__item,
 .nav__item-auth {
   font-size: 24px;
@@ -49,6 +53,12 @@
   padding: 5px 15px;
   width: 100px;
   border: none;
+}
+
+button.nav__item-auth {
+  border: 2px solid cadetblue;
+  color: cadetblue;
+  ;
 }
 
 .nav__item:hover:nth-child(1),
