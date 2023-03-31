@@ -50,7 +50,7 @@ form.signup .error {
     margin-bottom: 20px;
     width: 100%;
     color: crimson;
-    background-color: rgba(223, 118, 139, 0.133);
+    background-color: rgba(223, 118, 139, 0.104);
     border-radius: 4px;
     box-sizing: border-box;
     border: 2px solid rgba(220, 20, 60, 0.76);

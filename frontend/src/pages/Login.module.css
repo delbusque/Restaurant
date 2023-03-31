@@ -44,3 +44,15 @@ form.login button {
 form.login button:hover {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
+
+form.login .error {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    color: crimson;
+    background-color: rgba(223, 118, 139, 0.104);
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: 2px solid rgba(220, 20, 60, 0.76);
+}
