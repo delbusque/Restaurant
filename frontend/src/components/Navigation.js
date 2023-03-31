@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
-
+import { useLogout } from '../hooks/useLogout';
 
 const Navigation = () => {
+    const { logout } = useLogout();
+    const logoutHandler = () => {
+        logout();
+    }
 
     return (
         <header className="header">
@@ -15,9 +19,16 @@ const Navigation = () => {
                     <li className="nav__item">Items</li>
                 </Link>
             </ul>
+
             <ul className="nav">
-                <Link className='links' to='/login'><li className="nav__item-auth">Login</li></Link>
-                <Link className='links' to='/signup'><li className="nav__item-auth">Sign Up</li></Link>
+                <div className="nav__auth">
+                    <button className="nav__item-auth" onClick={logoutHandler}>Logout</button>
+                </div>
+
+                <div className="nav__auth">
+                    <Link className='links' to='/login'><li className="nav__item-auth">Login</li></Link>
+                    <Link className='links' to='/signup'><li className="nav__item-auth">Sign Up</li></Link>
+                </div>
             </ul>
         </header>
     )
