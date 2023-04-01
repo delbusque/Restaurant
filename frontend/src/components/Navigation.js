@@ -16,9 +16,9 @@ const Navigation = () => {
         <header className="header">
             <h1 className="deli"><Link className='links' to='/'>Deli</Link></h1>
             <ul className="nav">
-                {user && <Link className='links' to='/tables'>
+                <Link className='links' to='/tables'>
                     <li className="nav__item">Tables</li>
-                </Link>}
+                </Link>
                 <Link className='links' to='/items'>
                     <li className="nav__item">Items</li>
                 </Link>
