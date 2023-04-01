@@ -12,7 +12,6 @@ const Tables = ({ tables }) => {
                     {!t.paid && <div className={t.opened ? "table-btn-unpaid" : "table-btn"} >
                         <p className="table-btn-text">{t.number}</p>
                     </div>}
-
                 </Link>
             ))
             }
