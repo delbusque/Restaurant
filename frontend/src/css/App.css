@@ -56,8 +56,9 @@
 }
 
 button.nav__item-auth {
-  border: 2px solid cadetblue;
+  border: 1px solid cadetblue;
   color: cadetblue;
+  border-radius: 2px;
   ;
 }
 
@@ -106,4 +107,16 @@ button.nav__item-auth {
 
 .trash:hover {
   color: rgb(220, 20, 60);
+}
+
+.table-error {
+  padding: 10px;
+  margin: 150px auto;
+  text-align: center;
+  width: 50%;
+  color: crimson;
+  background-color: rgba(223, 118, 139, 0.104);
+  border-radius: 4px;
+  box-sizing: border-box;
+  border: 2px solid rgba(220, 20, 60, 0.76);
 }
