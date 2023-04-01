@@ -79,7 +79,7 @@ const addNewStockItem = async (req, res) => {
     quantity <= 0 && negZero.push('quantity');
 
     if (emptyFields.length > 0) {
-        return res.status(400).json({ error: 'All fields should be filled !', emptyFields })
+        return res.status(400).json({ error: 'All fields should be filled !', emptyFields, negZero })
     }
 
     if (price <= 0 || quantity <= 0) {
