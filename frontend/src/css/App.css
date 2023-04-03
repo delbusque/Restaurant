@@ -56,11 +56,19 @@
 }
 
 button.nav__item-auth {
-  border: 1px solid cadetblue;
-  color: cadetblue;
+  /* border: 1px solid black; */
   border-radius: 2px;
-  ;
+  font-style: normal;
 }
+
+/* button.nav__item-auth:hover {
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.15),
+    inset 0px 4px 8px rgba(0, 0, 0, 0.15),
+    inset 0px 4px 8px rgba(0, 0, 0, 0.15);
+  transition: 0.2s;
+  transform: translateY(2px);
+  cursor: pointer;
+  } */
 
 .nav__item:hover:nth-child(1),
 .nav__item-auth:hover {
