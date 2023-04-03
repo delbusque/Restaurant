@@ -13,9 +13,16 @@ const StockItem = ({ item }) => {
     const { user } = useAuthContext();
 
     const deleteHandler = async () => {
+        if (!user) {
+            setError('You aren`t authorized to delete this item !');
+            return;
+        }
 
         const responce = await fetch(`/items/${item._id}`, {
             method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
         });
 
         const result = await responce.json();
@@ -36,7 +43,6 @@ const StockItem = ({ item }) => {
             {openModal && <StockItemModal item={item} setOpenModal={setOpenModal} deleteHandler={deleteHandler} />}
 
             <div className={styles['stock-item']}>
-
 
                 <div className={styles['stock-item__name']}>{item.name}</div>
                 <div className={styles['stock-item__quantity']}>{item.quantity.toFixed(3)}

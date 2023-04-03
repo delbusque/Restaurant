@@ -135,11 +135,13 @@
     color: crimson;
     border-radius: 3px;
     box-shadow: 0 0px 3px 1px rgba(21, 23, 20, 0.185);
-    font-size: small;
+    font-size: smaller;
     display: inline-block;
     width: 300px;
     background-color: white;
     vertical-align: middle;
+    margin-top: 10px;
+    text-align: center;
 }
 
 .msform .input-error {

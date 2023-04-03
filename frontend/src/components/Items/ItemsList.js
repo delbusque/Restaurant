@@ -70,9 +70,9 @@ const ItemsList = () => {
                             items && items.map(i => i.type === byType && <StockItem key={i._id} item={i} />)
                         }
                     </section>}
-                {user && <section id='iL-form' className='iL-form'>
+                <section id='iL-form' className='iL-form'>
                     <AddItemForm setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
-                </section>}
+                </section>
             </div>
 
         </>

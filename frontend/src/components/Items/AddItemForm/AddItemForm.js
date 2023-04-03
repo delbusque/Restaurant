@@ -2,10 +2,12 @@ import { useState } from "react";
 import styles from './AddItemForm.module.css'
 import { useContext } from "react";
 import ItemsContext from "../../../contexts/ItemsContext";
+import { useAuthContext } from "../../../hooks/useAuthContext";
 
 const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
 
     const { items, setItems } = useContext(ItemsContext);
+    const { user } = useAuthContext();
 
     const [inputName, setInputName] = useState('');
     const [family, setFamily] = useState('');
@@ -22,6 +24,12 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
 
     const addNewStockItemHandler = async (e) => {
         e.preventDefault();
+
+        if (!user) {
+            setError('You are not authorized to add a new item !');
+            return;
+        }
+
         let name = inputName.charAt(0).toUpperCase() + inputName.slice(1).toLowerCase();
 
         const newItem = { name, family, price, type, quantity }
@@ -29,7 +37,8 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
         const response = await fetch('/items/add', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             },
             body: JSON.stringify(newItem)
         })
@@ -59,6 +68,7 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
             setPrice('');
             setQuantity('');
             setEmptyFields([]);
+            setNegZero([]);
             if (newItem.family === 'drinks') {
                 setDrinkIsActive(true);
                 setFoodIsActive(false);
