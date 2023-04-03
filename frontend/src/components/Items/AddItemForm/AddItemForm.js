@@ -26,7 +26,7 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
         e.preventDefault();
 
         if (!user) {
-            setError('You are not authorized to add a new item !');
+            setError('You are not authorized to add menu items !');
             return;
         }
 
