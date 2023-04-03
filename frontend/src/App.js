@@ -1,9 +1,10 @@
 import './css/App.css';
 
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 
 import ItemsContext from './contexts/ItemsContext.js';
+import { useAuthContext } from './hooks/useAuthContext';
 
 import Home from './components/Home';
 import Tables from './components/Tables/Tables.js';
@@ -17,6 +18,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 
 function App() {
+
+  const { user } = useAuthContext();
 
   const [tables, setTables] = useState([]);
   const [items, setItems] = useState([]);
@@ -51,8 +54,8 @@ function App() {
             <Route path='/tables' element={<Tables tables={tables} setTables={setTables} />} />
             <Route path='/tables/:number' element={<TableView tables={tables} setTables={setTables} />} />
 
-            <Route path='/login' element={<Login />} />
-            <Route path='/signup' element={<Signup />} />
+            <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
+            <Route path='/signup' element={!user ? <Signup /> : <Navigate to='/' />} />
           </Routes>
         </ItemsContext.Provider>
       </div>
