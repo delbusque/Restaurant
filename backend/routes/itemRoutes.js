@@ -1,25 +1,17 @@
 const router = require('express').Router();
+const authMiddleware = require('../middleware/authMiddleware');
 
 const {
     getAllItems,
     addNewStockItem,
-    deleteStockItem,
-    editStockItem
+    deleteStockItem
 } = require('../controllers/itemController.js');
 
 router.get('/', getAllItems);
-// router.get('/drinks', getAllDrinks);
-// router.get('/food', getAllFood);
+
+router.use(authMiddleware);
 
 router.post('/add', addNewStockItem);
 router.delete('/:id', deleteStockItem);
-router.patch('/:id', editStockItem)
-
-// router.get('/', getItemByFamily);
-// router.get('/', getItemByFamily);
-
-
-
-// router.get('/:type', getItemsByType)
 
 module.exports = router;
