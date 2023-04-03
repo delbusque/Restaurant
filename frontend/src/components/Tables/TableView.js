@@ -91,66 +91,60 @@ const TableView = ({ tables, setTables }) => {
     }
 
     return (
-        <>
-            {user ?
-                < div className='table-card' >
-                    {
-                        table ?
-                            <>
+        < div className='table-card' >
+            {
+                table ?
+                    <>
 
-                                <TableCard table={table} setTables={setTables} tables={tables}
-                                    addItemHandler={addItemHandler} deleteItemHandler={deleteItemHandler} />
+                        <TableCard table={table} setTables={setTables} tables={tables}
+                            addItemHandler={addItemHandler} deleteItemHandler={deleteItemHandler} />
 
-                                <section className='family-sect'>
-                                    {families.length > 0 &&
-                                        families.sort((a, b) => a.localeCompare(b)).map(f => <FamilyButton family={f} key={f} setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive}
-                                            setTypeIsActive={setTypeIsActive} />)}
-                                </section>
+                        <section className='family-sect'>
+                            {families.length > 0 &&
+                                families.sort((a, b) => a.localeCompare(b)).map(f => <FamilyButton family={f} key={f} setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive}
+                                    setTypeIsActive={setTypeIsActive} />)}
+                        </section>
 
-                                {drinkIsActive && <section className='type-sect'>
-                                    {drinkTypes.length > 0 && drinkTypes.map(t => <TypeButton key={t} type={t}
-                                        drinkIsActive={drinkIsActive} setTypeIsActive={setTypeIsActive}
-                                        setByType={setByType} />)}
-                                </section>}
+                        {drinkIsActive && <section className='type-sect'>
+                            {drinkTypes.length > 0 && drinkTypes.map(t => <TypeButton key={t} type={t}
+                                drinkIsActive={drinkIsActive} setTypeIsActive={setTypeIsActive}
+                                setByType={setByType} />)}
+                        </section>}
 
-                                {foodIsActive && <section className='type-sect'>
-                                    {foodTypes.length > 0 && foodTypes.map(t => <TypeButton key={t} type={t}
-                                        setTypeIsActive={setTypeIsActive} setByType={setByType} />)}
+                        {foodIsActive && <section className='type-sect'>
+                            {foodTypes.length > 0 && foodTypes.map(t => <TypeButton key={t} type={t}
+                                setTypeIsActive={setTypeIsActive} setByType={setByType} />)}
 
-                                </section>}
+                        </section>}
 
-                                {(!typeIsActive && drinkIsActive) &&
-                                    <section className='items-sect'>
-                                        {
-                                            items && items.map(i => i.family === 'drinks' && <ItemLine key={i._id} item={i}
-                                                addItemHandler={addItemHandler} />)
-                                        }
-                                    </section>}
+                        {(!typeIsActive && drinkIsActive) &&
+                            <section className='items-sect'>
+                                {
+                                    items && items.map(i => i.family === 'drinks' && <ItemLine key={i._id} item={i}
+                                        addItemHandler={addItemHandler} />)
+                                }
+                            </section>}
 
-                                {(!typeIsActive && foodIsActive) &&
-                                    <section className='items-sect'>
-                                        {
-                                            items && items.map(i => i.family === 'food' && <ItemLine key={i._id} item={i}
-                                                addItemHandler={addItemHandler} />)
-                                        }
-                                    </section>}
-                                {typeIsActive &&
-                                    <section className='items-sect'>
-                                        {
-                                            items && items.map(i => i.type === byType && <ItemLine key={i._id} item={i}
-                                                addItemHandler={addItemHandler} />)
-                                        }
-                                    </section>}
+                        {(!typeIsActive && foodIsActive) &&
+                            <section className='items-sect'>
+                                {
+                                    items && items.map(i => i.family === 'food' && <ItemLine key={i._id} item={i}
+                                        addItemHandler={addItemHandler} />)
+                                }
+                            </section>}
+                        {typeIsActive &&
+                            <section className='items-sect'>
+                                {
+                                    items && items.map(i => i.type === byType && <ItemLine key={i._id} item={i}
+                                        addItemHandler={addItemHandler} />)
+                                }
+                            </section>}
 
-                            </>
-                            :
-                            <div className='error'>No such table !</div>
-                    }
-                </div >
-                :
-                <TableError />
+                    </>
+                    :
+                    <div className='error'>No such table !</div>
             }
-        </>
+        </div >
 
     )
 }
