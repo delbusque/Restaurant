@@ -59,16 +59,9 @@ button.nav__item-auth {
   /* border: 1px solid black; */
   border-radius: 2px;
   font-style: normal;
+  margin-left: 10px;
 }
 
-/* button.nav__item-auth:hover {
-  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.15),
-    inset 0px 4px 8px rgba(0, 0, 0, 0.15),
-    inset 0px 4px 8px rgba(0, 0, 0, 0.15);
-  transition: 0.2s;
-  transform: translateY(2px);
-  cursor: pointer;
-  } */
 
 .nav__item:hover:nth-child(1),
 .nav__item-auth:hover {
@@ -76,6 +69,7 @@ button.nav__item-auth {
   cursor: pointer;
   /* background-color: rgba(255, 255, 255, 0.24); */
 }
+
 
 .nav__item-on {
   margin: 0 20px;
@@ -127,4 +121,15 @@ button.nav__item-auth {
   border-radius: 4px;
   box-sizing: border-box;
   border: 2px solid rgba(220, 20, 60, 0.76);
+}
+
+.u-email {
+  margin: auto;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.u-email:hover {
+  box-shadow: 2px 0px 0px rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(255, 255, 255, 0.24); */
 }

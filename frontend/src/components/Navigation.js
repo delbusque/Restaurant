@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 
@@ -15,18 +15,25 @@ const Navigation = () => {
     return (
         <header className="header">
             <h1 className="deli"><Link className='links' to='/'>Deli</Link></h1>
-            <ul className="nav">
+            <div className="nav__auth">
                 <Link className='links' to='/tables'>
                     <li className="nav__item">Tables</li>
                 </Link>
                 <Link className='links' to='/items'>
                     <li className="nav__item">Items</li>
                 </Link>
-            </ul>
+            </div>
 
+            <div className="nav__auth">
+                <Link className='links' to='/staff'><li className="nav__item-auth">Staff</li></Link>
+                <Link className='links' to='/messages'><li className="nav__item-auth">Board</li></Link>
+
+            </div>
 
             {user && (<div className="nav__auth">
-                <span className='nav__auth__email'>{user.email}</span>
+
+                <NavLink className='links' to='/my-account'><span className='u-email'>{user.email}</span></NavLink>
+
                 <button className="nav__item-auth" onClick={logoutHandler}>Logout</button>
             </div>)}
 
