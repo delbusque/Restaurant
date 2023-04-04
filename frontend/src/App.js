@@ -14,6 +14,7 @@ import ItemsList from './components/Items/ItemsList.js';
 import * as apiService from './services/apiService.js'
 
 import Navigation from './components/Navigation.js';
+import Account from './pages/Account';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
@@ -53,6 +54,8 @@ function App() {
             <Route path='/items' element={<ItemsList />} />
             <Route path='/tables' element={<Tables tables={tables} setTables={setTables} />} />
             <Route path='/tables/:number' element={<TableView tables={tables} setTables={setTables} />} />
+
+            <Route path='/my-account' element={<Account />} />
 
             <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
             <Route path='/signup' element={!user ? <Signup /> : <Navigate to='/' />} />
