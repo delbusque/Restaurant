@@ -71,7 +71,7 @@ const ItemsList = () => {
                         }
                     </section>}
                 <section id='iL-form' className='iL-form'>
-                    <AddItemForm setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
+                    {user && <AddItemForm setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />}
                 </section>
             </div>
 
