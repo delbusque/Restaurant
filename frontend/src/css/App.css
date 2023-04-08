@@ -165,3 +165,52 @@ button.nav__item-auth {
   box-shadow: 2px 0px 0px rgba(0, 0, 0, 0.5);
   /* background-color: rgba(255, 255, 255, 0.24); */
 }
+
+/* User Details*/
+
+:root {
+  --primary: #27AE60;
+  --error: crimson;
+}
+
+.users {
+  width: 600px;
+  margin: 40px auto;
+}
+
+.user-details {
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.user-details h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  /* color: var(--primary); */
+}
+
+.user-details p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.user-details span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
+
+.anchor-mail {
+  text-decoration: none;
+  color: orange;
+}
