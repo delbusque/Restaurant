@@ -17,6 +17,7 @@ import Navigation from './components/Navigation.js';
 import Account from './pages/Account';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Users from './pages/Users';
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
             <Route path='/tables' element={<Tables tables={tables} setTables={setTables} />} />
             <Route path='/tables/:number' element={<TableView tables={tables} setTables={setTables} />} />
 
+            <Route path='/staff' element={user ? <Users /> : <Navigate to='/login' />} />
             <Route path='/my-account' element={<Account />} />
 
             <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
