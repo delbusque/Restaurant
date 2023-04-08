@@ -12,13 +12,41 @@
 }
 
 .header {
-  position: sticky;
-  top: 0;
+  /* position: sticky;
+  top: 0; */
   background-color: rgb(240, 239, 237);
   padding: 20px 40px;
   display: flex;
   justify-content: space-between;
 }
+
+@media screen and (max-width: 900px) {
+  .header {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .deli {
+    display: none;
+  }
+
+  .iL-buttons-sect,
+  .iL-main {
+    flex-direction: column;
+  }
+
+  .iL-items,
+  iL-form {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    max-width: 400px;
+  }
+}
+
 
 .deli {
   font-family: "Dancing Script", cursive;
@@ -31,7 +59,7 @@
 }
 
 .nav__auth {
-  display: inline-block;
+  display: flex;
 }
 
 .nav__item,
@@ -93,6 +121,10 @@ button.nav__item-auth {
   color: inherit;
   text-decoration: inherit;
   cursor: auto;
+}
+
+.nav__auth>.links {
+  margin: auto;
 }
 
 .marker {

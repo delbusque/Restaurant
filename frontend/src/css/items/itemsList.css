@@ -17,6 +17,30 @@
   margin-left: 35px;
 }
 
+@media screen and (max-width: 900px) {
+  .iL-family-sect {
+    flex-direction: row;
+    margin: auto;
+  }
+
+  .family-btn-drinks {
+    margin-top: 17px;
+  }
+
+  .iL-buttons-sect {
+    width: 100%;
+  }
+
+  .iL-type-sect {
+    text-align: left;
+    margin-top: 12px;
+    margin-left: 0px;
+    padding-left: 15px;
+  }
+}
+
+
+
 .iL-main {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
