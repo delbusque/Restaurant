@@ -8,7 +8,6 @@ const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
-    const [checkPasswords, setCheckPasswords] = useState('');
 
     const { signup, error, setError, isLoading } = useSignup();
 
@@ -43,7 +42,10 @@ const Signup = () => {
                 value={repeatPassword} />
 
             <button disabled={isLoading}>Sign Up</button>
+
             {error && <div className={styles['error']}>{error}</div>}
+
+            <p>* Password must be at least 8 characters long with minimum 1 uppercase and lowercase letters, 1 digit and 1 symbol !</p>
         </form >
     )
 }

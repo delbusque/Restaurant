@@ -55,3 +55,7 @@ form.signup .error {
     box-sizing: border-box;
     border: 2px solid rgba(220, 20, 60, 0.76);
 }
+
+.signup p {
+    margin-top: 15px;
+}
