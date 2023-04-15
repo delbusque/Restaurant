@@ -94,6 +94,20 @@ const ItemsList = () => {
 
                 <section id='iL-form' className='iL-form'>
                     {
+                        showInfo && <StockItemInfo item={currentItem} setShowInfo={setShowInfo} />
+                    }
+                    {
+                        editInfo && <StockItemEdit item={currentItem} setEditInfo={setEditInfo} />
+                    }
+                    {
+                        (user && !showInfo && !editInfo) && <AddItemForm setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
+                    }
+                </section>
+
+                {/* 
+                <section id='iL-form' className='iL-form'>
+
+                    {
                         (user && !showInfo)
                             ? <AddItemForm setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
                             : <StockItemInfo item={currentItem} setShowInfo={setShowInfo} />
@@ -103,7 +117,7 @@ const ItemsList = () => {
                             ? <StockItemEdit item={currentItem} setEditInfo={setEditInfo} />
                             : <StockItemInfo item={currentItem} setShowInfo={setShowInfo} />
                     }
-                </section>
+                </section> */}
 
 
             </div>
