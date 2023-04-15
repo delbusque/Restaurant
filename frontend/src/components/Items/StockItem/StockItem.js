@@ -4,7 +4,7 @@ import ItemsContext from '../../../contexts/ItemsContext';
 import { useAuthContext } from '../../../hooks/useAuthContext';
 import StockItemModal from './StockItemModal';
 
-const StockItem = ({ item }) => {
+const StockItem = ({ item, infoHandler }) => {
 
     const { items, setItems } = useContext(ItemsContext);
     const [error, setError] = useState(null);
@@ -53,7 +53,7 @@ const StockItem = ({ item }) => {
 
                 {user &&
                     <>
-                        <button className={styles['stock-item__info']}>
+                        <button className={styles['stock-item__info']} onClick={() => infoHandler(item)}>
                             <i class="fa-solid fa-info info"></i>
                         </button>
 

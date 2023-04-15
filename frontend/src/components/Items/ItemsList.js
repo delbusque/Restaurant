@@ -9,6 +9,7 @@ import StockItem from './StockItem/StockItem.js';
 import AddItemForm from './AddItemForm/AddItemForm';
 
 import familiesAndTypes from "../../services/familiesAndTypes.js";
+import StockItemInfo from './StockItem/StockItemInfo.js';
 
 const ItemsList = () => {
 
@@ -26,6 +27,14 @@ const ItemsList = () => {
     const { families, drinkTypes, foodTypes } = familiesAndTypes(items);
     drinkTypes.sort((a, b) => a.localeCompare(b));
     foodTypes.sort((a, b) => a.localeCompare(b));
+
+    const [showInfo, setShowInfo] = useState(false);
+    const [currentItem, setCurrentItem] = useState(null);
+
+    const infoHandler = (item) => {
+        setShowInfo(true);
+        setCurrentItem(item);
+    }
 
     return (
         <>
@@ -54,25 +63,35 @@ const ItemsList = () => {
                 {(!typeIsActive && drinkIsActive) &&
                     <section className='iL-items'>
                         {
-                            items && items.map(i => i.family === 'drinks' && <StockItem key={i._id} item={i} />)
+                            items && items.map(i => i.family === 'drinks' && <StockItem key={i._id} item={i}
+                                infoHandler={infoHandler} />)
                         }
                     </section>}
 
                 {(!typeIsActive && foodIsActive) &&
                     <section className='iL-items'>
                         {
-                            items && items.map(i => i.family === 'food' && <StockItem key={i._id} item={i} />)
+                            items && items.map(i => i.family === 'food' && <StockItem key={i._id} item={i}
+                                infoHandler={infoHandler} />)
                         }
                     </section>}
                 {typeIsActive &&
                     <section className='iL-items'>
                         {
-                            items && items.map(i => i.type === byType && <StockItem key={i._id} item={i} />)
+                            items && items.map(i => i.type === byType && <StockItem key={i._id} item={i}
+                                infoHandler={infoHandler} />)
                         }
                     </section>}
+
                 <section id='iL-form' className='iL-form'>
-                    {user && <AddItemForm setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />}
+                    {
+                        (user && !showInfo)
+                            ? <AddItemForm setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
+                            : <StockItemInfo item={currentItem} setShowInfo={setShowInfo} />
+                    }
                 </section>
+
+
             </div>
 
         </>
