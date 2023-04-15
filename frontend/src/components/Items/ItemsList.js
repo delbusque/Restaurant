@@ -71,9 +71,10 @@ const ItemsList = () => {
             <div className='iL-main'>
                 {(!typeIsActive && drinkIsActive) &&
                     <section className='iL-items'>
+                        {items.length < 1 && <div className='table-error'>Please add an item !</div>}
                         {
-                            items && items.map(i => i.family === 'drinks' && <StockItem key={i._id} item={i}
-                                infoHandler={infoHandler} editHandler={editHandler} />)
+                            items && items.map(i => i.family === 'drinks' && <StockItem key={i._id} item={i} setShowInfo={setShowInfo}
+                                setEditInfo={setEditInfo} infoHandler={infoHandler} editHandler={editHandler} />)
                         }
                     </section>}
 
@@ -81,13 +82,15 @@ const ItemsList = () => {
                     <section className='iL-items'>
                         {
                             items && items.map(i => i.family === 'food' && <StockItem key={i._id} item={i}
-                                infoHandler={infoHandler} />)
+                                setShowInfo={setShowInfo} setEditInfo={setEditInfo}
+                                infoHandler={infoHandler} editHandler={editHandler} />)
                         }
                     </section>}
                 {typeIsActive &&
                     <section className='iL-items'>
                         {
-                            items && items.map(i => i.type === byType && <StockItem key={i._id} item={i}
+                            items && items.map(i => i.type === byType && <StockItem key={i._id} item={i} setShowInfo={setShowInfo}
+                                setEditInfo={setEditInfo}
                                 infoHandler={infoHandler} editHandler={editHandler} />)
                         }
                     </section>}

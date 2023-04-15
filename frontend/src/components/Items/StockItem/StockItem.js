@@ -4,7 +4,7 @@ import ItemsContext from '../../../contexts/ItemsContext';
 import { useAuthContext } from '../../../hooks/useAuthContext';
 import StockItemModal from './StockItemModal';
 
-const StockItem = ({ item, infoHandler, editHandler }) => {
+const StockItem = ({ item, infoHandler, editHandler, setShowInfo, setEditInfo }) => {
 
     const { items, setItems } = useContext(ItemsContext);
     const [error, setError] = useState(null);
@@ -13,6 +13,10 @@ const StockItem = ({ item, infoHandler, editHandler }) => {
     const { user } = useAuthContext();
 
     const deleteHandler = async () => {
+
+        setShowInfo(false);
+        setEditInfo(false);
+
         if (!user) {
             setError('You aren`t authorized to delete this item !');
             return;
