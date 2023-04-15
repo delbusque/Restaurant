@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "63d399f213b75425bf7eaaf9"
+  },
+  "paid": false,
+  "opened": false,
+  "orders": [],
+  "bill": 0,
+  "number": "1"
+},{
+  "_id": {
+    "$oid": "63d399f213b75425bf7eaafa"
+  },
+  "paid": false,
+  "opened": false,
+  "orders": [],
+  "bill": 0,
+  "number": "2"
+}]
