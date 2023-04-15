@@ -78,6 +78,12 @@ const addNewStockItem = async (req, res) => {
     price <= 0 && negZero.push('price');
     quantity <= 0 && negZero.push('quantity');
 
+    const exists = await Item.findOne({ name });
+
+    if (exists) {
+        return res.status(400).json({ error: 'Already an item with such name in stock !', emptyFields, negZero })
+    }
+
     if (emptyFields.length > 0) {
         return res.status(400).json({ error: 'All fields should be filled !', emptyFields, negZero })
     }
