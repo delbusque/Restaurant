@@ -1,21 +1,44 @@
 import styles from './StockItemEdit.module.css'
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
+import ItemsContext from '../../../contexts/ItemsContext';
+import { useAuthContext } from "../../../hooks/useAuthContext";
 
-const StockItemEdit = ({ item }) => {
 
+const StockItemEdit = ({ item, setEditInfo }) => {
+    const { items, setItems } = useContext(ItemsContext);
+    const { user } = useAuthContext();
+
+    const [inputName, setInputName] = useState('');
+    const [family, setFamily] = useState('');
+    const [type, setType] = useState('');
+    const [price, setPrice] = useState('');
+    const [quantity, setQuantity] = useState('');
+    const [emptyFields, setEmptyFields] = useState([]);
+    const [negZero, setNegZero] = useState([]);
     const [error, setError] = useState(null);
+
+    const typeHandler = (e) => {
+        setType(e.target.value);
+    }
+
+    useEffect(() => {
+        setInputName(item.name);
+        setPrice(item.price);
+        setQuantity(item.quantity);
+    }, [item])
+
     return (
         <>
-
             <form className={styles['msform']}>
                 <fieldset>
-                    <h2 className={styles['fs-title']}>Edit item</h2>
-                    {/* <input className={emptyFields.includes('name') ? styles['input-error'] : ''}
+                    <button className={styles['modal-close']} onClick={() => setEditInfo(false)}> x </button>
+                    <h2 className={styles['fs-title']}>{item.name}</h2>
+
+                    <input className={emptyFields.includes('name') ? styles['input-error'] : ''}
                         type="text" name="name" placeholder="Name"
                         onChange={(e) => setInputName(e.target.value)}
                         value={inputName}
                     />
-
                     <select
                         className={emptyFields.includes('family') ? styles['input-error'] : ''}
                         onChange={(e) => {
@@ -65,12 +88,7 @@ const StockItemEdit = ({ item }) => {
                         value={quantity}
                     />
 
-                    <input
-                        type="submit"
-                        className={styles['action-button']}
-                        defaultValue="Previous"
-                    /> */}
-
+                    <button className={styles['action-button']}>Edit</button>
 
                 </fieldset>
             </form>

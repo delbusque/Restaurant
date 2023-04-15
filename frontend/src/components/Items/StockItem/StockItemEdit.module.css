@@ -9,7 +9,7 @@
 }
 
 .msform fieldset {
-    background: white;
+    background: rgba(66, 168, 110, 0.396);
     border: 0 none;
     border-radius: 3px;
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.152);
@@ -147,4 +147,15 @@
 
 .msform .input-error {
     border: 2px solid rgba(220, 20, 60, 0.76);
+}
+
+/* ...................................... */
+.modal-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: none;
+    background-color: #d1cdc2f6;
+    cursor: pointer;
+    font-size: smaller;
 }
