@@ -1,0 +1,60 @@
+.msform {
+    width: 300px;
+    margin-right: 30px;
+    text-align: center;
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    display: inline-block;
+}
+
+.msform fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.152);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.item-name {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 15px;
+}
+
+.modal-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: none;
+    background-color: #d1cdc2f6;
+    cursor: pointer;
+    font-size: smaller;
+}
+
+.modal-close:hover {
+    box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.details-name {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.details-quantity,
+.details-family {
+    font-weight: 100;
+    margin-bottom: 10px;
+}
+
+.details-type {
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.details-price {
+    font-weight: 600;
+}
