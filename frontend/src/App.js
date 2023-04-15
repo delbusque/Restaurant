@@ -57,7 +57,7 @@ function App() {
             <Route path='/tables/:number' element={<TableView tables={tables} setTables={setTables} />} />
 
             <Route path='/staff' element={user ? <Users /> : <Navigate to='/login' />} />
-            <Route path='/my-account' element={<Account />} />
+            <Route path='/my-account' element={user ? <Account /> : <Navigate to='/login' />} />
 
             <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
             <Route path='/signup' element={!user ? <Signup /> : <Navigate to='/' />} />
