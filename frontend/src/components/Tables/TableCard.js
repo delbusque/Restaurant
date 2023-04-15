@@ -29,19 +29,19 @@ const TableCard = ({ table, setTables, addItemHandler, deleteItemHandler }) => {
     return (
         <section className={!table.paid ? 'orders-sect' : 'orders-sect-paid'}>
             <div className="tb-head">
-                <div className='tb-title'>МАСА</div>
-                {table.paid && <button className='btn-green'>ПЛАТЕНА</button>}
+                <div className='tb-title'>TABLE</div>
+                {table.paid && <button className='btn-green'>PAID</button>}
                 <div className='tb-num'>{table.number}</div>
             </div>
 
             <div className='ord-footer'>
-                <div className='tb-foot'>СУМА ЗА ПЛАЩАНЕ</div>
-                <div className='tb-total'>{totalSum.toFixed(2)} лв.</div>
+                <div className='tb-foot'>DUE AMOUNT</div>
+                <div className='tb-total'>{totalSum.toFixed(2)} lv.</div>
                 <div className="btn-cont">
-                    <button className='btn-tables' onClick={tabHandler}>МАСИ</button>
+                    <button className='btn-tables' onClick={tabHandler}>TABLES</button>
                     {!table.paid
-                        ? <button className={table.orders.length > 0 ? 'btn-paid' : 'btn-dis'} onClick={payHandler}>ПЛАЩАНЕ</button>
-                        : <button className='btn-clear' onClick={clearHandler}>ИЗЧИСТИ</button>
+                        ? <button className={table.orders.length > 0 ? 'btn-paid' : 'btn-dis'} onClick={payHandler}>PAY</button>
+                        : <button className='btn-clear' onClick={clearHandler}>CLEAR</button>
                     }
                 </div>
             </div>
@@ -52,7 +52,7 @@ const TableCard = ({ table, setTables, addItemHandler, deleteItemHandler }) => {
                     <button className='button-53' role="button" onClick={() => deleteItemHandler(o)}>-</button>
                     <button className='button-53-green' role="button" onClick={() => addItemHandler(o)}>+</button>
                     <div className='ord-count'><span className='ord-counter'>{o.count} </span> x {o.price.toFixed(2)}</div>
-                    <div className='ord-total'>{(o.count * o.price).toFixed(2)} <span className='lv'>лв.</span></div>
+                    <div className='ord-total'>{(o.count * o.price).toFixed(2)} <span className='lv'>lv.</span></div>
                 </div>)
             }
             <br />

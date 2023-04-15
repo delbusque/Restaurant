@@ -49,14 +49,21 @@ const StockItem = ({ item }) => {
                     <span className={styles['stock-item__quantityType']}>{item.quantityType}</span>
                 </div>
                 <div className={styles['stock-item__price']}>{item.price.toFixed(2)}
-                    <span className='lv'> лв.</span></div>
+                    <span className='lv'> lv.</span></div>
 
-                {user && <><button className={styles['stock-item__edit']}>
-                    <i className="fa-solid fa-marker marker"></i>
-                </button>
-                    <button className={styles['stock-item__delete']} onClick={() => setOpenModal(true)}>
-                        <i className="fa-solid fa-trash-arrow-up trash"></i>
-                    </button></>}
+                {user &&
+                    <>
+                        <button className={styles['stock-item__info']}>
+                            <i class="fa-solid fa-info info"></i>
+                        </button>
+
+                        <button className={styles['stock-item__edit']}>
+                            <i className="fa-solid fa-marker marker"></i>
+                        </button>
+                        <button className={styles['stock-item__delete']} onClick={() => setOpenModal(true)}>
+                            <i className="fa-solid fa-trash-arrow-up trash"></i>
+                        </button>
+                    </>}
             </div>
 
         </>
