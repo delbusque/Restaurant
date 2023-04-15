@@ -1,4 +1,4 @@
-### To run the project you have to download the whole project repository with backend and frontend folders. 
+##### - To run the project you have to download the whole project repository with backend and frontend folders. 
 
 ### You need installed Node.js and MongoDB on your machine##. 
 
