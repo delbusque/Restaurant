@@ -11,11 +11,10 @@ const Users = () => {
         }
         fetchUsers();
     }, [])
-    console.log(users);
 
     return (
         <div className='users'>
-            {users.map(u => <UserDetails user={u} />)}
+            {users.map(u => <UserDetails key={u._id} user={u} />)}
         </div>
     )
 }
