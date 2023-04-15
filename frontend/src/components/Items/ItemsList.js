@@ -10,6 +10,7 @@ import AddItemForm from './AddItemForm/AddItemForm';
 
 import familiesAndTypes from "../../services/familiesAndTypes.js";
 import StockItemInfo from './StockItem/StockItemInfo.js';
+import StockItemEdit from './StockItem/StockItemEdit.js';
 
 const ItemsList = () => {
 
@@ -29,10 +30,18 @@ const ItemsList = () => {
     foodTypes.sort((a, b) => a.localeCompare(b));
 
     const [showInfo, setShowInfo] = useState(false);
+    const [editInfo, setEditInfo] = useState(false);
     const [currentItem, setCurrentItem] = useState(null);
 
     const infoHandler = (item) => {
         setShowInfo(true);
+        setEditInfo(false);
+        setCurrentItem(item);
+    }
+
+    const editHandler = (item) => {
+        setEditInfo(true);
+        setShowInfo(false);
         setCurrentItem(item);
     }
 
@@ -64,7 +73,7 @@ const ItemsList = () => {
                     <section className='iL-items'>
                         {
                             items && items.map(i => i.family === 'drinks' && <StockItem key={i._id} item={i}
-                                infoHandler={infoHandler} />)
+                                infoHandler={infoHandler} editHandler={editHandler} />)
                         }
                     </section>}
 
@@ -79,7 +88,7 @@ const ItemsList = () => {
                     <section className='iL-items'>
                         {
                             items && items.map(i => i.type === byType && <StockItem key={i._id} item={i}
-                                infoHandler={infoHandler} />)
+                                infoHandler={infoHandler} editHandler={editHandler} />)
                         }
                     </section>}
 
@@ -87,6 +96,11 @@ const ItemsList = () => {
                     {
                         (user && !showInfo)
                             ? <AddItemForm setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
+                            : <StockItemInfo item={currentItem} setShowInfo={setShowInfo} />
+                    }
+                    {
+                        (user && !editInfo)
+                            ? <StockItemEdit item={currentItem} setEditInfo={setEditInfo} />
                             : <StockItemInfo item={currentItem} setShowInfo={setShowInfo} />
                     }
                 </section>

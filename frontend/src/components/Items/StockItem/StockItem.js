@@ -4,7 +4,7 @@ import ItemsContext from '../../../contexts/ItemsContext';
 import { useAuthContext } from '../../../hooks/useAuthContext';
 import StockItemModal from './StockItemModal';
 
-const StockItem = ({ item, infoHandler }) => {
+const StockItem = ({ item, infoHandler, editHandler }) => {
 
     const { items, setItems } = useContext(ItemsContext);
     const [error, setError] = useState(null);
@@ -57,7 +57,7 @@ const StockItem = ({ item, infoHandler }) => {
                             <i class="fa-solid fa-info info"></i>
                         </button>
 
-                        <button className={styles['stock-item__edit']}>
+                        <button className={styles['stock-item__edit']} onClick={() => editHandler(item)}>
                             <i className="fa-solid fa-marker marker"></i>
                         </button>
                         <button className={styles['stock-item__delete']} onClick={() => setOpenModal(true)}>
