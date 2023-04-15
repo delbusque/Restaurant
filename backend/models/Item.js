@@ -29,9 +29,19 @@ const itemSchema = new Schema({
         type: String,
         default: function () {
             if (this.family === 'drinks') {
-                return 'ml';
+                if (this.quantity < 1) {
+                    return 'gr';
+                }
+                else {
+                    return 'l';
+                }
             } else if (this.family === 'food') {
-                return 'gr';
+                if (this.quantity < 1) {
+                    return 'gr';
+                }
+                else {
+                    return 'kg';
+                }
             }
         }
     }

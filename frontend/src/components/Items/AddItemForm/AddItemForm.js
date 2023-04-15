@@ -44,15 +44,16 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
         })
 
         const result = await response.json();
+        console.log(result);
 
         if (!response.ok && result.emptyFields) {
             setError(result.error);
             setEmptyFields(result.emptyFields);
         }
-        if (!response.ok && result.error.includes('duplicate key')) {
-            setError(`${name} is already in stock !`);
-            setEmptyFields(['name']);
-        }
+        // if (!response.ok && result.error.includes('duplicate key')) {
+        //     setError(`${name} is already in stock !`);
+        //     setEmptyFields(['name']);
+        // }
         if (!response.ok) {
             setError(result.error);
             setNegZero(result.negZero);
@@ -118,10 +119,6 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
                             <option value='fresh'>Fresh</option>
                             <option value='water'>Water</option>
                             <option value='other'>Other</option>
-                            <option value='juice1'>Juice1</option>
-                            <option value='fresh2'>Fresh2</option>
-                            <option value='water3'>Water3</option>
-                            <option value='other4'>Other4</option>
                         </select>}
 
                     {family === 'food' &&
@@ -130,6 +127,8 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
                             <option selected disabled>Choose from food :</option>
                             <option value='salad'>Salad</option>
                             <option value='grill'>Grill</option>
+                            <option value='burgers'>Burgers</option>
+                            <option value='pizza'>Pizza</option>
                         </select>}
 
                     <input type="number" name="price" placeholder="Price"
