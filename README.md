@@ -1,6 +1,6 @@
 ## Restaurant managing system
 
-#### - To run the project you have to download the whole project repository. 
+#### - To run the project you need the whole project repository. 
 
 #### - You need installed Node.js and MongoDB on your machine##. 
 
@@ -11,4 +11,3 @@
 #### - In the integrated terminal in VS Code, in the backend directory as well as in the frontend one you should run npm i to download necessary npm packages.
 
 #### - In separate terminals in the backend directory execute npm run nodemon for MongoDB server and in the frontend directory npm start for the frontend server.
-
