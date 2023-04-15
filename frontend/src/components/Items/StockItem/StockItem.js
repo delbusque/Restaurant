@@ -51,12 +51,11 @@ const StockItem = ({ item, infoHandler, editHandler }) => {
                 <div className={styles['stock-item__price']}>{item.price.toFixed(2)}
                     <span className='lv'> lv.</span></div>
 
+                <button className={styles['stock-item__info']} onClick={() => infoHandler(item)}>
+                    <i class="fa-solid fa-info info"></i>
+                </button>
                 {user &&
                     <>
-                        <button className={styles['stock-item__info']} onClick={() => infoHandler(item)}>
-                            <i class="fa-solid fa-info info"></i>
-                        </button>
-
                         <button className={styles['stock-item__edit']} onClick={() => editHandler(item)}>
                             <i className="fa-solid fa-marker marker"></i>
                         </button>
