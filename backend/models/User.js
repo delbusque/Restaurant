@@ -23,7 +23,7 @@ userSchema.statics.signup = async function (email, password) {
     }
 
     if (!validator.isEmail(email) || !validator.isStrongPassword(password)) {
-        throw Error('Invalid email format or password must be minumum of 8 characters and with a minimum one lowercase letter, one uppercase letter and one symbol !');
+        throw Error('Invalid email or password format !');
     }
 
     const exists = await this.findOne({ email });
