@@ -143,6 +143,15 @@ button.nav__item-auth {
   color: rgb(220, 20, 60);
 }
 
+.info {
+  color: #016387be;
+  font-size: large;
+}
+
+.info:hover {
+  color: #0b323f;
+}
+
 .table-error {
   padding: 10px;
   margin: 150px auto;
