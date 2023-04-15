@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import ItemsContext from './contexts/ItemsContext.js';
 import { useAuthContext } from './hooks/useAuthContext';
 
-import Home from './components/Home';
+import Home from './pages/Home';
 import Tables from './components/Tables/Tables.js';
 import TableView from './components/Tables/TableView.js';
 import ItemsList from './components/Items/ItemsList.js';
