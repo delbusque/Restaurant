@@ -7,7 +7,7 @@ const Users = () => {
 
     useEffect(() => {
         const fetchUsers = () => {
-            fetch('/users').then(res => res.json()).then(data => setUsers(data))
+            fetch('/staff').then(res => res.json()).then(data => setUsers(data));
         }
         fetchUsers();
     }, [])

@@ -21,7 +21,7 @@ app.use('/tables', tableRoutes);
 app.use('/items', itemRoutes);
 
 app.use('/user', userRoutes);
-app.use('/users', userRoutes);
+app.use('/staff', userRoutes);
 
 // app.use('/drinks', itemRoutes);
 // app.use('/food', itemRoutes);
