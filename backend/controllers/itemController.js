@@ -118,10 +118,31 @@ const deleteStockItem = async (req, res) => {
 
 const editStockItem = async (req, res) => {
     const { id } = req.params;
+    const { name, family, type, price, quantity } = req.body;
+
     const editedItem = { ...req.body };
+
+    const emptyFields = [];
+    !name && emptyFields.push('name');
+    !family && emptyFields.push('family');
+    !type && emptyFields.push('type');
+    !price && emptyFields.push('price');
+    !quantity && emptyFields.push('quantity');
+
+    const negZero = [];
+    price <= 0 && negZero.push('price');
+    quantity <= 0 && negZero.push('quantity');
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
         res.status(400).json({ error: 'No such item to edit !' })
+    }
+
+    if (emptyFields.length > 0) {
+        return res.status(400).json({ error: 'All fields should be filled !', emptyFields, negZero })
+    }
+
+    if (price <= 0 || quantity <= 0) {
+        return res.status(400).json({ error: 'Price and quantity can not be negative or zero !', negZero })
     }
 
     try {
