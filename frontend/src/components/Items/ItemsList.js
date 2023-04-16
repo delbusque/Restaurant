@@ -75,7 +75,11 @@ const ItemsList = () => {
             <div className='iL-main'>
                 {(!typeIsActive && drinkIsActive) &&
                     <section className='iL-items'>
-                        {items.length < 1 && <div className={styles['table-error']}>Please add an item upon <Link to='/login' className={styles['err-login']}> login</Link> or <Link to='/signup' className={styles['err-signup']}> sign up</Link>!</div>}
+
+                        {(!user && items.length < 1) && <div className={styles['table-error']}>Please add an item after <Link to='/login' className={styles['err-login']}> login</Link> or <Link to='/signup' className={styles['err-signup']}> sign up</Link> !</div>}
+
+                        {(user && !items) && <div className={styles['table-error']}>Please add an item to stock !</div>}
+
                         {
                             items && items.map(i => i.family === 'drinks' && <StockItem key={i._id} item={i} setShowInfo={setShowInfo}
                                 setEditInfo={setEditInfo} infoHandler={infoHandler} editHandler={editHandler} />)

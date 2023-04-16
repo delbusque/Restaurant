@@ -44,7 +44,6 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
         })
 
         const result = await response.json();
-        console.log(result);
 
         if (!response.ok && result.emptyFields) {
             setError(result.error);
