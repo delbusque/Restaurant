@@ -70,21 +70,11 @@ const StockItemEdit = ({ item, setEditInfo, setDrinkIsActive, setFoodIsActive })
         if (response.ok) {
 
             let oldItems = items.filter(i => i._id !== result._id);
-            console.log(result);
             oldItems.push(result);
-            console.log(oldItems);
-            window.localStorage.setItem('items', JSON.stringify(oldItems));
 
+            window.localStorage.setItem('items', JSON.stringify(oldItems));
             setItems(JSON.parse(window.localStorage.getItem('items')));
 
-
-
-            // setItems(oldState => [...oldItems, result]);
-            // console.log(items);
-            // setItems(oldState => oldState.filter(i => i._id !== editedItem._id));
-            // console.log(items);
-            // // setItems(oldState => [...oldState, result]);
-            // window.localStorage.setItem('items', JSON.stringify(items));
             setError(null);
             setInputName('');
             setFamily('');
