@@ -42,8 +42,43 @@ const getAllUsers = async (req, res) => {
 
 }
 
+const editUser = async (req, res) => {
+    const { id } = req.params;
+    const { firstName, lastName, phone } = req.body;
+
+
+    const emptyFields = [];
+    !firstName && emptyFields.push('firstName');
+    !lastName && emptyFields.push('lastName');
+    !phone && emptyFields.push('phone');
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        res.status(400).json({ error: 'No such user to edit !' })
+    }
+
+    if (emptyFields.length > 0) {
+        return res.status(400).json({ error: 'All fields should be filled !', emptyFields })
+    }
+
+    try {
+        const updatedUser = await User.findbyIdAndUpdate(id, { firstName, lastName, phone }, { new: true });
+
+        if (!updatedUser) {
+            res.status(400).json({ error: 'No such User !' })
+        }
+
+        res.status(200).json(updatedUser);
+
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+
+
+}
+
 module.exports = {
     loginUser,
     signupUser,
-    getAllUsers
+    getAllUsers,
+    editUser
 }
