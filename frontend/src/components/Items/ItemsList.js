@@ -20,6 +20,7 @@ const ItemsList = () => {
     const { user } = useAuthContext();
 
     const { items } = useContext(ItemsContext);
+
     items.sort((a, b) => a.name.localeCompare(b.name));
 
     const [drinkIsActive, setDrinkIsActive] = useState(true);
@@ -100,10 +101,12 @@ const ItemsList = () => {
 
                 <section id='iL-form' className='iL-form'>
                     {
-                        showInfo && <StockItemInfo item={currentItem} setShowInfo={setShowInfo} />
+                        showInfo && <StockItemInfo item={currentItem} setShowInfo={setShowInfo}
+                            setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
                     }
                     {
-                        editInfo && <StockItemEdit item={currentItem} setEditInfo={setEditInfo} />
+                        editInfo && <StockItemEdit item={currentItem} setEditInfo={setEditInfo}
+                            setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
                     }
                     {
                         (user && !showInfo && !editInfo) && <AddItemForm setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />

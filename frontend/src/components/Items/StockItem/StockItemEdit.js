@@ -4,7 +4,7 @@ import ItemsContext from '../../../contexts/ItemsContext';
 import { useAuthContext } from "../../../hooks/useAuthContext";
 
 
-const StockItemEdit = ({ item, setEditInfo }) => {
+const StockItemEdit = ({ item, setEditInfo, setDrinkIsActive, setFoodIsActive }) => {
     const { items, setItems } = useContext(ItemsContext);
     const { user } = useAuthContext();
 
@@ -27,9 +27,90 @@ const StockItemEdit = ({ item, setEditInfo }) => {
         setQuantity(item.quantity);
     }, [item])
 
+    const editItemHandler = async (e) => {
+        e.preventDefault();
+
+        if (!user) {
+            setError('You are not authorized to add menu items !');
+            return;
+        }
+
+        let name = inputName.charAt(0).toUpperCase() + inputName.slice(1).toLowerCase();
+        let quantityType;
+
+        if (family === 'drinks') {
+            quantityType = quantity < 1 ? 'ml' : 'l';
+        } else if (family === 'food') {
+            quantityType = quantity < 1 ? 'gr' : 'kg';
+        }
+
+        const editedItem = { name, family, price, type, quantity, quantityType, _id: item._id }
+
+        const response = await fetch(`/items/edit/${item._id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
+            },
+            body: JSON.stringify(editedItem)
+        })
+
+        const result = await response.json();
+
+        if (!response.ok && result.emptyFields) {
+            setError(result.error);
+            setEmptyFields(result.emptyFields);
+        }
+
+        if (!response.ok) {
+            setError(result.error);
+            setNegZero(result.negZero);
+        }
+
+        if (response.ok) {
+
+            let oldItems = items.filter(i => i._id !== result._id);
+            console.log(result);
+            oldItems.push(result);
+            console.log(oldItems);
+            window.localStorage.setItem('items', JSON.stringify(oldItems));
+
+            setItems(JSON.parse(window.localStorage.getItem('items')));
+
+
+
+            // setItems(oldState => [...oldItems, result]);
+            // console.log(items);
+            // setItems(oldState => oldState.filter(i => i._id !== editedItem._id));
+            // console.log(items);
+            // // setItems(oldState => [...oldState, result]);
+            // window.localStorage.setItem('items', JSON.stringify(items));
+            setError(null);
+            setInputName('');
+            setFamily('');
+            setType('');
+            setPrice('');
+            setQuantity('');
+            setEmptyFields([]);
+            setNegZero([]);
+            if (editedItem.family === 'drinks') {
+                setDrinkIsActive(true);
+                setFoodIsActive(false);
+            } else if (editedItem.family === 'food') {
+                setDrinkIsActive(false);
+                setFoodIsActive(true);
+            }
+        }
+    }
+
+    // useEffect(() => {
+
+    // }, [])
+
+
     return (
         <>
-            <form className={styles['msform']}>
+            <form className={styles['msform']} onSubmit={editItemHandler}>
                 <fieldset>
                     <button className={styles['modal-close']} onClick={() => setEditInfo(false)}> x </button>
                     <h2 className={styles['fs-title']}>{item.name}</h2>

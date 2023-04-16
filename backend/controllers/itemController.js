@@ -124,13 +124,16 @@ const editStockItem = async (req, res) => {
         res.status(400).json({ error: 'No such item to edit !' })
     }
 
-    const item = await Item.findOneAndUpdate({ _id: id }, editedItem);
+    try {
+        const updatedItem = await Item.findByIdAndUpdate(id, editedItem, { new: true });
 
-    if (!item) {
-        res.status(400).json({ error: 'No such item in stock!' })
+        if (!updatedItem) {
+            res.status(400).json({ error: 'No such item in stock!' })
+        }
+        res.status(200).json(updatedItem);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
-
-    res.status(200).json(item);
 }
 
 module.exports = {

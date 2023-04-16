@@ -56,7 +56,7 @@ const StockItem = ({ item, infoHandler, editHandler, setShowInfo, setEditInfo })
                     <span className='lv'> lv.</span></div>
 
                 <button className={styles['stock-item__info']} onClick={() => infoHandler(item)}>
-                    <i class="fa-solid fa-info info"></i>
+                    <i className="fa-solid fa-info info"></i>
                 </button>
                 {user &&
                     <>

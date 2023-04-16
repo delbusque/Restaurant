@@ -50,10 +50,7 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
             setError(result.error);
             setEmptyFields(result.emptyFields);
         }
-        // if (!response.ok && result.error.includes('duplicate key')) {
-        //     setError(`${name} is already in stock !`);
-        //     setEmptyFields(['name']);
-        // }
+
         if (!response.ok) {
             setError(result.error);
             setNegZero(result.negZero);
