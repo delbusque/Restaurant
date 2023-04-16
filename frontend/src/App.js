@@ -56,11 +56,12 @@ function App() {
             <Route path='/tables' element={<Tables tables={tables} setTables={setTables} />} />
             <Route path='/tables/:number' element={<TableView tables={tables} setTables={setTables} />} />
 
-            <Route path='/staff' element={user ? <Users /> : <Navigate to='/login' />} />
-            <Route path='/my-account' element={user ? <Account /> : <Navigate to='/login' />} />
+            <Route path='/staff' element={user && <Users />} />
+            <Route path='/my-account' element={user && <Account />} />
 
             <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
             <Route path='/signup' element={!user ? <Signup /> : <Navigate to='/' />} />
+
           </Routes>
         </ItemsContext.Provider>
       </div>
