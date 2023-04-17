@@ -2,9 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const validator = require('validator');
 
-const Schema = mongoose.Schema;
-
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
@@ -25,7 +23,11 @@ const userSchema = new Schema({
     phone: {
         type: String,
         required: false
-    }
+    },
+    messages: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Message'
+    }]
 })
 
 userSchema.statics.signup = async function (email, password) {
