@@ -1,3 +1,5 @@
+import styles from './UserDetails.module.css';
+
 const UserDetails = ({ user }) => {
     return (
         <div className="user-details">
@@ -7,7 +9,8 @@ const UserDetails = ({ user }) => {
             }
             {
                 user.phone
-                    ? <p><strong><i className="fa-solid fa-phone-volume"></i> </strong>{user.phone}</p>
+                    ? <p><strong><i className="fa-solid fa-phone-volume"></i> </strong>
+                        <a className={styles['phone-link']} href={`tel:${user.phone}`}>{user.phone}</a></p>
                     : null
             }
 
