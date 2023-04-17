@@ -22,9 +22,10 @@ const loginUser = async (req, res) => {
 
     try {
         const user = await User.login(email, password);
+
         const token = createToken(user._id);
 
-        res.status(200).json({ email, token })
+        res.status(200).json({ email, token, firstName: user.firstName, lastName: user.lastName, phone: user.phone })
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
@@ -52,7 +53,7 @@ const editUser = async (req, res) => {
     !lastName && emptyFields.push('lastName');
     !phone && emptyFields.push('phone');
 
-    if (!User.find({ email })) {
+    if (!User.find({ email: email })) {
         res.status(400).json({ error: 'No such user to edit !' })
     }
 
@@ -61,7 +62,7 @@ const editUser = async (req, res) => {
     }
 
     try {
-        const updatedUser = await User.findOneAndUpdate(email, { firstName, lastName, phone }, { new: true });
+        const updatedUser = await User.findOneAndUpdate({ email: email }, { firstName, lastName, phone }, { new: true });
 
         if (!updatedUser) {
             res.status(400).json({ error: 'No such User !' })
