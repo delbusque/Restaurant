@@ -41,7 +41,7 @@ const Account = () => {
             <div className={styles['acc-form']}>
                 <form className={styles['msform']} onSubmit={editUserHandler}>
                     <fieldset>
-                        <h2 className={styles['fs-title']}>Edit your details</h2>
+                        <h2 className={styles['fs-title']}>Add / Edit your details</h2>
                         <input className={emptyFields.includes('firstName') ? styles['input-error'] : ''}
                             type="text" name="firstName" placeholder="First Name"
                             onChange={(e) => {
