@@ -1,8 +1,20 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
+
 
 const createToken = (_id) => {
     return jwt.sign({ _id }, process.env.SECRET, { expiresIn: '5d' });
+}
+
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find({});
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+
 }
 
 const loginUser = async (req, res) => {
@@ -32,27 +44,15 @@ const signupUser = async (req, res) => {
     }
 }
 
-const getAllUsers = async (req, res) => {
-    try {
-        const users = await User.find({});
-        res.status(200).json(users);
-    } catch (error) {
-        res.status(400).json({ error: error.message })
-    }
-
-}
-
 const editUser = async (req, res) => {
-    const { id } = req.params;
-    const { firstName, lastName, phone } = req.body;
-
+    const { email, firstName, lastName, phone } = req.body;
 
     const emptyFields = [];
     !firstName && emptyFields.push('firstName');
     !lastName && emptyFields.push('lastName');
     !phone && emptyFields.push('phone');
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!User.find({ email })) {
         res.status(400).json({ error: 'No such user to edit !' })
     }
 
@@ -61,7 +61,7 @@ const editUser = async (req, res) => {
     }
 
     try {
-        const updatedUser = await User.findbyIdAndUpdate(id, { firstName, lastName, phone }, { new: true });
+        const updatedUser = await User.findOneAndUpdate(email, { firstName, lastName, phone }, { new: true });
 
         if (!updatedUser) {
             res.status(400).json({ error: 'No such User !' })
@@ -72,7 +72,6 @@ const editUser = async (req, res) => {
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
-
 
 }
 
