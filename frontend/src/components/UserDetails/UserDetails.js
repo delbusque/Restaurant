@@ -7,7 +7,7 @@ const UserDetails = ({ user }) => {
             }
             {
                 user.phone
-                    ? <p><strong><i class="fa-solid fa-phone-volume"></i> </strong>{user.phone}</p>
+                    ? <p><strong><i className="fa-solid fa-phone-volume"></i> </strong>{user.phone}</p>
                     : null
             }
 
