@@ -4,7 +4,7 @@ import ItemsContext from '../../../contexts/ItemsContext';
 import { useAuthContext } from "../../../hooks/useAuthContext";
 
 
-const StockItemEdit = ({ item, setEditInfo, setDrinkIsActive, setFoodIsActive }) => {
+const StockItemEdit = ({ item, setEditInfo, setShowInfo, setDrinkIsActive, setFoodIsActive }) => {
     const { items, setItems } = useContext(ItemsContext);
     const { user } = useAuthContext();
 
@@ -68,13 +68,14 @@ const StockItemEdit = ({ item, setEditInfo, setDrinkIsActive, setFoodIsActive })
         }
 
         if (response.ok) {
-
             let oldItems = items.filter(i => i._id !== result._id);
             oldItems.push(result);
 
             window.localStorage.setItem('items', JSON.stringify(oldItems));
             setItems(JSON.parse(window.localStorage.getItem('items')));
 
+            setEditInfo(false);
+            setShowInfo(true);
             setError(null);
             setInputName('');
             setFamily('');
@@ -93,11 +94,6 @@ const StockItemEdit = ({ item, setEditInfo, setDrinkIsActive, setFoodIsActive })
         }
     }
 
-    // useEffect(() => {
-
-    // }, [])
-
-
     return (
         <>
             <form className={styles['msform']} onSubmit={editItemHandler}>
@@ -107,7 +103,10 @@ const StockItemEdit = ({ item, setEditInfo, setDrinkIsActive, setFoodIsActive })
 
                     <input className={emptyFields.includes('name') ? styles['input-error'] : ''}
                         type="text" name="name" placeholder="Name"
-                        onChange={(e) => setInputName(e.target.value)}
+                        onChange={(e) => {
+                            setInputName(e.target.value);
+                            setEmptyFields(old => old.filter(f => f !== 'name'));
+                        }}
                         value={inputName}
                     />
                     <select
@@ -115,6 +114,7 @@ const StockItemEdit = ({ item, setEditInfo, setDrinkIsActive, setFoodIsActive })
                         onChange={(e) => {
                             setFamily(e.target.value)
                             setType('');
+                            setEmptyFields(old => old.filter(f => f !== 'family'));
                         }}>
                         <option selected disabled>Choose here :</option>
                         <option value='drinks'>Drinks</option>
@@ -122,7 +122,10 @@ const StockItemEdit = ({ item, setEditInfo, setDrinkIsActive, setFoodIsActive })
                     </select>
 
                     {family === 'drinks' &&
-                        <select onChange={(e) => typeHandler(e)}
+                        <select onChange={(e) => {
+                            typeHandler(e);
+                            setEmptyFields(old => old.filter(f => f !== 'type'));
+                        }}
                             className={emptyFields.includes('type') ? styles['input-error'] : ''}>
                             <option selected disabled>Choose from drinks :</option>
                             <option value='beer'>Beer</option>
@@ -139,7 +142,10 @@ const StockItemEdit = ({ item, setEditInfo, setDrinkIsActive, setFoodIsActive })
                         </select>}
 
                     {family === 'food' &&
-                        <select onChange={(e) => typeHandler(e)}
+                        <select onChange={(e) => {
+                            typeHandler(e);
+                            setEmptyFields(old => old.filter(f => f !== 'type'));
+                        }}
                             className={emptyFields.includes('type') ? styles['input-error'] : ''}>
                             <option selected disabled>Choose from food :</option>
                             <option value='salad'>Salad</option>
@@ -150,12 +156,21 @@ const StockItemEdit = ({ item, setEditInfo, setDrinkIsActive, setFoodIsActive })
 
                     <input type="number" name="price" placeholder="Price"
                         className={(emptyFields.includes('price') || negZero.includes('price')) ? styles['input-error'] : ''}
-                        onChange={(e) => setPrice(e.target.value)}
+                        onChange={(e) => {
+                            setPrice(e.target.value);
+                            setEmptyFields(old => old.filter(f => f !== 'price'));
+                            setNegZero(old => old.filter(f => f !== 'price'));
+
+                        }}
                         value={price}
                     />
                     <input type="number" name="quantity" placeholder="Quantity"
                         className={(emptyFields.includes('quantity') || negZero.includes('quantity')) ? styles['input-error'] : ''}
-                        onChange={(e) => setQuantity(e.target.value)}
+                        onChange={(e) => {
+                            setQuantity(e.target.value);
+                            setEmptyFields(old => old.filter(f => f !== 'quantity'));
+                            setNegZero(old => old.filter(f => f !== 'quantity'));
+                        }}
                         value={quantity}
                     />
 

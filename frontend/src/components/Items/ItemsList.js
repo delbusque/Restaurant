@@ -109,8 +109,7 @@ const ItemsList = () => {
                             setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
                     }
                     {
-                        editInfo && <StockItemEdit item={currentItem} setEditInfo={setEditInfo}
-                            setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
+                        editInfo && <StockItemEdit item={currentItem} setEditInfo={setEditInfo} setShowInfo={setShowInfo} setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
                     }
                     {
                         (user && !showInfo && !editInfo) && <AddItemForm setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
