@@ -27,7 +27,7 @@ const Navigation = () => {
 
             {user &&
                 <div className="nav__auth">
-                    <Link className='links' to='/messages'><li className="nav__item">Messages</li></Link>
+                    <Link className='links' to='/messages'><li className="nav__item deli-blog">Blog</li></Link>
                     <Link className='links' to='/staff'><li className="nav__item">Staff</li></Link>
                 </div>}
 

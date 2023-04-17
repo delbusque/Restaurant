@@ -1,7 +1,7 @@
 .image {
     background: url('../../public/images/home.jpg');
     width: 100vw;
-    height: calc(100vh - 91px);
+    height: calc(100vh - 94px);
     background-size: cover;
     background-position: center;
     position: relative;

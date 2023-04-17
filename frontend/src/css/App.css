@@ -223,3 +223,8 @@ button.nav__item-auth {
   text-decoration: none;
   color: orange;
 }
+
+.deli-blog {
+  font-family: "Dancing Script", cursive;
+  font-size: 26px;
+}
