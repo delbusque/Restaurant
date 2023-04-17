@@ -101,14 +101,17 @@ const StockItemEdit = ({ item, setEditInfo, setShowInfo, setDrinkIsActive, setFo
                     <button className={styles['modal-close']} onClick={() => setEditInfo(false)}> x </button>
                     <h2 className={styles['fs-title']}>{item.name}</h2>
 
-                    <input className={emptyFields.includes('name') ? styles['input-error'] : ''}
-                        type="text" name="name" placeholder="Name"
-                        onChange={(e) => {
-                            setInputName(e.target.value);
-                            setEmptyFields(old => old.filter(f => f !== 'name'));
-                        }}
-                        value={inputName}
-                    />
+                    <div className={styles['label-input']}>
+                        <label className={styles["label"]}>Name</label>
+                        <input className={emptyFields.includes('name') ? styles['input-error'] : ''}
+                            type="text" name="name"
+                            onChange={(e) => {
+                                setInputName(e.target.value);
+                                setEmptyFields(old => old.filter(f => f !== 'name'));
+                            }}
+                            value={inputName}
+                        />
+                    </div>
                     <select
                         className={emptyFields.includes('family') ? styles['input-error'] : ''}
                         onChange={(e) => {
@@ -154,25 +157,32 @@ const StockItemEdit = ({ item, setEditInfo, setShowInfo, setDrinkIsActive, setFo
                             <option value='pizza'>Pizza</option>
                         </select>}
 
-                    <input type="number" name="price" placeholder="Price"
-                        className={(emptyFields.includes('price') || negZero.includes('price')) ? styles['input-error'] : ''}
-                        onChange={(e) => {
-                            setPrice(e.target.value);
-                            setEmptyFields(old => old.filter(f => f !== 'price'));
-                            setNegZero(old => old.filter(f => f !== 'price'));
+                    <div className={styles['label-input']}>
+                        <label className={styles["label"]}>Price</label>
+                        <input type="number" name="price"
+                            className={(emptyFields.includes('price') || negZero.includes('price')) ? styles['input-error'] : ''}
+                            onChange={(e) => {
+                                setPrice(e.target.value);
+                                setEmptyFields(old => old.filter(f => f !== 'price'));
+                                setNegZero(old => old.filter(f => f !== 'price'));
 
-                        }}
-                        value={price}
-                    />
-                    <input type="number" name="quantity" placeholder="Quantity"
-                        className={(emptyFields.includes('quantity') || negZero.includes('quantity')) ? styles['input-error'] : ''}
-                        onChange={(e) => {
-                            setQuantity(e.target.value);
-                            setEmptyFields(old => old.filter(f => f !== 'quantity'));
-                            setNegZero(old => old.filter(f => f !== 'quantity'));
-                        }}
-                        value={quantity}
-                    />
+                            }}
+                            value={price}
+                        />
+                    </div>
+
+                    <div className={styles['label-input']}>
+                        <label className={styles["label"]}>Quantity</label>
+                        <input type="number" name="quantity"
+                            className={(emptyFields.includes('quantity') || negZero.includes('quantity')) ? styles['input-error'] : ''}
+                            onChange={(e) => {
+                                setQuantity(e.target.value);
+                                setEmptyFields(old => old.filter(f => f !== 'quantity'));
+                                setNegZero(old => old.filter(f => f !== 'quantity'));
+                            }}
+                            value={quantity}
+                        />
+                    </div>
 
                     <button className={styles['action-button']}>Edit</button>
 

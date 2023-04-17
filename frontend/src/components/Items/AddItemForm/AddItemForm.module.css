@@ -48,6 +48,7 @@
     cursor: pointer;
     padding: 10px;
     margin: 10px 5px;
+    margin-top: 20px;
     text-decoration: none;
     font-size: 14px;
 }
@@ -59,10 +60,10 @@
 
 /*headings*/
 .fs-title {
-    font-size: 15px;
+    font-size: 16px;
     text-transform: uppercase;
     color: #2C3E50;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .fs-subtitle {
@@ -147,4 +148,17 @@
 
 .msform .input-error {
     border: 2px solid rgba(220, 20, 60, 0.76);
+}
+
+.label-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.label {
+    font-size: small;
+    padding-left: 1px;
+    line-height: 1.1;
+    color: #666;
 }

@@ -82,12 +82,16 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
             <form className={styles['msform']} onSubmit={addNewStockItemHandler}>
                 <fieldset>
                     <h2 className={styles['fs-title']}>Add new item</h2>
-                    {/* <h3 className="fs-subtitle">We will never sell it</h3> */}
-                    <input className={emptyFields.includes('name') ? styles['input-error'] : ''}
-                        type="text" name="name" placeholder="Name"
-                        onChange={(e) => setInputName(e.target.value)}
-                        value={inputName}
-                    />
+
+                    <div className={styles['label-input']}>
+                        <label className={styles["label"]}>Name</label>
+                        <input className={emptyFields.includes('name') ? styles['input-error'] : ''}
+                            type="text" name="name"
+                            onChange={(e) => setInputName(e.target.value)}
+                            value={inputName}
+                        />
+
+                    </div>
 
                     <select
                         className={emptyFields.includes('family') ? styles['input-error'] : ''}
@@ -127,16 +131,23 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
                             <option value='pizza'>Pizza</option>
                         </select>}
 
-                    <input type="number" name="price" placeholder="Price"
-                        className={(emptyFields.includes('price') || negZero.includes('price')) ? styles['input-error'] : ''}
-                        onChange={(e) => setPrice(e.target.value)}
-                        value={price}
-                    />
-                    <input type="number" name="quantity" placeholder="Quantity"
-                        className={(emptyFields.includes('quantity') || negZero.includes('quantity')) ? styles['input-error'] : ''}
-                        onChange={(e) => setQuantity(e.target.value)}
-                        value={quantity}
-                    />
+                    <div className={styles['label-input']}>
+                        <label className={styles["label"]}>Price</label>
+                        <input type="number" name="price"
+                            className={(emptyFields.includes('price') || negZero.includes('price')) ? styles['input-error'] : ''}
+                            onChange={(e) => setPrice(e.target.value)}
+                            value={price}
+                        />
+                    </div>
+
+                    <div className={styles['label-input']}>
+                        <label className={styles["label"]}>Quantity</label>
+                        <input type="number" name="quantity"
+                            className={(emptyFields.includes('quantity') || negZero.includes('quantity')) ? styles['input-error'] : ''}
+                            onChange={(e) => setQuantity(e.target.value)}
+                            value={quantity}
+                        />
+                    </div>
 
                     <input
                         type="submit"

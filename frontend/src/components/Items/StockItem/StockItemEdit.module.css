@@ -50,6 +50,7 @@
     margin: 10px 5px;
     text-decoration: none;
     font-size: 14px;
+    margin-top: 25px;
 }
 
 .msform .action-button:hover,
@@ -62,7 +63,7 @@
     font-size: 15px;
     text-transform: uppercase;
     color: #2C3E50;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .fs-subtitle {
@@ -158,4 +159,17 @@
     background-color: #d1cdc2f6;
     cursor: pointer;
     font-size: smaller;
+}
+
+.label-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.label {
+    font-size: small;
+    padding-left: 1px;
+    line-height: 1.1;
+    color: #666;
 }
