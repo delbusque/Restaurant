@@ -13,34 +13,34 @@ const Navigation = () => {
     }
 
     return (
-        <header className="header">
-            <h1 className="deli"><Link className='links' to='/'>Deli</Link></h1>
+        <header id='header' className="header">
+            <h1 className="deli"><Link id='deli' className='links' to='/'>Deli</Link></h1>
 
             <div className="nav__auth">
-                <Link className='links' to='/tables'>
+                <Link id='tables' className='links' to='/tables'>
                     <li className="nav__item">Tables</li>
                 </Link>
-                <Link className='links' to='/items'>
+                <Link id='items' className='links' to='/items'>
                     <li className="nav__item">Items</li>
                 </Link>
             </div>
 
 
             <div className="nav__auth">
-                <Link className='links' to='/messages'><li className="nav__item deli-blog">Messages</li></Link>
-                {user && <Link className='links' to='/staff'><li className="nav__item">Staff</li></Link>}
+                <Link id='messages' className='links' to='/messages'><li className="nav__item deli-blog">Messages</li></Link>
+                {user && <Link id='staff' className='links' to='/staff'><li className="nav__item">Staff</li></Link>}
             </div>
 
             {user && (<div className="nav__auth">
 
-                <NavLink className='links' to='/my-account'><span className='u-email'>{user.email}</span></NavLink>
+                <Link id='u-email' className='links' to='/my-account'><span className='u-email'>{user.email}</span></Link>
 
                 <button className="nav__item-auth" onClick={logoutHandler}>Logout</button>
             </div>)}
 
             {!user && (<div className="nav__auth">
-                <Link className='links' to='/login'><li className="nav__item-auth">Login</li></Link>
-                <Link className='links' to='/signup'><li className="nav__item-auth">Sign Up</li></Link>
+                <Link id='login' className='links' to='/login'><li className="nav__item-auth">Login</li></Link>
+                <Link id='signup' className='links' to='/signup'><li className="nav__item-auth">Sign Up</li></Link>
             </div>)}
 
         </header>

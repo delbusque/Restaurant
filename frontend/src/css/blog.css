@@ -103,5 +103,46 @@ input[readonly] {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
 
+#deli,
+#u-email,
+#tables,
+#items,
+#messages,
+#staff,
+#login,
+#signup,
+#table-num {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+#err-login {
+    text-decoration: none;
+    color: #27ae60;
+}
+
+#err-signup {
+    text-decoration: none;
+    color: #0089BA;
+}
+
+#email-link {
+    text-decoration: none;
+    color: orange;
+    cursor: pointer;
+}
+
+#phone-link {
+    text-decoration: none;
+    color: grey;
+    cursor: pointer;
+}
+
+#phone-link:hover {
+    text-decoration: none;
+    color: orange;
+    cursor: pointer;
 }

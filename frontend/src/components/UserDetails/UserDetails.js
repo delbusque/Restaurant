@@ -10,12 +10,12 @@ const UserDetails = ({ user }) => {
             {
                 user.phone
                     ? <p><strong><i className="fa-solid fa-phone-volume"></i> </strong>
-                        <a className={styles['phone-link']} href={`tel:${user.phone}`}>{user.phone}</a></p>
+                        <a id='phone-link' className={styles['phone-link']} href={`tel:${user.phone}`}>{user.phone}</a></p>
                     : null
             }
 
             <span className="material-symbols-outlined" href={`mailto:${user.email}`}>
-                <a className='anchor-mail' href={`mailto:${user.email}`}>email</a></span>
+                <a id='email-link' className='anchor-mail' href={`mailto:${user.email}`}>email</a></span>
         </div>
     )
 }

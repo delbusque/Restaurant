@@ -12,7 +12,7 @@ const Tables = ({ tables }) => {
             {user &&
                 <section className="tables-cont">
                     {tables && tables.map(t => (
-                        <Link to={user ? t.number : null} className="links" key={t._id}>
+                        <Link id='table-num' to={user ? t.number : null} className="links" key={t._id}>
                             {t.paid && <div className={t.opened ? "table-btn-opened" : "table-btn"} >
                                 <p className="table-btn-text">{t.number}</p>
                             </div>}
