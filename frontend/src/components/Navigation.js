@@ -27,8 +27,12 @@ const Navigation = () => {
 
 
             <div className="nav__auth">
-                <Link id='messages' className='links' to='/messages'><li className="nav__item deli-blog">Messages</li></Link>
-                {user && <Link id='staff' className='links' to='/staff'><li className="nav__item">Staff</li></Link>}
+
+                {user &&
+                    <>
+                        <Link id='messages' className='links' to='/messages'><li className="nav__item deli-blog">Messages</li></Link>
+                        <Link id='staff' className='links' to='/staff'><li className="nav__item">Staff</li></Link>
+                    </>}
             </div>
 
             {user && (<div className="nav__auth">
