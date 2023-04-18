@@ -20,6 +20,36 @@ const Messages = () => {
                         libero justo, iaculis eget feugiat vitae, vestibulunibh, gravida eu eros sed, suscipit sollicitudin dui. Etiam tellus
                         justo, fringilla at tempor in, mollis et felis.{" "}
                     </div>
+                </div>
+
+                <div className="blog-list-row">
+                    <div className="left-info">
+                        <div className="post-author-name">by Master Chief</div>
+                        <div className="date-published">August 12, 2016</div>
+                    </div>
+
+                    <div>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec lectus
+                        massa. Pellentesque ornare mauris a auctor pellentesque. Sed sit amet
+                        metus at odio venenatis elementum eu non leo. Suspendisse potenti. Sed
+                        libero justo, iaculis eget feugiat vitae, vestibulunibh, gravida eu eros sed, suscipit sollicitudin dui. Etiam tellus
+                        justo, fringilla at tempor in, mollis et felis.{" "}
+                    </div>
+                </div>
+
+                <div className="blog-list-row">
+                    <div className="left-info">
+                        <div className="post-author-name">by Master Chief</div>
+                        <div className="date-published">August 12, 2016</div>
+                    </div>
+
+                    <div>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec lectus
+                        massa. Pellentesque ornare mauris a auctor pellentesque. Sed sit amet
+                        metus at odio venenatis elementum eu non leo. Suspendisse potenti. Sed
+                        libero justo, iaculis eget feugiat vitae, vestibulunibh, gravida eu eros sed, suscipit sollicitudin dui. Etiam tellus
+                        justo, fringilla at tempor in, mollis et felis.{" "}
+                    </div>
 
 
                 </div>

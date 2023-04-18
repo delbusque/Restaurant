@@ -13,12 +13,13 @@
 }
 
 .header {
-  /* position: sticky;
-  top: 0; */
+  position: sticky;
+  top: 0;
   background-color: rgb(240, 239, 237);
   padding: 20px 40px;
   display: flex;
   justify-content: space-between;
+  z-index: 100;
 }
 
 @media screen and (max-width: 900px) {

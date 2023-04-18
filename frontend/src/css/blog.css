@@ -1,7 +1,9 @@
 .blog-cont {
     display: flex;
-    width: 85%;
+    width: 81%;
     margin: 50px auto;
+    position: relative;
+
 }
 
 .posts-cont {
@@ -9,12 +11,16 @@
     flex-direction: column;
     padding-right: 100px;
     width: 70%;
+    overflow: hidden;
+
 }
 
 .form-cont {
     width: 30%;
     margin-left: auto;
-
+    position: fixed;
+    top: 150px;
+    right: 60px;
 }
 
 .blog-list-row {
@@ -67,37 +73,6 @@
     gap: 10px;
 }
 
-
-
-
-/*---------------------------------------*/
-
-.btn-file {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
-}
-
-input[readonly] {
-    background-color: white !important;
-    cursor: text !important;
-}
-
 .edit,
 .delete {
     border: none;
@@ -145,4 +120,8 @@ input[readonly] {
     text-decoration: none;
     color: orange;
     cursor: pointer;
+}
+
+.form-group textarea {
+    height: 200px;
 }
