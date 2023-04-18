@@ -5,6 +5,7 @@
 @import url("tables/family.css");
 @import url("tables/items.css");
 @import url("items/itemsList.css");
+@import url("blog.css");
 
 .error {
   color: crimson;

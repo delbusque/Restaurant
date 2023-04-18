@@ -1,0 +1,96 @@
+.blog-cont {
+    display: flex;
+    width: 85%;
+    margin: 50px auto;
+}
+
+.posts-cont {
+    display: flex;
+    flex-direction: column;
+    padding-right: 100px;
+    width: 70%;
+}
+
+.form-cont {
+    width: 30%;
+    margin-left: auto;
+
+}
+
+.blog-list-row {
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.079); */
+    display: grid;
+    gap: 10px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+
+}
+
+.left-info {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.post-name {
+    font-size: 24px;
+    padding-bottom: 7px;
+}
+
+.post-name:hover {
+    color: #0e9c7e;
+}
+
+
+.center-info {
+    word-wrap: break-word;
+    text-align: justify;
+    /* float: left; */
+    display: inline-block;
+    width: 50%;
+}
+
+.right-info {
+    float: right;
+    width: 10%;
+    /* display: inline-block; */
+}
+
+.date-published {
+    font-size: 16px;
+    color: rgba(0, 0, 0, .4);
+}
+
+
+
+
+
+
+
+/*---------------------------------------*/
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+input[readonly] {
+    background-color: white !important;
+    cursor: text !important;
+}
