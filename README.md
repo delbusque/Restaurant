@@ -1,4 +1,11 @@
-## Restaurant managing system
+## Restaurant managing system 
+
+## A web application with react frontend and express/mongodb backend. Existing functionalities: 
+### - Getting orders and listing them as different tables with open, paid and close status as registered user.  
+### - Listings of stock items grouped by general as food or drinks and by type - for examples wine, beer, burgers, salads, etc. Registered users could edit or delete items.
+### - Message board for registered users, with edit and delete functionalities for message owners. 
+### - List of all users.
+### - Account page with add/edit functionality for name and phone number after sign up.
 
 #### - To run the project you need the whole project repository. 
 
