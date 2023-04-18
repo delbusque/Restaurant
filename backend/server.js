@@ -6,7 +6,8 @@ mongoose.set('strictQuery', true);
 
 const tableRoutes = require('./routes/tableRoutes.js');
 const itemRoutes = require('./routes/itemRoutes.js');
-const userRoutes = require('./routes/userRoutes.js')
+const userRoutes = require('./routes/userRoutes.js');
+const messageRoutes = require('./routes/messageRoutes.js');
 
 const app = express();
 
@@ -23,8 +24,7 @@ app.use('/items', itemRoutes);
 app.use('/user', userRoutes);
 app.use('/staff', userRoutes);
 
-// app.use('/drinks', itemRoutes);
-// app.use('/food', itemRoutes);
+app.use('/messages', messageRoutes)
 
 app.use('*', (req, res) => {
     res.status(404).json({ mssg: 'No such API endpoint' })

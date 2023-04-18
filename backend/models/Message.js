@@ -9,7 +9,6 @@ const messageSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'User'
     },
-    timestamps: true
-})
+}, { timestamps: true })
 
 module.exports = mongoose.model('Message', messageSchema)
