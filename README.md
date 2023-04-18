@@ -1,6 +1,6 @@
 ## Restaurant managing system 
 
-### A Node.js web application with react frontend part and express/mongodb backend part. Existing functionalities: 
+### A Node.js web application with React frontend part and Express/MongoDB backend part. Existing functionalities: 
 - getting orders and listing them as different tables with open, paid and close status as registered user
 - listings of stock items grouped by general as food or drinks and by type - for examples wine, beer, burgers, salads, etc. Registered users could edit or delete items
 - message board for registered users, with edit and delete functionalities for message owners
