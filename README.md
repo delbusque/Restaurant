@@ -1,4 +1,4 @@
-## Restaurant managing system 
+## Restaurant Managing System 
 
 ### A Node.js web application with React frontend part and Express/MongoDB backend part. Existing functionalities: 
 - getting orders and listing them as different tables with open, paid and close status as registered user
