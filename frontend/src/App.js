@@ -18,7 +18,7 @@ import Account from './pages/Account';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Users from './pages/Users';
-import Blog from './pages/Blog';
+import Messages from './pages/Messages';
 
 function App() {
 
@@ -58,7 +58,7 @@ function App() {
             <Route path='/tables/:number' element={<TableView tables={tables} setTables={setTables} />} />
 
             <Route path='/staff' element={user && <Users />} />
-            <Route path='/blog' element={<Blog />} />
+            <Route path='/messages' element={<Messages />} />
 
 
             <Route path='/my-account' element={user && <Account />} />

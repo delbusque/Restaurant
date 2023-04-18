@@ -1,13 +1,10 @@
-import styles from './Blog.module.css'
-
-
-const Blog = () => {
+const Messages = () => {
     return (
         <div className="blog-cont">
             <div className='posts-cont'>
                 <div className="blog-list-row">
                     <div className="left-info">
-                        <div className="post-name">Ten Ways to Stick Noobs</div>
+                        {/* <div className="post-name">Ten Ways to Stick Noobs</div> */}
                         <div className="post-author-name">by Master Chief</div>
                         <div className="date-published">August 12, 2016</div>
                     </div>
@@ -25,7 +22,7 @@ const Blog = () => {
 
                 <div className="blog-list-row">
                     <div className="left-info">
-                        <div className="post-name">The Key to No Scopes</div>
+                        {/* <div className="post-name">The Key to No Scopes</div> */}
                         <div className="post-author-name">by Clark Sandholtz</div>
                         <div className="date-published">August 12, 2016</div>
                     </div>
@@ -49,7 +46,7 @@ const Blog = () => {
                 </div>
                 <div className="blog-list-row">
                     <div className="left-info">
-                        <div className="post-name">How to Use Invisibility to Assassinate</div>
+                        {/* <div className="post-name">How to Use Invisibility to Assassinate</div> */}
                         <div className="post-author-name">by Arbiter</div>
                         <div className="date-published">August 12, 2016</div>
                     </div>
@@ -69,14 +66,14 @@ const Blog = () => {
             <div className='form-cont'>
 
                 <form method="post" role="form">
-                    <div className="form-group">
+                    {/* <div className="form-group">
                         <input
                             type="text"
                             className="form-control"
                             name="title"
                             placeholder="Title"
                         />
-                    </div>
+                    </div> */}
 
                     <div className="form-group">
                         <textarea
@@ -103,4 +100,4 @@ const Blog = () => {
     )
 }
 
-export default Blog;
+export default Messages;

@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     },
     blogposts: [{
         type: mongoose.Types.ObjectId,
-        ref: 'Blogpost'
+        ref: 'Message'
     }]
 })
 
