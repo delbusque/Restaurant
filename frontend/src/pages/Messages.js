@@ -1,10 +1,14 @@
+import { useAuthContext } from "../hooks/useAuthContext";
+
 const Messages = () => {
+
+    const { user } = useAuthContext();
+
     return (
         <div className="blog-cont">
             <div className='posts-cont'>
                 <div className="blog-list-row">
                     <div className="left-info">
-                        {/* <div className="post-name">Ten Ways to Stick Noobs</div> */}
                         <div className="post-author-name">by Master Chief</div>
                         <div className="date-published">August 12, 2016</div>
                     </div>
@@ -22,8 +26,19 @@ const Messages = () => {
 
                 <div className="blog-list-row">
                     <div className="left-info">
-                        {/* <div className="post-name">The Key to No Scopes</div> */}
-                        <div className="post-author-name">by Clark Sandholtz</div>
+                        <div className="author-cont">
+                            <div className="post-author-name">by Clark Sandholtz</div>
+                            {user &&
+                                <div className="post-icons">
+                                    <button className='edit' >
+                                        <i className="fa-solid fa-marker marker"></i>
+                                    </button>
+                                    <button className='delete' >
+                                        <i className="fa-solid fa-trash-arrow-up trash"></i>
+                                    </button>
+                                </div>
+                            }
+                        </div>
                         <div className="date-published">August 12, 2016</div>
                     </div>
 
@@ -46,7 +61,6 @@ const Messages = () => {
                 </div>
                 <div className="blog-list-row">
                     <div className="left-info">
-                        {/* <div className="post-name">How to Use Invisibility to Assassinate</div> */}
                         <div className="post-author-name">by Arbiter</div>
                         <div className="date-published">August 12, 2016</div>
                     </div>
@@ -63,36 +77,31 @@ const Messages = () => {
 
                 </div>
             </div>
-            <div className='form-cont'>
 
-                <form method="post" role="form">
-                    {/* <div className="form-group">
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="title"
-                            placeholder="Title"
-                        />
-                    </div> */}
 
-                    <div className="form-group">
-                        <textarea
-                            className="form-control bcontent"
-                            name="content"
-                            defaultValue={""}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="submit"
-                            name="Submit"
-                            defaultValue="Publish"
-                            className="btn btn-primary form-control"
-                        />
-                    </div>
-                </form>
+            {user &&
+                <div className='form-cont'>
+                    <form method="post" role="form">
+                        <div className="form-group">
+                            <textarea
+                                className="form-control bcontent"
+                                placeholder="Write your message here..."
+                                name="content"
+                                defaultValue={""}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="submit"
+                                name="Submit"
+                                defaultValue="Publish"
+                                className="btn btn-primary form-control"
+                            />
+                        </div>
+                    </form>
 
-            </div>
+                </div>
+            }
 
 
         </div>
