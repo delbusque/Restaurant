@@ -7,6 +7,28 @@ const Messages = () => {
     const [content, setContent] = useState('');
     const [error, setError] = useState(null);
 
+    const author = user.userId;
+
+    const getMessagesHandler = async () => {
+        const response = await fetch('/messages', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
+            }
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            setError(result.error);
+        }
+
+        if (response.ok) {
+            console.log(result);
+        }
+    }
+
     const messageHandler = async (e) => {
         e.preventDefault();
 
@@ -16,21 +38,21 @@ const Messages = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${user.token}`
             },
-            body: JSON.stringify({ content, author: user.userId })
+            body: JSON.stringify({ content, author })
         });
 
         const result = await response.json();
 
         if (!response.ok) {
             setError(result.error);
-            console.log(error);
         }
 
         if (response.ok) {
             console.log(result);
+            setContent('');
+            getMessagesHandler();
         }
     }
-
 
     return (
         <div className="blog-cont">
