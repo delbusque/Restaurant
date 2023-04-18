@@ -2,7 +2,7 @@
     font-family: Dosis, sans-serif;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: '. . form details';
+    grid-template-areas: 'blog blog form details';
 }
 
 .acc-details {
@@ -15,7 +15,6 @@
     grid-area: form;
     text-align: right;
     margin-top: 50px;
-    align-self: center;
 }
 
 .acc__name {
@@ -128,4 +127,62 @@
     vertical-align: middle;
     margin-top: 10px;
     text-align: center;
+}
+
+/*/////////////////////////////////////////////////////*/
+
+.posts-cont {
+    grid-area: blog;
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    width: 80%;
+    margin: 50px auto 20px 140px;
+}
+
+.blog-list-row {
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.079); */
+    display: grid;
+    gap: 10px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+
+}
+
+.left-info {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.center-info {
+    word-wrap: break-word;
+    text-align: justify;
+    /* float: left; */
+    display: inline-block;
+    width: 50%;
+}
+
+.right-info {
+    float: right;
+    width: 10%;
+    /* display: inline-block; */
+}
+
+.date-published {
+    font-size: 16px;
+    color: rgba(0, 0, 0, .4);
+}
+
+.author-cont,
+.post-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.edit,
+.delete {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
