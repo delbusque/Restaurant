@@ -27,7 +27,7 @@ const Messages = () => {
                 <div className="blog-list-row">
                     <div className="left-info">
                         <div className="author-cont">
-                            <div className="post-author-name">by Clark Sandholtz</div>
+                            <div className="post-author-name">by {user.firstName} {user.lastName}</div>
                             {user &&
                                 <div className="post-icons">
                                     <button className='edit' >
