@@ -18,7 +18,7 @@ const addMessage = async (req, res) => {
     const { authorId, content } = req.body;
 
     try {
-        const message = await Message.create({ authorId, content });
+        const message = await Message.create({ author: authorId, content });
         res.status(200).json(message);
     } catch (error) {
         res.status(400).json({ error: error.message });

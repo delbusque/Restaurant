@@ -1,8 +1,36 @@
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useState } from "react";
 
 const Messages = () => {
 
     const { user } = useAuthContext();
+    const [content, setContent] = useState('');
+    const [error, setError] = useState(null);
+
+    const messageHandler = async (e) => {
+        e.preventDefault();
+
+        const response = await fetch('/messages/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
+            },
+            body: JSON.stringify({ content, author: user.userId })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            setError(result.error);
+            console.log(error);
+        }
+
+        if (response.ok) {
+            console.log(result);
+        }
+    }
+
 
     return (
         <div className="blog-cont">
@@ -108,32 +136,29 @@ const Messages = () => {
                 </div>
             </div>
 
-
-            {user &&
-                <div className='form-cont'>
-                    <form method="post" role="form">
-                        <div className="form-group">
-                            <textarea
-                                className="form-control bcontent"
-                                placeholder="Write your message here..."
-                                name="content"
-                                defaultValue={""}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="submit"
-                                name="Submit"
-                                defaultValue="Publish"
-                                className="btn btn-primary form-control"
-                            />
-                        </div>
-                    </form>
-
-                </div>
-            }
-
-
+            <div className='form-cont'>
+                <form onSubmit={messageHandler}>
+                    <div className="form-group">
+                        <textarea
+                            onChange={(e) => {
+                                setContent(e.target.value)
+                            }}
+                            className="form-control bcontent"
+                            placeholder="Write your message here..."
+                            name="content"
+                            value={content}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="submit"
+                            name="Submit"
+                            defaultValue="Publish"
+                            className="btn btn-primary form-control"
+                        />
+                    </div>
+                </form>
+            </div>
         </div>
 
     )
