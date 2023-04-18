@@ -7,28 +7,6 @@ const Messages = () => {
     const [content, setContent] = useState('');
     const [error, setError] = useState(null);
 
-    const author = user.userId;
-
-    const getMessagesHandler = async () => {
-        const response = await fetch('/messages', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${user.token}`
-            }
-        });
-
-        const result = await response.json();
-
-        if (!response.ok) {
-            setError(result.error);
-        }
-
-        if (response.ok) {
-            console.log(result);
-        }
-    }
-
     const messageHandler = async (e) => {
         e.preventDefault();
 
@@ -38,21 +16,21 @@ const Messages = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${user.token}`
             },
-            body: JSON.stringify({ content, author })
+            body: JSON.stringify({ content, author: user.userId })
         });
 
         const result = await response.json();
 
         if (!response.ok) {
             setError(result.error);
+            console.log(error);
         }
 
         if (response.ok) {
             console.log(result);
-            setContent('');
-            getMessagesHandler();
         }
     }
+
 
     return (
         <div className="blog-cont">
@@ -107,7 +85,7 @@ const Messages = () => {
                 <div className="blog-list-row">
                     <div className="left-info">
                         <div className="author-cont">
-                            <div className="post-author-name">by {user.firstName} {user.lastName}</div>
+                            <div className="post-author-name">by Me</div>
                             {user &&
                                 <div className="post-icons">
                                     <button className='edit' >
