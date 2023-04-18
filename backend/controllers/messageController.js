@@ -7,8 +7,11 @@ const getMessages = async (req, res) => {
     if (messages.length < 1) {
         return res.status(404).json({ mssg: `No messages there !` })
     }
-
-    res.status(200).json(messages);
+    try {
+        res.status(200).json(messages);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 }
 
 const addMessage = async (req, res) => {
