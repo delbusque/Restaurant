@@ -1,13 +1,13 @@
 .acc {
     font-family: Dosis, sans-serif;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: 'blog blog form details';
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: 'blog blog form form details';
 }
 
 .acc-details {
     grid-area: details;
-    text-align: right;
+    text-align: center;
     padding-right: 60px;
 }
 
@@ -15,6 +15,7 @@
     grid-area: form;
     text-align: right;
     margin-top: 50px;
+
 }
 
 .acc__name {
@@ -136,8 +137,9 @@
     display: flex;
     flex-direction: column;
     font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    width: 80%;
+    width: 100%;
     margin: 50px auto 20px 140px;
+
 }
 
 .blog-list-row {
