@@ -113,11 +113,14 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
                             <option value='wine'>Wine</option>
                             <option value='whiskey'>Whiskey</option>
                             <option value='gin'>Gin</option>
+                            <option value='rum'>Rum</option>
+                            <option value='ouzo'>Ouzo</option>
                             <option value='mastika'>Mastika</option>
                             <option value='rum'>Rum</option>
                             <option value='juice'>Juice</option>
                             <option value='fresh'>Fresh</option>
                             <option value='water'>Water</option>
+                            <option value='coctails'>Coctails</option>
                             <option value='other'>Other</option>
                         </select>}
 
