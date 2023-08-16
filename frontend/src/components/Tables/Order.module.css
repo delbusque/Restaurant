@@ -5,7 +5,7 @@
   display: grid;
   gap: 5px;
   grid-template-columns: repeat(8, 1fr);
-  grid-template-areas: "name name . . count count total total";
+  grid-template-areas: "name name . . count count . total";
   font-family: "Lato", sans-serif;
   align-items: center;
 }
@@ -113,6 +113,7 @@
   grid-area: count;
   text-align: right;
   font-size: small;
+  margin-right: 20px;
 }
 
 .ord-counter {
@@ -131,4 +132,53 @@
   grid-area: total;
   margin-right: 15px;
   text-align: right;
+}
+
+.button-53-blue {
+  background-color: steelblue;
+  border: 0 solid #e5e7eb;
+  color: #fff;
+  display: flex;
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 500;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none #000000 solid;
+  text-decoration-thickness: auto;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-right: 5px;
+}
+
+.button-53-blue:focus {
+  outline: 0;
+}
+
+.button-53-blue:after {
+  content: "";
+  position: absolute;
+  border: 1px solid #000000;
+  bottom: 2px;
+  left: 2px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+}
+
+.button-53-blue:hover:after {
+  bottom: 1px;
+  left: 1px;
+}
+
+.button-53-blue:active {
+  box-shadow: inset 0px 2px 4px 2px rgba(0, 0, 0, 0.15),
+    inset 0px 4px 8px rgba(0, 0, 0, 0.15),
+    inset 0px 8px 16px rgba(0, 0, 0, 0.15);
+  transition: 0.2s;
+  transform: translateY(2px);
+  background-color: steelblue;
 }
