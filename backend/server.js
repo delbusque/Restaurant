@@ -8,6 +8,7 @@ const tableRoutes = require('./routes/tableRoutes.js');
 const itemRoutes = require('./routes/itemRoutes.js');
 const userRoutes = require('./routes/userRoutes.js');
 const messageRoutes = require('./routes/messageRoutes.js');
+const chefRoutes = require('./routes/chefRoutes.js');
 
 const app = express();
 
@@ -25,6 +26,8 @@ app.use('/user', userRoutes);
 app.use('/staff', userRoutes);
 
 app.use('/messages', messageRoutes)
+
+app.use('/chef', chefRoutes)
 
 app.use('*', (req, res) => {
     res.status(404).json({ mssg: 'No such API endpoint' })

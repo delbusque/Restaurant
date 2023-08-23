@@ -1,12 +1,26 @@
 import styles from './Order.module.css'
 import { useState } from 'react'
+import { useAuthContext } from '../../hooks/useAuthContext.js'
 
 
 const Order = ({ o, addItemHandler, deleteItemHandler }) => {
     const [sendToChef, setSendToChef] = useState(0);
+    const { user } = useAuthContext();
 
-    const toChefHandler = () => {
+    const toChefHandler = async () => {
         setSendToChef(o.count);
+
+        const response = await fetch('/chef/add-order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
+            },
+            body: JSON.stringify({ _id: o._id })
+        })
+
+        const result = await response.json();
+
     }
 
     return (
