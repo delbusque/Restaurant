@@ -1,5 +1,5 @@
 import styles from './Account.module.css'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useEditUser } from '../hooks/useEditUser';
 import { useAuthContext } from '../hooks/useAuthContext';
 
@@ -7,7 +7,7 @@ const Account = () => {
 
     const { user } = useAuthContext();
 
-    const { editUser, isLoading, error, setError, emptyFields, setEmptyFields } = useEditUser();
+    const { editUser, error, emptyFields, setEmptyFields } = useEditUser();
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
