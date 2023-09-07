@@ -20,6 +20,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Users from './pages/Users';
 import Messages from './pages/Messages';
+import Chef from './pages/Chef.js';
 
 const queryClient = new QueryClient()
 
@@ -61,6 +62,7 @@ function App() {
               <Route path='/tables' element={<Tables tables={tables} setTables={setTables} />} />
               <Route path='/tables/:number' element={<TableView tables={tables} setTables={setTables} />} />
 
+              <Route path='/chef' element={user && <Chef />} />
               <Route path='/staff' element={user && <Users />} />
               <Route path='/messages' element={<Messages />} />
 

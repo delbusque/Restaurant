@@ -18,7 +18,7 @@ const Navigation = () => {
 
             <div className="nav__auth">
                 <Link id='tables' className='links' to='/tables'>
-                    <li className="nav__item">Tables</li>
+                    <li className="nav__item tables">Tables</li>
                 </Link>
                 <Link id='items' className='links' to='/items'>
                     <li className="nav__item">Items</li>
@@ -30,8 +30,10 @@ const Navigation = () => {
 
                 {user &&
                     <>
-                        <Link id='messages' className='links' to='/messages'><li className="nav__item deli-blog">Messages</li></Link>
+                        <Link className='links' to='/chef'><li className="nav__item chef">Chef</li></Link>
+                        {/* <Link id='messages' className='links' to='/messages'><li className="nav__item deli-blog">Messages</li></Link> */}
                         <Link id='staff' className='links' to='/staff'><li className="nav__item">Staff</li></Link>
+
                     </>}
             </div>
 
