@@ -1,3 +1,4 @@
 .chef-orders {
-  font-size: xx-large;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
