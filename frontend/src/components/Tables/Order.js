@@ -1,38 +1,41 @@
 import styles from './Order.module.css'
-import { useState } from 'react'
-import { useAuthContext } from '../../hooks/useAuthContext.js'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
+const Order = ({ o, addItemHandler, deleteItemHandler, table }) => {
 
-const Order = ({ o, addItemHandler, deleteItemHandler }) => {
-    const [sendToChef, setSendToChef] = useState(0);
-    const { user } = useAuthContext();
+    const { name, quantity, count } = o
+    const [sent, setSent] = useState(0)
+    const [waiting, setWaiting] = useState(count - sent)
 
-    const toChefHandler = async () => {
-        setSendToChef(o.count);
-
-        const response = await fetch('/chef/add-order', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${user.token}`
-            },
-            body: JSON.stringify({ _id: o._id })
-        })
-
-        const result = await response.json();
-
+    const addOrders = () => {
+        console.log('post');
+        return axios.post('/chef/add-orders', { name, quantity, count: waiting, table })
     }
+
+    const toChefHandler = () => {
+        setSent(old => old + waiting)
+        setWaiting(0)
+        addOrders()
+        console.log(table);
+    }
+
+    useEffect(() => {
+        setWaiting(count - sent)
+    }, [count, sent])
+
 
     return (
         <div className={styles['tb-orders']}>
             <div className={styles['ord-name']}>{o.name}</div>
-            <button className={styles['button-53']} role="button" onClick={() => deleteItemHandler(o)}>-</button>
-            <button className={styles['button-53-green']} role="button" onClick={() => addItemHandler(o)}>+</button>
+            <button className={styles['button-53']} onClick={() => deleteItemHandler(o)}>-</button>
+            <button className={styles['button-53-green']} onClick={() => addItemHandler(o)}>+</button>
             <div className={styles['ord-count']}>
                 <span className={styles['ord-counter']}>{o.count} </span> x {o.price.toFixed(2)}
             </div>
 
-            {o.family === 'food' && <button className={styles['button-53-blue']} role="button" onClick={toChefHandler}>{sendToChef} / {o.count}</button>}
+            {o.family === 'food' && <button className={styles['button-53-blue']} onClick={toChefHandler}> {sent} / {count}</button>}
+
             <div className={styles['ord-total']}>{(o.count * o.price).toFixed(2)}
                 <span className={styles['lv']}>lv.</span>
             </div>
