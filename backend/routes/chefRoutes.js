@@ -1,12 +1,9 @@
 const router = require('express').Router();
-const authMiddleware = require('../middleware/authMiddleware');
 
 const {
-    addToOrders
+    addOrders
 } = require('../controllers/chefController.js');
 
-// router.use(authMiddleware);
-
-router.post('/add-order', addToOrders);
+router.post('/add-orders', addOrders);
 
 module.exports = router;

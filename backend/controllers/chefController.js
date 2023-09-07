@@ -1,21 +1,24 @@
 const mongoose = require('mongoose');
-const ChefList = require('../models/ChefList.js');
+const ChefOrder = require('../models/ChefOrder.js');
 
-const addToOrders = async (req, res) => {
+const addOrders = async (req, res) => {
 
-    const { _id } = req.body;
+    const { name, quantity, count, table } = req.body;
 
     try {
-        await ChefList.findOneAndUpdate(
 
-            { $push: { orders: { 'id': _id } } });
+        for (let i = 0; i < count; i++) {
 
-        res.status(200).json(_id);
+            await ChefOrder.create({ name, count, quantity, table })
+        }
+
+        res.status(200).json();
+
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 }
 
 module.exports = {
-    addToOrders
+    addOrders
 }
