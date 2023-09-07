@@ -2,6 +2,7 @@ import './css/App.css';
 
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
+import { QueryClientProvider, QueryClient } from 'react-query'
 
 import ItemsContext from './contexts/ItemsContext.js';
 import { useAuthContext } from './hooks/useAuthContext';
@@ -19,6 +20,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Users from './pages/Users';
 import Messages from './pages/Messages';
+
+const queryClient = new QueryClient()
 
 function App() {
 
@@ -47,29 +50,31 @@ function App() {
   }, [tables, items])
 
   return (
-    <div className="App">
-      <Navigation />
-      <div className="main">
-        <ItemsContext.Provider value={{ items, setItems }}>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/items' element={<ItemsList />} />
-            <Route path='/tables' element={<Tables tables={tables} setTables={setTables} />} />
-            <Route path='/tables/:number' element={<TableView tables={tables} setTables={setTables} />} />
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <Navigation />
+        <div className="main">
+          <ItemsContext.Provider value={{ items, setItems }}>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/items' element={<ItemsList />} />
+              <Route path='/tables' element={<Tables tables={tables} setTables={setTables} />} />
+              <Route path='/tables/:number' element={<TableView tables={tables} setTables={setTables} />} />
 
-            <Route path='/staff' element={user && <Users />} />
-            <Route path='/messages' element={<Messages />} />
+              <Route path='/staff' element={user && <Users />} />
+              <Route path='/messages' element={<Messages />} />
 
 
-            <Route path='/my-account' element={user && <Account />} />
+              <Route path='/my-account' element={user && <Account />} />
 
-            <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
-            <Route path='/signup' element={!user ? <Signup /> : <Navigate to='/' />} />
+              <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
+              <Route path='/signup' element={!user ? <Signup /> : <Navigate to='/' />} />
 
-          </Routes>
-        </ItemsContext.Provider>
+            </Routes>
+          </ItemsContext.Provider>
+        </div>
       </div>
-    </div>
+    </QueryClientProvider>
   );
 }
 
