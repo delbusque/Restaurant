@@ -20,7 +20,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Users from './pages/Users';
 import Messages from './pages/Messages';
-import Chef from './pages/Chef.js';
+import Chef from './pages/Chef/Chef.js';
 
 const queryClient = new QueryClient()
 

@@ -122,7 +122,7 @@ button.nav__item-auth {
   cursor: auto;
 }
 
-.nav__auth > .links {
+.nav__auth>.links {
   margin: auto;
 }
 
@@ -229,12 +229,12 @@ button.nav__item-auth {
 }
 
 .chef {
-  color: rgb(251, 96, 39);
+  color: darkgoldenrod;
 }
 
 .chef:hover {
   color: white;
-  background-color: rgb(254, 115, 64);
+  background-color: darkgoldenrod;
 }
 
 .tables:hover {
