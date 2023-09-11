@@ -12,7 +12,8 @@
 }
 
 .order-cont-1 {
-    border: solid 2px darkcyan;
+    border: solid 2px rgba(46, 139, 86, 0.636);
+    ;
 }
 
 .order-info {
@@ -26,19 +27,25 @@
     font-weight: 500;
 }
 
-.order-ready {
-    color: darkgreen;
+.order-ready,
+.order-ready-1 {
     background-color: #fff;
     border-color: transparent;
     border-radius: 10px;
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 500;
     padding: 0 20px;
 }
 
 .order-ready:hover {
-    background-color: darkgreen;
+    background-color: darkgoldenrod;
+    color: white;
+    border: none;
+}
+
+.order-ready-1:hover {
+    background-color: rgb(46, 139, 86);
     color: white;
     border: none;
 }

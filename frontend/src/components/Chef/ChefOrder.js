@@ -30,7 +30,7 @@ const ChefOrder = () => {
                         <div className={styles['order-ingr']}>картофи, сирене</div>
                     </div>
                 </div>
-                <button className={styles['order-ready']}>ГОТОВА</button>
+                <button className={styles['order-ready-1']}>ГОТОВА</button>
             </div>
         </>
     )

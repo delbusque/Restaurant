@@ -239,5 +239,6 @@ button.nav__item-auth {
 
 .tables:hover {
   color: white;
-  background-color: #27ae60;
+  background-color: rgb(46, 139, 86);
+  ;
 }
