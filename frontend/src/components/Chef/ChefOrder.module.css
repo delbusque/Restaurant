@@ -1,8 +1,8 @@
 .order-cont,
 .order-cont-1 {
     border-radius: 10px;
-    margin-bottom: 20px;
-    padding: 10px 15px;
+    margin-bottom: 13px;
+    padding: 10px 15px 35px 15px;
     display: flex;
     justify-content: space-between;
 }
