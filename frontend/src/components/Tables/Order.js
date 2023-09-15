@@ -2,41 +2,47 @@ import styles from './Order.module.css'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const Order = ({ o, addItemHandler, deleteItemHandler, table }) => {
+const Order = ({ order, addItemHandler, deleteItemHandler, tableNum, table, setTables }) => {
 
-    const { name, quantity, count } = o
-    const [sent, setSent] = useState(0)
-    const [waiting, setWaiting] = useState(count - sent)
+    const { name, quantity, count, sent } = order
 
     const addOrders = () => {
-        console.log('post');
-        return axios.post('/chef/add-orders', { name, quantity, count: waiting, table })
+        return axios.post('/chef/add-orders', { name, quantity, count: (count - sent), tableNum })
     }
+
 
     const toChefHandler = () => {
-        setSent(old => old + waiting)
-        setWaiting(0)
-        addOrders()
-        console.log(table);
+
+        table.orders.find((o, i) => {
+            if (o._id === order._id) {
+                if (!o.sent) {
+                    table.orders[i].sent += o.count;
+                    setTables(oldState => [...oldState], table);
+                    addOrders()
+                }
+                else {
+                    table.orders[i].sent += (order.count - order.sent);
+                    setTables(oldState => [...oldState], table);
+                    addOrders()
+                }
+            }
+        })
+
+
     }
-
-    useEffect(() => {
-        setWaiting(count - sent)
-    }, [count, sent])
-
 
     return (
         <div className={styles['tb-orders']}>
-            <div className={styles['ord-name']}>{o.name}</div>
-            <button className={styles['button-53']} onClick={() => deleteItemHandler(o)}>-</button>
-            <button className={styles['button-53-green']} onClick={() => addItemHandler(o)}>+</button>
+            <div className={styles['ord-name']}>{order.name}</div>
+            <button className={styles['button-53']} onClick={() => deleteItemHandler(order)}>-</button>
+            <button className={styles['button-53-green']} onClick={() => addItemHandler(order)}>+</button>
             <div className={styles['ord-count']}>
-                <span className={styles['ord-counter']}>{o.count} </span> x {o.price.toFixed(2)}
+                <span className={styles['ord-counter']}>{order.count} </span> x {order.price.toFixed(2)}
             </div>
 
-            {o.family === 'food' && <button className={styles['button-53-blue']} onClick={toChefHandler}> {sent} / {count}</button>}
+            {order.family === 'food' && <button className={styles['button-53-blue']} onClick={toChefHandler}> {sent} / {count}</button>}
 
-            <div className={styles['ord-total']}>{(o.count * o.price).toFixed(2)}
+            <div className={styles['ord-total']}>{(order.count * order.price).toFixed(2)}
                 <span className={styles['lv']}>lv.</span>
             </div>
         </div>

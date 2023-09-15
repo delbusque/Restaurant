@@ -7,7 +7,7 @@ const chefOrderSchema = new Schema({
         type: String,
         required: true,
     },
-    table: {
+    tableNum: {
         type: String,
         required: true,
     },

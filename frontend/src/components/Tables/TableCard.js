@@ -48,7 +48,7 @@ const TableCard = ({ table, setTables, addItemHandler, deleteItemHandler }) => {
             </div>
 
             {
-                table.orders && table.orders.map((o, i) => <Order table={table.number} o={o} key={i} addItemHandler={addItemHandler} deleteItemHandler={deleteItemHandler} />)
+                table.orders && table.orders.map((o, i) => <Order tableNum={table.number} order={o} key={i} addItemHandler={addItemHandler} deleteItemHandler={deleteItemHandler} table={table} setTables={setTables} />)
             }
             <br />
 

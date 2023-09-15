@@ -49,7 +49,8 @@ const TableView = ({ tables, setTables }) => {
             if (!alreadyItem) {
                 alreadyItem = {
                     ...item,
-                    count: 1
+                    count: 1,
+                    sent: 0
                 }
                 table.orders.unshift(alreadyItem);
                 setTables(oldState => [...oldState], table);
