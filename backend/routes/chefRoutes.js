@@ -2,10 +2,10 @@ const router = require('express').Router();
 
 const {
     addOrders,
-    getWaitingOrders
+    getOrders
 } = require('../controllers/chefController.js');
 
 router.post('/add-orders', addOrders);
-router.get('/get-waiting-orders', getWaitingOrders);
+router.get('/get-orders', getOrders);
 
 module.exports = router;

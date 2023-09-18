@@ -15,7 +15,7 @@ const addOrders = async (req, res) => {
     }
 }
 
-const getWaitingOrders = async (req, res) => {
+const getOrders = async (req, res) => {
     try {
         const waitingOrders = await ChefOrder.find({});
         res.status(200).json(waitingOrders)
@@ -26,5 +26,5 @@ const getWaitingOrders = async (req, res) => {
 
 module.exports = {
     addOrders,
-    getWaitingOrders
+    getOrders
 }

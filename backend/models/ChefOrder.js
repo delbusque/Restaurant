@@ -22,6 +22,10 @@ const chefOrderSchema = new Schema({
     ingredients: {
         type: Array,
     },
+    waiting: {
+        type: Boolean,
+        default: true
+    }
 }, { timestamps: true })
 
 module.exports = mongoose.model('ChefOrder', chefOrderSchema)
