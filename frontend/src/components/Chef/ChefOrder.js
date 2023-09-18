@@ -12,7 +12,7 @@ const ChefOrder = ({ waiting }) => {
         <>
             <div className={styles['order-cont']}>
                 <div className={styles['order-info']}>
-                    <div className={styles['order-type']}>{waiting.tableNum}</div>
+                    <div className={styles['order-table']}>{waiting.tableNum}</div>
                     <div className={styles['order-time']}>{time} min</div>
                     <div>{waiting.quantity.toFixed(3)} {waiting.quantityType}</div>
 

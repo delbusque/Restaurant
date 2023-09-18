@@ -69,3 +69,7 @@
   transform: translateY(2px);
   background-color: rgb(46, 139, 86);
 }
+
+.order-table {
+  font-family: "Dosis", sans-serif;
+}
