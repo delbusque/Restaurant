@@ -2,16 +2,16 @@ import styles from './ChefOrder.module.css'
 import { useQuery } from 'react-query';
 import axios from 'axios';
 
-const ChefOrder = ({ waiting }) => {
+const ChefOrder = ({ waiting, refetch }) => {
 
     const createdAt = new Date(Date.parse(waiting.createdAt));
     let dateNow = new Date(Date.now());
     let duration = dateNow.getTime() - createdAt.getTime()
     let time = Math.round(duration / 1000 / 60);
 
-    const updateWaitingStatus = (clicked) => axios.post('/chef/update-waiting-status', { _id: clicked._id })
+    const updateWaitingStatus = (clicked) => axios.post('/chef/update-waiting-status', { _id: clicked._id }).then(() => refetch())
 
-    useQuery('update-waiting-status', updateWaitingStatus, { enabled: false })
+    const { error } = useQuery('update-waiting-status', updateWaitingStatus, { enabled: false })
 
     return (
         <>
