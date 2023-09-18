@@ -24,7 +24,21 @@ const getOrders = async (req, res) => {
     }
 }
 
+const updateWaitingStatus = async (req, res) => {
+
+    const { _id } = req.body
+    console.log(_id);
+
+    try {
+        const updatedOrder = await ChefOrder.updateOne({ _id }, { waiting: false });
+        res.status(200).json(updatedOrder)
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+}
+
 module.exports = {
     addOrders,
-    getOrders
+    getOrders,
+    updateWaitingStatus
 }

@@ -1,12 +1,17 @@
 import styles from './ChefOrder.module.css'
+import { useQuery } from 'react-query';
+import axios from 'axios';
 
 const ChefOrder = ({ waiting }) => {
 
     const createdAt = new Date(Date.parse(waiting.createdAt));
     let dateNow = new Date(Date.now());
-
     let duration = dateNow.getTime() - createdAt.getTime()
     let time = Math.round(duration / 1000 / 60);
+
+    const updateWaitingStatus = (clicked) => axios.post('/chef/update-waiting-status', { _id: clicked._id })
+
+    useQuery('update-waiting-status', updateWaitingStatus, { enabled: false })
 
     return (
         <>
@@ -21,7 +26,7 @@ const ChefOrder = ({ waiting }) => {
                         <div className={styles['order-ingr']}>tomato, cucumber, onion, pepper, cheese</div>
                     </div>
                 </div>
-                <button className={styles['order-ready']}>ГОТОВА</button>
+                <button className={styles['order-ready']} onClick={() => updateWaitingStatus(waiting)}>ГОТОВА</button>
             </div>
             {/*             
             <div className={styles['order-cont']}>
