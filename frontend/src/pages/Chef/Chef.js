@@ -1,19 +1,18 @@
 import ChefOrder from '../../components/Chef/ChefOrder';
 import styles from './Chef.module.css'
-import { useQuery } from 'react-query';
-import axios from 'axios';
-
-const fetchWaitingOrders = () => axios.get('/chef/get-waiting-orders')
+import { useFetchOrders } from '../../hooks/useFetchOrders.js';
 
 const Chef = () => {
 
-    const { isLoading, data, isError, error } = useQuery('waiting-orders', fetchWaitingOrders)
+    const { isLoading, data, isError, error } = useFetchOrders()
 
     return (
         <div className={styles["chef-orders"]}>
-            <div>Ready Chef Orders</div>
+            <div className={styles["ready"]}>
+                Ready Chef Orders
+            </div>
             <div className={styles["waiting"]}>
-                {data?.data.map(waiting => <ChefOrder key={waiting._id} waiting={waiting} />)}
+                {data?.map(order => order.waiting && <ChefOrder key={order._id} waiting={order} />)}
             </div>
         </div>
     )
