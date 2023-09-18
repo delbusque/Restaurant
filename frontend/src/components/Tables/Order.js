@@ -4,10 +4,10 @@ import axios from 'axios'
 
 const Order = ({ order, addItemHandler, deleteItemHandler, tableNum, table, setTables }) => {
 
-    const { name, quantity, count, sent } = order
+    const { name, quantity, quantityType, count, sent } = order
 
     const addOrders = () => {
-        return axios.post('/chef/add-orders', { name, quantity, count: (count - sent), tableNum })
+        return axios.post('/chef/add-orders', { name, quantity, quantityType, count: (count - sent), tableNum })
     }
 
 
