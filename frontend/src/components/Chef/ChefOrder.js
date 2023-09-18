@@ -1,16 +1,23 @@
 import styles from './ChefOrder.module.css'
 
-const ChefOrder = () => {
+const ChefOrder = ({ waiting }) => {
+
+    const createdAt = new Date(Date.parse(waiting.createdAt));
+    let dateNow = new Date(Date.now());
+
+    let duration = dateNow.getTime() - createdAt.getTime()
+    let time = Math.round(duration / 1000 / 60);
+
     return (
         <>
             <div className={styles['order-cont']}>
                 <div className={styles['order-info']}>
-                    <div className={styles['order-type']}>D</div>
-                    <div className={styles['order-time']}>5 min</div>
-                    <div>500 гр</div>
+                    <div className={styles['order-type']}>{waiting.tableNum}</div>
+                    <div className={styles['order-time']}>{time} min</div>
+                    <div>{waiting.quantity.toFixed(3)} {waiting.quantityType}</div>
 
                     <div>
-                        <div className={styles['order-name']}>ШОПСКА САЛАТА</div>
+                        <div className={styles['order-name']}>{waiting.name}</div>
                         <div className={styles['order-ingr']}>tomato, cucumber, onion, pepper, cheese</div>
                     </div>
                 </div>

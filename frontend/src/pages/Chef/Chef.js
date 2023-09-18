@@ -13,7 +13,7 @@ const Chef = () => {
         <div className={styles["chef-orders"]}>
             <div>Ready Chef Orders</div>
             <div className={styles["waiting"]}>
-                <ChefOrder />
+                {data?.data.map(waiting => <ChefOrder key={waiting._id} waiting={waiting} />)}
             </div>
         </div>
     )
