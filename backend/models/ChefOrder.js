@@ -15,6 +15,10 @@ const chefOrderSchema = new Schema({
         type: Number,
         required: true,
     },
+    quantityType: {
+        type: String,
+        required: true,
+    },
     ingredients: {
         type: Array,
     },
