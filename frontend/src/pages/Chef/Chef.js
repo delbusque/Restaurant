@@ -5,12 +5,13 @@ import { useFetchOrders } from '../../hooks/useFetchOrders.js';
 
 const Chef = () => {
 
-    const { isLoading, data, isError, error, refetch } = useFetchOrders()
-
+    const { data, refetch } = useFetchOrders()
+    const readyData = data?.filter(r => !r.waiting)
     return (
         <div className={styles["chef-orders"]}>
             <div className={styles["ready"]}>
-                {data?.map(order => !order.waiting && <ReadyOrder key={order._id} waiting={order} refetch={refetch} />)}
+                {readyData?.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)).map(order => <ReadyOrder key={order._id} ready={order} refetch={refetch} />)}
+
             </div>
             <div className={styles["waiting"]}>
                 {data?.map(order => order.waiting && <ChefOrder key={order._id} waiting={order} refetch={refetch} />)}
