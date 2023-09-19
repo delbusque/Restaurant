@@ -1,13 +1,11 @@
 import styles from './Order.module.css'
-import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const Order = ({ order, addItemHandler, deleteItemHandler, tableNum, table, setTables }) => {
-
     const { name, quantity, quantityType, count, sent } = order
 
     const addOrders = () => {
-        return axios.post('/chef/add-orders', { name, quantity, quantityType, count: (count - sent), tableNum })
+        axios.post('/chef/add-orders', { name, quantity, quantityType, count: (count - sent), tableNum })
     }
 
 
@@ -18,17 +16,17 @@ const Order = ({ order, addItemHandler, deleteItemHandler, tableNum, table, setT
                 if (!o.sent) {
                     table.orders[i].sent += o.count;
                     setTables(oldState => [...oldState], table);
-                    addOrders()
+                    return addOrders()
                 }
                 else {
                     table.orders[i].sent += (order.count - order.sent);
                     setTables(oldState => [...oldState], table);
-                    addOrders()
+                    return addOrders()
                 }
+            } else {
+                return null
             }
         })
-
-
     }
 
     return (
