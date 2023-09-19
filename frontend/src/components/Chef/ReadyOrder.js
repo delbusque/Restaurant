@@ -2,58 +2,31 @@ import styles from './ReadyOrder.module.css'
 import { useQuery } from 'react-query';
 import axios from 'axios';
 
-const ReadyOrder = ({ waiting, refetch }) => {
+const ReadyOrder = ({ ready, refetch }) => {
 
-    const createdAt = new Date(Date.parse(waiting.createdAt));
+    const createdAt = new Date(Date.parse(ready.createdAt));
     let dateNow = new Date(Date.now());
     let duration = dateNow.getTime() - createdAt.getTime()
     let time = Math.round(duration / 1000 / 60);
 
-    const updateWaitingStatus = (clicked) => axios.post('/chef/update-waiting-status', { _id: clicked._id }).then(() => refetch())
+    const deleteReadyOrder = (clicked) => {
+        axios.post('/chef/delete-ready-order', { _id: clicked._id }).then(() => refetch())
+    }
 
-    const { error } = useQuery('update-waiting-status', updateWaitingStatus, { enabled: false })
+    useQuery('delete-ready-order', deleteReadyOrder, { enabled: false })
 
     return (
         <>
             <div className={styles['order-cont']}>
                 <div className={styles['order-info']}>
-                    <div className={styles['order-table']}>{waiting.tableNum}</div>
+                    <div className={styles['order-table']}>{ready.tableNum}</div>
                     <div className={styles['order-time']}>{time} min</div>
                     <div>
-                        <div className={styles['order-name']}>{waiting.name}</div>
+                        <div className={styles['order-name']}>{ready.name}</div>
                     </div>
                 </div>
-                <button className={styles['order-ready']} onClick={() => updateWaitingStatus(waiting)}>ИЗТРИВАНЕ</button>
+                <button className={styles['order-ready']} onClick={() => deleteReadyOrder(ready)}>ИЗТРИВАНЕ</button>
             </div>
-            {/*             
-            <div className={styles['order-cont']}>
-                <div className={styles['order-info']}>
-                    <div className={styles['order-type']}>D</div>
-                    <div className={styles['order-time']}>5 min</div>
-                    <div>500 гр</div>
-
-                    <div>
-                        <div className={styles['order-name']}>ШОПСКА САЛАТА</div>
-                        <div className={styles['order-ingr']}>tomato, cucumber, onion, pepper, cheese</div>
-                    </div>
-                </div>
-                <button className={styles['order-ready']}>ГОТОВА</button>
-            </div>
-
-            <div className={styles['order-cont-1']}>
-                <div className={styles['order-info']}>
-                    <div className={styles['order-type']}>1</div>
-                    <div className={styles['order-time']}>3 min</div>
-                    <div>450 гр</div>
-
-                    <div>
-                        <div className={styles['order-name']}>ПЪРЖЕНИ КАРТОФИ - СИРЕНЕ</div>
-                        <div className={styles['order-ingr']}>картофи, сирене</div>
-                    </div>
-                </div>
-                <button className={styles['order-ready-1']}>ГОТОВА</button>
-            </div> */}
-
         </>
     )
 }
