@@ -6,7 +6,7 @@ const fetchOrders = () => axios.get('/chef/get-orders')
 export const useFetchOrders = () => {
     return useQuery('waiting-orders', fetchOrders,
         {
-            staleTime: 100000,
+            staleTime: 200000,
             select: data => data.data
         })
 }
