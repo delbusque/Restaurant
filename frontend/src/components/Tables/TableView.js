@@ -2,7 +2,6 @@ import { useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
 import ItemsContext from '../../contexts/ItemsContext.js';
-import { useAuthContext } from '../../hooks/useAuthContext.js';
 
 import TableCard from './TableCard.js';
 import FamilyButton from '../Buttons/FamilyButton.js';
@@ -10,10 +9,8 @@ import ItemLine from './ItemLine.js';
 import TypeButton from '../Buttons/TypeButton.js';
 
 import familiesAndTypes from '../../services/familiesAndTypes.js';
-import TableError from './TableError.js';
 
 const TableView = ({ tables, setTables }) => {
-    const { user } = useAuthContext();
 
     const [drinkIsActive, setDrinkIsActive] = useState(true);
     const [foodIsActive, setFoodIsActive] = useState(false);
@@ -97,8 +94,7 @@ const TableView = ({ tables, setTables }) => {
                 table ?
                     <>
 
-                        <TableCard table={table} setTables={setTables} tables={tables}
-                            addItemHandler={addItemHandler} deleteItemHandler={deleteItemHandler} />
+                        <TableCard table={table} setTables={setTables} tables={tables} addItemHandler={addItemHandler} deleteItemHandler={deleteItemHandler} />
 
                         <section className='family-sect'>
                             {families.length > 0 &&
