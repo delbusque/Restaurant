@@ -73,3 +73,9 @@
 .order-table {
   font-family: "Dosis", sans-serif;
 }
+
+.order-count {
+  font-size: 14px;
+  font-weight: 400;
+  display: inline;
+}

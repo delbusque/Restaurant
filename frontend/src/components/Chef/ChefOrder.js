@@ -1,8 +1,9 @@
 import styles from './ChefOrder.module.css'
 import { useQuery } from 'react-query';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 
-const ChefOrder = ({ waiting, refetch }) => {
+const ChefOrder = ({ waiting, refetch, orders }) => {
 
     const createdAt = new Date(Date.parse(waiting.createdAt));
     let dateNow = new Date(Date.now());
@@ -11,7 +12,15 @@ const ChefOrder = ({ waiting, refetch }) => {
 
     const updateWaitingStatus = (clicked) => axios.post('/chef/update-waiting-status', { _id: clicked._id }).then(() => refetch())
 
-    const { error } = useQuery('update-waiting-status', updateWaitingStatus, { enabled: false })
+    useQuery('update-waiting-status', updateWaitingStatus, { enabled: false })
+
+    const [count, setCount] = useState(0)
+
+    useEffect(() => {
+        orders?.forEach(o => {
+            o.name === waiting.name && setCount(old => old + 1)
+        })
+    }, [])
 
     return (
         <>
@@ -21,10 +30,12 @@ const ChefOrder = ({ waiting, refetch }) => {
                     <div className={styles['order-time']}>{time} min</div>
                     <div>{waiting.quantity.toFixed(3)} {waiting.quantityType}</div>
 
+
                     <div>
-                        <div className={styles['order-name']}>{waiting.name}</div>
+                        <div className={styles['order-name']}>{waiting.name} <div className={styles['order-count']}>{count}</div></div>
                         <div className={styles['order-ingr']}>tomato, cucumber, onion, pepper, cheese</div>
                     </div>
+
                 </div>
                 <button className={styles['order-ready']} onClick={() => updateWaitingStatus(waiting)}>ГОТОВА</button>
             </div>
