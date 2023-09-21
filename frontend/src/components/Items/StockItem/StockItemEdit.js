@@ -79,7 +79,7 @@ const StockItemEdit = ({ item, setEditInfo, setShowInfo, setDrinkIsActive, setFo
             window.localStorage.setItem('items', JSON.stringify(oldItems));
             setItems(JSON.parse(window.localStorage.getItem('items')));
 
-            setEditInfo(true);
+            setEditInfo(false);
             setShowInfo(false);
             setError(null);
             setInputName('');
