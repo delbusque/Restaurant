@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-const ChefOrder = ({ waiting, refetch, orders }) => {
+const ChefOrder = ({ waiting, refetch, orders, data }) => {
 
     const createdAt = new Date(Date.parse(waiting.createdAt));
     let dateNow = new Date(Date.now());
@@ -17,10 +17,11 @@ const ChefOrder = ({ waiting, refetch, orders }) => {
     const [count, setCount] = useState(0)
 
     useEffect(() => {
+        setCount(0)
         orders?.forEach(o => {
             o.name === waiting.name && setCount(old => old + 1)
         })
-    }, [])
+    }, [data])
 
     return (
         <>
@@ -30,7 +31,6 @@ const ChefOrder = ({ waiting, refetch, orders }) => {
                     <div className={styles['order-time']}>{time} min</div>
                     <div>{waiting.quantity.toFixed(3)} {waiting.quantityType}</div>
 
-
                     <div>
                         <div className={styles['order-name']}>{waiting.name} <div className={styles['order-count']}>{count}</div></div>
                         <div className={styles['order-ingr']}>{waiting.ingredients.join(', ')}</div>
@@ -39,35 +39,6 @@ const ChefOrder = ({ waiting, refetch, orders }) => {
                 </div>
                 <button className={styles['order-ready']} onClick={() => updateWaitingStatus(waiting)}>ГОТОВА</button>
             </div>
-            {/*             
-            <div className={styles['order-cont']}>
-                <div className={styles['order-info']}>
-                    <div className={styles['order-type']}>D</div>
-                    <div className={styles['order-time']}>5 min</div>
-                    <div>500 гр</div>
-
-                    <div>
-                        <div className={styles['order-name']}>ШОПСКА САЛАТА</div>
-                        <div className={styles['order-ingr']}>tomato, cucumber, onion, pepper, cheese</div>
-                    </div>
-                </div>
-                <button className={styles['order-ready']}>ГОТОВА</button>
-            </div>
-
-            <div className={styles['order-cont-1']}>
-                <div className={styles['order-info']}>
-                    <div className={styles['order-type']}>1</div>
-                    <div className={styles['order-time']}>3 min</div>
-                    <div>450 гр</div>
-
-                    <div>
-                        <div className={styles['order-name']}>ПЪРЖЕНИ КАРТОФИ - СИРЕНЕ</div>
-                        <div className={styles['order-ingr']}>картофи, сирене</div>
-                    </div>
-                </div>
-                <button className={styles['order-ready-1']}>ГОТОВА</button>
-            </div> */}
-
         </>
     )
 }

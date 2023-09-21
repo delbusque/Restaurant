@@ -16,7 +16,7 @@ const Chef = () => {
 
             </div>
             <div className={styles["waiting"]}>
-                {data?.map(order => order.waiting && <ChefOrder orders={waitingData} key={order._id} waiting={order} refetch={refetch} />)}
+                {data?.map(order => order.waiting && <ChefOrder data={data} orders={waitingData} key={order._id} waiting={order} refetch={refetch} />)}
             </div>
         </div>
     )
