@@ -1,4 +1,4 @@
-import styles from './ItemList.module.css';
+import styles from './ItemsList.module.css';
 
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
@@ -26,6 +26,8 @@ const ItemsList = () => {
     const [drinkIsActive, setDrinkIsActive] = useState(true);
     const [foodIsActive, setFoodIsActive] = useState(false);
     const [typeIsActive, setTypeIsActive] = useState(false);
+
+    const [showAddItem, setShowAddItem] = useState(false)
 
     const [byType, setByType] = useState('');
 
@@ -111,8 +113,11 @@ const ItemsList = () => {
                     {
                         editInfo && <StockItemEdit item={currentItem} setEditInfo={setEditInfo} setShowInfo={setShowInfo} setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
                     }
+
+                    {(user && !showInfo && !editInfo && !showAddItem) && <button className={styles['show-form']} onClick={() => setShowAddItem(true)}>Add New Item</button>}
+
                     {
-                        (user && !showInfo && !editInfo) && <AddItemForm setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} />
+                        (user && !showInfo && !editInfo && showAddItem) && <AddItemForm setDrinkIsActive={setDrinkIsActive} setFoodIsActive={setFoodIsActive} setShowAddItem={setShowAddItem} />
                     }
                 </section>
 

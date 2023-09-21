@@ -4,7 +4,7 @@ import { useContext } from "react";
 import ItemsContext from "../../../contexts/ItemsContext";
 import { useAuthContext } from "../../../hooks/useAuthContext";
 
-const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
+const AddItemForm = ({ setDrinkIsActive, setFoodIsActive, setShowAddItem }) => {
 
     const { items, setItems } = useContext(ItemsContext);
     const { user } = useAuthContext();
@@ -70,6 +70,7 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
             setQuantity('');
             setEmptyFields([]);
             setNegZero([]);
+            setShowAddItem(false)
             if (newItem.family === 'drinks') {
                 setDrinkIsActive(true);
                 setFoodIsActive(false);
