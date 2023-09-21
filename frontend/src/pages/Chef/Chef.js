@@ -3,8 +3,8 @@ import ChefOrder from '../../components/Chef/ChefOrder';
 import ReadyOrder from '../../components/Chef/ReadyOrder';
 import { useFetchOrders } from '../../hooks/useFetchOrders.js';
 
-const Chef = ({ flag }) => {
-    console.log(flag);
+const Chef = () => {
+
     const { data, refetch } = useFetchOrders()
     const readyData = data?.filter(r => !r.waiting)
     const waitingData = data?.filter(r => r.waiting)
