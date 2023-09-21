@@ -29,6 +29,8 @@ const StockItemEdit = ({ item, setEditInfo, setShowInfo, setDrinkIsActive, setFo
         setInputIngredients(item.ingredients?.join(', '))
         setFamily(item.family)
         setType(item.type)
+        console.log(123);
+        console.log(345);
     }, [item])
 
     const editItemHandler = async (e) => {
