@@ -32,7 +32,9 @@ const ReadyOrder = ({ ready, refetch, orders }) => {
                     <div className={styles['order-time']}>{time} min</div>
 
                     <div>
-                        <div className={styles['order-name']}>{ready.name} <div className={styles['order-count']}>{count}</div></div>
+                        <div className={styles['order-name']}>{ready.name}
+                            {/* <div className={styles['order-count']}>{count}</div> */}
+                        </div>
                     </div>
                 </div>
                 <button className={styles['order-ready']} onClick={() => deleteReadyOrder(ready)}>ИЗТРИЙ</button>
