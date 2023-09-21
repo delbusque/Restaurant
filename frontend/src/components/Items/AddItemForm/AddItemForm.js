@@ -12,6 +12,7 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
     const [inputName, setInputName] = useState('');
     const [family, setFamily] = useState('');
     const [type, setType] = useState('');
+    const [inputIngredients, setInputIngredients] = useState('');
     const [price, setPrice] = useState('');
     const [quantity, setQuantity] = useState('');
     const [error, setError] = useState(null);
@@ -30,9 +31,11 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
             return;
         }
 
-        let name = inputName.charAt(0).toUpperCase() + inputName.slice(1).toLowerCase();
+        let ingredientsTemp = inputIngredients.split(',').map(i => (i.trim())).filter(i => i)
+        let ingredients = ingredientsTemp.map(i => i.charAt(0).toUpperCase() + i.slice(1).toLowerCase())
 
-        const newItem = { name, family, price, type, quantity }
+        let name = inputName.charAt(0).toUpperCase() + inputName.slice(1).toLowerCase();
+        const newItem = { name, family, ingredients, price, type, quantity }
 
         const response = await fetch('/items/add', {
             method: 'POST',
@@ -62,6 +65,7 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
             setInputName('');
             setFamily('');
             setType('');
+            setInputIngredients('')
             setPrice('');
             setQuantity('');
             setEmptyFields([]);
@@ -75,6 +79,8 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
             }
         }
     }
+
+
 
     return (
         <>
@@ -133,6 +139,16 @@ const AddItemForm = ({ setDrinkIsActive, setFoodIsActive }) => {
                             <option value='burgers'>Burgers</option>
                             <option value='pizza'>Pizza</option>
                         </select>}
+
+
+                    <div className={styles['label-input']}>
+                        <label className={styles["label"]}>Ingredients</label>
+                        <textarea name="inputIngredients"
+                            // className={(emptyFields?.includes('inputIngredients') || negZero?.includes('inputIngredients')) ? styles['input-error'] : ''}
+                            onChange={(e) => setInputIngredients(e.target.value)}
+                            value={inputIngredients}
+                        />
+                    </div>
 
                     <div className={styles['label-input']}>
                         <label className={styles["label"]}>Price</label>

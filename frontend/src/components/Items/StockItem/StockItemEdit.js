@@ -11,6 +11,7 @@ const StockItemEdit = ({ item, setEditInfo, setShowInfo, setDrinkIsActive, setFo
     const [inputName, setInputName] = useState('');
     const [family, setFamily] = useState('');
     const [type, setType] = useState('');
+    const [inputIngredients, setInputIngredients] = useState('');
     const [price, setPrice] = useState('');
     const [quantity, setQuantity] = useState('');
     const [emptyFields, setEmptyFields] = useState([]);
@@ -25,6 +26,7 @@ const StockItemEdit = ({ item, setEditInfo, setShowInfo, setDrinkIsActive, setFo
         setInputName(item.name);
         setPrice(item.price);
         setQuantity(item.quantity);
+        setInputIngredients(item.ingredients.join(', '))
     }, [item])
 
     const editItemHandler = async (e) => {
@@ -44,7 +46,8 @@ const StockItemEdit = ({ item, setEditInfo, setShowInfo, setDrinkIsActive, setFo
             quantityType = quantity < 1 ? 'gr' : 'kg';
         }
 
-        const editedItem = { name, family, price, type, quantity, quantityType, _id: item._id }
+        let ingredients = inputIngredients.split(',').map(i => (i.trim())).filter(i => i)
+        const editedItem = { name, family, ingredients, price, type, quantity, quantityType, _id: item._id }
 
         const response = await fetch(`/items/edit/${item._id}`, {
             method: 'POST',
@@ -80,6 +83,7 @@ const StockItemEdit = ({ item, setEditInfo, setShowInfo, setDrinkIsActive, setFo
             setInputName('');
             setFamily('');
             setType('');
+            setInputIngredients('')
             setPrice('');
             setQuantity('');
             setEmptyFields([]);
@@ -156,6 +160,15 @@ const StockItemEdit = ({ item, setEditInfo, setShowInfo, setDrinkIsActive, setFo
                             <option value='burgers'>Burgers</option>
                             <option value='pizza'>Pizza</option>
                         </select>}
+
+                    <div className={styles['label-input']}>
+                        <label className={styles["label"]}>Ingredients</label>
+                        <textarea name="inputIngredients"
+                            // className={(emptyFields?.includes('inputIngredients') || negZero?.includes('inputIngredients')) ? styles['input-error'] : ''}
+                            onChange={(e) => setInputIngredients(e.target.value)}
+                            value={inputIngredients}
+                        />
+                    </div>
 
                     <div className={styles['label-input']}>
                         <label className={styles["label"]}>Price</label>

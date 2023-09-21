@@ -26,6 +26,7 @@
 
 /*inputs*/
 .msform input,
+.msform textarea,
 .msform select {
     padding: 10px;
     border: 1px solid #ccc;
