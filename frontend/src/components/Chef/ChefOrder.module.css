@@ -79,3 +79,7 @@
   font-weight: 400;
   display: inline;
 }
+
+.order-ingr {
+  display: flex;
+}

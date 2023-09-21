@@ -2,10 +2,10 @@ import styles from './Order.module.css'
 import axios from 'axios'
 
 const Order = ({ order, addItemHandler, deleteItemHandler, tableNum, table, setTables }) => {
-    const { name, quantity, quantityType, count, sent } = order
+    const { name, ingredients, quantity, quantityType, count, sent } = order
 
     const addOrders = () => {
-        axios.post('/chef/add-orders', { name, quantity, quantityType, count: (count - sent), tableNum })
+        axios.post('/chef/add-orders', { name, ingredients, quantity, quantityType, count: (count - sent), tableNum })
     }
 
 

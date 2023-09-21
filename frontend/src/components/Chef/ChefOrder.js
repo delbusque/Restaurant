@@ -33,7 +33,7 @@ const ChefOrder = ({ waiting, refetch, orders }) => {
 
                     <div>
                         <div className={styles['order-name']}>{waiting.name} <div className={styles['order-count']}>{count}</div></div>
-                        <div className={styles['order-ingr']}>tomato, cucumber, onion, pepper, cheese</div>
+                        <div className={styles['order-ingr']}>{waiting.ingredients.join(', ')}</div>
                     </div>
 
                 </div>
