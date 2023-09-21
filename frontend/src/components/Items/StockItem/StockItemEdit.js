@@ -26,7 +26,9 @@ const StockItemEdit = ({ item, setEditInfo, setShowInfo, setDrinkIsActive, setFo
         setInputName(item.name);
         setPrice(item.price);
         setQuantity(item.quantity);
-        setInputIngredients(item.ingredients.join(', '))
+        setInputIngredients(item.ingredients?.join(', '))
+        setFamily(item.family)
+        setType(item.type)
     }, [item])
 
     const editItemHandler = async (e) => {
@@ -46,7 +48,7 @@ const StockItemEdit = ({ item, setEditInfo, setShowInfo, setDrinkIsActive, setFo
             quantityType = quantity < 1 ? 'gr' : 'kg';
         }
 
-        let ingredients = inputIngredients.split(',').map(i => (i.trim())).filter(i => i)
+        let ingredients = inputIngredients?.split(',').map(i => (i.trim())).filter(i => i)
         const editedItem = { name, family, ingredients, price, type, quantity, quantityType, _id: item._id }
 
         const response = await fetch(`/items/edit/${item._id}`, {
@@ -117,6 +119,7 @@ const StockItemEdit = ({ item, setEditInfo, setShowInfo, setDrinkIsActive, setFo
                         />
                     </div>
                     <select
+                        value={family}
                         className={emptyFields.includes('family') ? styles['input-error'] : ''}
                         onChange={(e) => {
                             setFamily(e.target.value)
@@ -129,10 +132,12 @@ const StockItemEdit = ({ item, setEditInfo, setShowInfo, setDrinkIsActive, setFo
                     </select>
 
                     {family === 'drinks' &&
-                        <select onChange={(e) => {
-                            typeHandler(e);
-                            setEmptyFields(old => old.filter(f => f !== 'type'));
-                        }}
+                        <select
+                            value={type}
+                            onChange={(e) => {
+                                typeHandler(e);
+                                setEmptyFields(old => old.filter(f => f !== 'type'));
+                            }}
                             className={emptyFields.includes('type') ? styles['input-error'] : ''}>
                             <option selected disabled>Choose from drinks :</option>
                             <option value='beer'>Beer</option>
@@ -149,10 +154,12 @@ const StockItemEdit = ({ item, setEditInfo, setShowInfo, setDrinkIsActive, setFo
                         </select>}
 
                     {family === 'food' &&
-                        <select onChange={(e) => {
-                            typeHandler(e);
-                            setEmptyFields(old => old.filter(f => f !== 'type'));
-                        }}
+                        <select
+                            value={type}
+                            onChange={(e) => {
+                                typeHandler(e);
+                                setEmptyFields(old => old.filter(f => f !== 'type'));
+                            }}
                             className={emptyFields.includes('type') ? styles['input-error'] : ''}>
                             <option selected disabled>Choose from food :</option>
                             <option value='salad'>Salad</option>
@@ -178,7 +185,6 @@ const StockItemEdit = ({ item, setEditInfo, setShowInfo, setDrinkIsActive, setFo
                                 setPrice(e.target.value);
                                 setEmptyFields(old => old.filter(f => f !== 'price'));
                                 setNegZero(old => old.filter(f => f !== 'price'));
-
                             }}
                             value={price}
                         />
