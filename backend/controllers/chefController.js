@@ -2,12 +2,12 @@ const ChefOrder = require('../models/ChefOrder.js');
 
 const addOrders = async (req, res) => {
 
-    const { name, quantity, quantityType, count, tableNum } = req.body;
+    const { name, ingredients, quantity, quantityType, count, tableNum } = req.body;
 
     try {
         for (let i = 0; i < count; i++) {
 
-            await ChefOrder.create({ name, count, quantity, quantityType, tableNum })
+            await ChefOrder.create({ name, ingredients, count, quantity, quantityType, tableNum })
         }
         res.status(200).json();
     } catch (error) {
