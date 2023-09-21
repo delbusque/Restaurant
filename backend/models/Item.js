@@ -16,6 +16,9 @@ const itemSchema = new Schema({
         type: String,
         required: true
     },
+    ingredients: {
+        type: Array,
+    },
     price: {
         type: Number,
         required: true,

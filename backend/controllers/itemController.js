@@ -45,7 +45,7 @@ const getItemsByType = async (req, res) => {
 }
 
 const addNewStockItem = async (req, res) => {
-    const { name, family, type, price, quantity } = req.body;
+    const { name, family, type, ingredients, price, quantity } = req.body;
 
     const emptyFields = [];
     !name && emptyFields.push('name');
@@ -73,7 +73,7 @@ const addNewStockItem = async (req, res) => {
     }
 
     try {
-        const newItiem = await Item.create({ name, family, type, price, quantity });
+        const newItiem = await Item.create({ name, family, type, ingredients, price, quantity });
         res.status(200).json(newItiem);
     } catch (error) {
         res.status(400).json({ error: error.message });
