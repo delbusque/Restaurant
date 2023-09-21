@@ -2,12 +2,18 @@ import styles from './Chef.module.css'
 import ChefOrder from '../../components/Chef/ChefOrder';
 import ReadyOrder from '../../components/Chef/ReadyOrder';
 import { useFetchOrders } from '../../hooks/useFetchOrders.js';
+import { useEffect, useState } from 'react';
 
-const Chef = () => {
+const Chef = ({ flag }) => {
 
     const { data, refetch } = useFetchOrders()
     const readyData = data?.filter(r => !r.waiting)
     const waitingData = data?.filter(r => r.waiting)
+
+
+    useEffect(() => {
+        refetch()
+    }, [flag])
 
     return (
         <div className={styles["chef-orders"]}>

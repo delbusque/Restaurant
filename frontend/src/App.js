@@ -31,6 +31,8 @@ function App() {
   const [tables, setTables] = useState([]);
   const [items, setItems] = useState([]);
 
+  const [flag, setFlag] = useState(true) // !!! TODO
+
   useEffect(() => {
     let local_Tables = window.localStorage.getItem('tables');
     let local_Items = window.localStorage.getItem('items');
@@ -62,7 +64,7 @@ function App() {
               <Route path='/tables' element={<Tables tables={tables} setTables={setTables} />} />
               <Route path='/tables/:number' element={<TableView tables={tables} setTables={setTables} />} />
 
-              <Route path='/chef' element={user && <Chef />} />
+              <Route path='/chef' element={user && <Chef flag={flag} />} />
               <Route path='/staff' element={user && <Users />} />
               <Route path='/messages' element={<Messages />} />
 
